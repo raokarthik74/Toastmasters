@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Toastmasters</string>
+
+    <string name="title_section1">Club</string>
+    <string name="title_section2">Education</string>
+    <string name="title_section3">Leadership</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="snack_bar">AC - Advanced Communication</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_club_detail_view">clubDetailView</string>
+    <string name="title_activity_education_detailview">educationDetailview</string>
+    <string name="title_activity_leadership_detail_view">leadershipDetailView</string>
+    <string name="title_timerdetailview_list">Items</string>
+    <string name="title_timerdetailview_detail">timerDetailView Detail</string>
+    <string name="title_activity_club_detail">clubDetailActivity</string>
+    <string name="title_activity_education_detail">educationDetailActivity</string>
+</resources>
