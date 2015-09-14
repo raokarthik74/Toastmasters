@@ -1,11 +1,15 @@
 package com.district92.toastmasters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,13 +27,36 @@ public class speechTimer extends ActionBarActivity {
     }
     public void startChronometer(final View view) {
         ((Chronometer) findViewById(R.id.chronometer)).start();
+        Intent intent = getIntent();
+        final long greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
+        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+        timeUpText.setText("");
         ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
                 long elapsedTimeInMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
-                TextView mytext = (TextView) findViewById(R.id.getcurrent);
-                mytext.setText("" + elapsedTimeInMinutes);
+                long elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                if (greenValue == 1 || greenValue == 2) {
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60)) {
+                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        timerVibrator.vibrate(500);
+                    }
+                    if (elapsedTimeInMinutes == greenValue) {
+
+                    }
+                    else if (elapsedTimeInMinutes == greenValue) {
+
+                    }
+                    else {
+
+                    }
+                } else {
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 2 && elapsedTimeInSeconds == (greenValue * 60) + 60)) {
+                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        timerVibrator.vibrate(500);
+                    }
+                }
             }
         });
     }
@@ -39,7 +66,7 @@ public class speechTimer extends ActionBarActivity {
     }
 
     public void resetChronometer(View view) {
-        long elapsedMillis = SystemClock.elapsedRealtime() - ((Chronometer) findViewById(R.id.chronometer)).getBase();
+        ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
     }
 
 
