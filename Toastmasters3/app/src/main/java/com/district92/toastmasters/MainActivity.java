@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String positionOfSelectionOfObjectFromClubFragment = "com.district92.toastmasters.positionOfClub";
     public final static String positionOfSelectionOfObjectFromLeadershipFragment = "com.district92.toastmasters.positionOfLeadership";
     public final static String positionOfSelectionOfObjectFromEducationFragment = "com.district92.toastmasters.positionOfEducation";
+    public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -113,14 +114,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
-
+        Snackbar snackBar = Snackbar.make(mViewPager, R.string.snack_bar, Snackbar.LENGTH_SHORT);
         if (tab.getPosition() == 1) {
-            Snackbar.make(mViewPager, R.string.snack_bar, Snackbar.LENGTH_LONG).show();
+            snackBar.show();
             mViewPager.setCurrentItem(tab.getPosition());
         }
         else
         {
             mViewPager.setCurrentItem(tab.getPosition());
+            snackBar.dismiss();
         }
     }
 
@@ -287,6 +289,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                      // Snackbar.make(view, "AC - Advanced Communication Track", Snackbar.LENGTH_LONG).show();
                     Intent intentFromEducationFragment = new Intent(getActivity(), educationDetailActivity.class);
                     intentFromEducationFragment.putExtra(positionOfSelectionOfObjectFromEducationFragment, positionOfEducation);
+                    intentFromEducationFragment.putExtra(titleOfEducationDetailPage, listOfEducationItems[positionOfEducation]);
                     startActivity(intentFromEducationFragment);
                 }
             });
