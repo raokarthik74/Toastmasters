@@ -239,7 +239,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
                    // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
                     if (positionOfClub == 0) {
-                        Intent intentFromClubFragment = new Intent(getActivity(), selectProjectActivity.class);
+                        Intent intentFromClubFragment = new Intent(getActivity(), timerSelectionActivity.class);
                         intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub);
                         startActivity(intentFromClubFragment);
                     }

@@ -22,4 +22,7 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_timer">Timer</string>
     <string name="title_activity_select_project">selectProjectActivity</string>
+    <string name="title_activity_speech_timer">speechTimerActivity</string>
+    <string name="title_activity_speech_chronometer">speechChronometer</string>
+    <string name="title_activity_timer_selection">timerSelectionActivity</string>
 </resources>

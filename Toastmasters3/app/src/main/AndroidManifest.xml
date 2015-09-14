@@ -3,7 +3,8 @@
     package="com.district92.toastmasters" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -47,6 +48,38 @@
         <activity
             android:name=".selectProjectActivity"
             android:label="@string/title_activity_select_project" >
+        </activity>
+        <activity
+            android:name=".speechTimerActivity"
+            android:label="@string/title_activity_speech_timer"
+            android:parentActivityName=".selectProjectActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.selectProjectActivity" />
+        </activity>
+        <activity
+            android:name=".speechChronometer"
+            android:label="@string/title_activity_speech_chronometer"
+            android:parentActivityName=".selectProjectActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.selectProjectActivity" />
+        </activity>
+        <activity
+            android:name=".timerSelectionActivity"
+            android:label="@string/title_activity_timer_selection"
+            android:parentActivityName=".clubDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.clubDetailActivity" />
+        </activity>
+        <activity
+            android:name=".speechTimer"
+            android:label="@string/title_activity_speech_timer"
+            android:parentActivityName=".timerSelectionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
     </application>
 
