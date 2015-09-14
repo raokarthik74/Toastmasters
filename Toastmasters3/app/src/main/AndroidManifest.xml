@@ -81,6 +81,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
+        <activity
+            android:name=".AboutTimerASctivity"
+            android:label="@string/title_activity_about_timer_asctivity"
+            android:parentActivityName=".timerSelectionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.timerSelectionActivity" />
+        </activity>
+        <activity
+            android:name=".aboutTimer"
+            android:label="@string/title_activity_about_timer" >
+        </activity>
     </application>
 
 </manifest>

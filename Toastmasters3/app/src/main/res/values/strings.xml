@@ -25,4 +25,6 @@
     <string name="title_activity_speech_timer">speechTimerActivity</string>
     <string name="title_activity_speech_chronometer">speechChronometer</string>
     <string name="title_activity_timer_selection">timerSelectionActivity</string>
+    <string name="title_activity_about_timer_asctivity">AboutTimerASctivity</string>
+    <string name="title_activity_about_timer">aboutTimer</string>
 </resources>
