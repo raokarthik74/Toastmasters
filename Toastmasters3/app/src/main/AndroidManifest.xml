@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.district92.toastmasters" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +33,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.MainActivity" />
+        </activity>
+        <activity
+            android:name=".findClubActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_find_club"
+            android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name=".Timer"
+            android:label="@string/title_activity_timer" >
+        </activity>
+        <activity
+            android:name=".selectProjectActivity"
+            android:label="@string/title_activity_select_project" >
         </activity>
     </application>
 

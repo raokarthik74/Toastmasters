@@ -16,4 +16,10 @@
     <string name="title_timerdetailview_detail">timerDetailView Detail</string>
     <string name="title_activity_club_detail">clubDetailActivity</string>
     <string name="title_activity_education_detail">educationDetailActivity</string>
+
+    <string name="title_activity_find_club">findClubActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_timer">Timer</string>
+    <string name="title_activity_select_project">selectProjectActivity</string>
 </resources>

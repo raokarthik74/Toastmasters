@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String positionOfSelectionOfObjectFromLeadershipFragment = "com.district92.toastmasters.positionOfLeadership";
     public final static String positionOfSelectionOfObjectFromEducationFragment = "com.district92.toastmasters.positionOfEducation";
     public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
-
+    public final static String mymessage = "com.district92.toastmasters.positionOfEducation.message";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -238,12 +238,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 public void onItemClick(AdapterView<?> parent, View view, int positionOfClub, long id) {
                     //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
                    // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
-//                    Intent intentFromClubFragment = new Intent(getActivity(), clubDetailView.class);
-//                    intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub);
-//                    startActivity(intentFromClubFragment);
+                    if (positionOfClub == 0) {
+                        Intent intentFromClubFragment = new Intent(getActivity(), selectProjectActivity.class);
+                        intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub);
+                        startActivity(intentFromClubFragment);
+                    }
                 }
             });
             return rootView;
+        }
+
+        public void startFindClubActivity (View view){
+
         }
     }
     public static class educationFragment extends Fragment {
