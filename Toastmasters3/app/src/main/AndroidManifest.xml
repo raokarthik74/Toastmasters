@@ -89,6 +89,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.MainActivity" />
         </activity>
+        <activity
+            android:name=".WordFortheDay"
+            android:label="@string/title_activity_word_forthe_day" >
+        </activity>
     </application>
 
 </manifest>

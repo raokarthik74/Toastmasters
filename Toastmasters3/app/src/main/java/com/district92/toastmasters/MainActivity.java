@@ -231,7 +231,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer", "Ah-Counter"};
+        String[] listOfClubItems = {"Timer", "Ah-Counter", "Word For The Day"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -259,6 +259,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                         case 1 :
                             Intent intentForAhCounter = new Intent(getActivity(), AhCounterActivity.class);
                             startActivity(intentForAhCounter);
+                            break;
+                        case 2 :
+                            Intent intentForWordForTheDay = new Intent(getActivity(), WordFortheDay.class);
+                            startActivity(intentForWordForTheDay);
                             break;
                     }
                 }
