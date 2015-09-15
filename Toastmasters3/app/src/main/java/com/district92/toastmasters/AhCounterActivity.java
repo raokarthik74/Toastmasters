@@ -1,11 +1,13 @@
 package com.district92.toastmasters;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 
 public class AhCounterActivity extends ActionBarActivity {
@@ -20,8 +22,9 @@ public class AhCounterActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ah_counter);
+        RelativeLayout parent = (RelativeLayout) findViewById(R.id.parentRelativeLayoutofAhCounter);
         setTitle("Ah Counter");
-
+        Snackbar.make(parent, "Tap on the numbers to count", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
