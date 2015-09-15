@@ -231,7 +231,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer", "Ah-Counter", "Topics Master", "Meeting Roles"};
+        String[] listOfClubItems = {"Timer", "Ah-Counter"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -250,10 +250,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 public void onItemClick(AdapterView<?> parent, View view, int positionOfClub, long id) {
                     //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
                    // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
-                    if (positionOfClub == 0) {
+                    switch(positionOfClub) {
+                        case 0 :
                         Intent intentFromClubFragment = new Intent(getActivity(), timerSelectionActivity.class);
                         intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub);
                         startActivity(intentFromClubFragment);
+                            break;
+                        case 1 :
+                            Intent intentForAhCounter = new Intent(getActivity(), AhCounterActivity.class);
+                            startActivity(intentForAhCounter);
+                            break;
                     }
                 }
             });
