@@ -42,30 +42,6 @@
             android:theme="@style/FullscreenTheme" >
         </activity>
         <activity
-            android:name=".Timer"
-            android:label="@string/title_activity_timer" >
-        </activity>
-        <activity
-            android:name=".selectProjectActivity"
-            android:label="@string/title_activity_select_project" >
-        </activity>
-        <activity
-            android:name=".speechTimerActivity"
-            android:label="@string/title_activity_speech_timer"
-            android:parentActivityName=".selectProjectActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.selectProjectActivity" />
-        </activity>
-        <activity
-            android:name=".speechChronometer"
-            android:label="@string/title_activity_speech_chronometer"
-            android:parentActivityName=".selectProjectActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.selectProjectActivity" />
-        </activity>
-        <activity
             android:name=".timerSelectionActivity"
             android:label="@string/title_activity_timer_selection"
             android:parentActivityName=".clubDetailActivity" >
@@ -82,16 +58,24 @@
                 android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
         <activity
-            android:name=".AboutTimerASctivity"
-            android:label="@string/title_activity_about_timer_asctivity"
-            android:parentActivityName=".timerSelectionActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.timerSelectionActivity" />
-        </activity>
-        <activity
             android:name=".aboutTimer"
             android:label="@string/title_activity_about_timer" >
+        </activity>
+        <activity
+            android:name=".aboutToastmastersActivity"
+            android:label="@string/title_activity_about_toastmasters"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AhCounterActivity"
+            android:label="@string/title_activity_ah_counter"
+            android:parentActivityName=".clubDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.clubDetailActivity" />
         </activity>
     </application>
 

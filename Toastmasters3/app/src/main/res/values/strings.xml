@@ -27,4 +27,6 @@
     <string name="title_activity_timer_selection">timerSelectionActivity</string>
     <string name="title_activity_about_timer_asctivity">AboutTimerASctivity</string>
     <string name="title_activity_about_timer">aboutTimer</string>
+    <string name="title_activity_about_toastmasters">aboutToastmastersActivity</string>
+    <string name="title_activity_ah_counter">AhCounterActivity</string>
 </resources>

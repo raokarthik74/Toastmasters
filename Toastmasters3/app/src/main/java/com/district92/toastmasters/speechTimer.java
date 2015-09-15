@@ -107,6 +107,12 @@ public class speechTimer extends ActionBarActivity {
 
     public void resetChronometer(View view) {
         ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
+        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
+        View rootView = timerRelativeLayout.getRootView();
+        rootView.setBackgroundColor(getResources().getColor(R.color.icons));
+        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
+        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+        timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
     }
 
 
@@ -126,9 +132,9 @@ public class speechTimer extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
