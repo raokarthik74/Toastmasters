@@ -29,4 +29,5 @@
     <string name="title_activity_about_timer">aboutTimer</string>
     <string name="title_activity_about_toastmasters">aboutToastmastersActivity</string>
     <string name="title_activity_ah_counter">AhCounterActivity</string>
+    <string name="title_activity_club_search">ClubSearchActivity</string>
 </resources>

@@ -77,6 +77,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.clubDetailActivity" />
         </activity>
+        <activity
+            android:name=".ClubSearchActivity"
+            android:label="@string/title_activity_club_search" >
+        </activity>
     </application>
 
 </manifest>

@@ -112,7 +112,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 startActivity(aboutToastmastersIntent);
                 return true;
             case R.id.findClub:
-                Intent findClubIntent = new Intent (this, findClubActivity.class);
+                Intent findClubIntent = new Intent (this, ClubSearchActivity.class);
                 startActivity(findClubIntent);
                 return true;
             default: return super.onOptionsItemSelected(item);
