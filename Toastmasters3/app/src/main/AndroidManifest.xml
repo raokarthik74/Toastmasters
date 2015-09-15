@@ -93,6 +93,14 @@
             android:name=".WordFortheDay"
             android:label="@string/title_activity_word_forthe_day" >
         </activity>
+        <activity
+            android:name=".NewWord"
+            android:label="@string/title_activity_new_word" >
+        </activity>
+        <activity
+            android:name=".MeetingRoles"
+            android:label="@string/title_activity_meeting_roles" >
+        </activity>
     </application>
 
 </manifest>

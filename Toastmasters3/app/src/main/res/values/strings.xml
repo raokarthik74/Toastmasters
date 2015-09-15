@@ -32,4 +32,6 @@
     <string name="title_activity_club_search">ClubSearchActivity</string>
     <string name="title_activity_leadership_detail">LeadershipDetailActivity</string>
     <string name="title_activity_word_forthe_day">WordFortheDay</string>
+    <string name="title_activity_new_word">NewWord</string>
+    <string name="title_activity_meeting_roles">MeetingRoles</string>
 </resources>

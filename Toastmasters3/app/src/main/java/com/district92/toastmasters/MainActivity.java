@@ -261,7 +261,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             startActivity(intentForAhCounter);
                             break;
                         case 2 :
-                            Intent intentForWordForTheDay = new Intent(getActivity(), WordFortheDay.class);
+                            Intent intentForWordForTheDay = new Intent(getActivity(), NewWord.class);
                             startActivity(intentForWordForTheDay);
                             break;
                     }
