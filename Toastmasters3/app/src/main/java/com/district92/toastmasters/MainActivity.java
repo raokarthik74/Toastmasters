@@ -116,6 +116,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 Intent findClubIntent = new Intent (this, ClubSearchActivity.class);
                 startActivity(findClubIntent);
                 return true;
+            case R.id.dcpPoints:
+                Intent DCPPoint = new Intent (this, dcpPoints.class);
+                startActivity(DCPPoint);
+                return true;
             default: return super.onOptionsItemSelected(item);
         }
 

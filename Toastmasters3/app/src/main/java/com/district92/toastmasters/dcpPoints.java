@@ -8,16 +8,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 
-public class NewWord extends ActionBarActivity {
+public class dcpPoints extends ActionBarActivity {
+
     WebView mWebView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Word For the Day");
-        setContentView(R.layout.activity_new_word);
-        mWebView = (WebView)findViewById(R.id.webView2);
+        setTitle("DCP Points");
+        setContentView(R.layout.activity_dcp_points);
+        mWebView = (WebView)findViewById(R.id.webView4);
         mWebView.setWebViewClient(new MyWebViewClient());
-        mWebView.loadUrl("https://www.wordnik.com/word-of-the-day");
+        mWebView.loadUrl("http://dashboards.toastmasters.org/mobi/");
     }
 
     private class MyWebViewClient extends WebViewClient {
@@ -32,7 +34,7 @@ public class NewWord extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_new_word, menu);
+        getMenuInflater().inflate(R.menu.menu_dcp_points, menu);
         return true;
     }
 

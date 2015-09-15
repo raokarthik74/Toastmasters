@@ -34,4 +34,5 @@
     <string name="title_activity_word_forthe_day">WordFortheDay</string>
     <string name="title_activity_new_word">NewWord</string>
     <string name="title_activity_meeting_roles">MeetingRoles</string>
+    <string name="title_activity_dcp_points">dcpPoints</string>
 </resources>

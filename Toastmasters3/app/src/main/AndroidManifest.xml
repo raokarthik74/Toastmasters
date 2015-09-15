@@ -101,6 +101,10 @@
             android:name=".MeetingRoles"
             android:label="@string/title_activity_meeting_roles" >
         </activity>
+        <activity
+            android:name=".dcpPoints"
+            android:label="@string/title_activity_dcp_points" >
+        </activity>
     </application>
 
 </manifest>
