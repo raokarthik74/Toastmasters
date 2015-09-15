@@ -32,6 +32,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String positionOfSelectionOfObjectFromEducationFragment = "com.district92.toastmasters.positionOfEducation";
     public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
     public final static String mymessage = "com.district92.toastmasters.positionOfEducation.message";
+    public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.titleOfLeadership";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -318,7 +319,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"Competent Leadership", "Advanced Leadership"};
+        String[] listOfLeadershipItems = {"President", "VP - Education", "VP - Membership", "VP - Public Relations", "Secretary", "Treasurer", "Sergeant-at-Arms"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -335,11 +336,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             leadershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int positionOfLeadership, long id) {
-                    //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
-                    // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
-//                    Intent intentFromClubFragment = new Intent(getActivity(), leadershipDetailView.class);
-//                    intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
-//                    startActivity(intentFromClubFragment);
+                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
+                    intentFromLeadershipFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
+                    intentFromLeadershipFragment.putExtra(titleOfEducationDetailPage, listOfLeadershipItems[positionOfLeadership]);
+                    startActivity(intentFromLeadershipFragment);
                 }
             });
             return rootView;

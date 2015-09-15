@@ -81,6 +81,14 @@
             android:name=".ClubSearchActivity"
             android:label="@string/title_activity_club_search" >
         </activity>
+        <activity
+            android:name=".LeadershipDetailActivity"
+            android:label="@string/title_activity_leadership_detail"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

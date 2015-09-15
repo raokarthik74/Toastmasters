@@ -1,42 +1,34 @@
 package com.district92.toastmasters;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.TextView;
+
+import models.LeadershipModel;
 
 
-public class ClubSearchActivity extends ActionBarActivity {
-
-    WebView mWebView;
+public class LeadershipDetailActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Find A Club Near You");
-        setContentView(R.layout.activity_club_search);
-        mWebView = (WebView)findViewById(R.id.webView);
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new MyWebViewClient());
-        mWebView.loadUrl("http://www.toastmasters.org/Find-a-Club");
-    }
-
-    private class MyWebViewClient extends WebViewClient {
-
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return false;
-        }
+        setContentView(R.layout.activity_leadership_detail);
+        Intent intent = getIntent();
+        setTitle(intent.getStringExtra(MainActivity.titleOfEducationDetailPage));
+        TextView leadershipDetail = (TextView) findViewById(R.id.leadershipDetail);
+        leadershipDetail.setMovementMethod(new ScrollingMovementMethod());
+        LeadershipModel dataForLeadership = new LeadershipModel();
+        leadershipDetail.setText(dataForLeadership.allTheDataForLeadershipDetail(intent.getIntExtra(MainActivity.positionOfSelectionOfObjectFromLeadershipFragment, 0)));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_club_search, menu);
+        getMenuInflater().inflate(R.menu.menu_leadership_detail, menu);
         return true;
     }
 
