@@ -51,7 +51,7 @@ public class EducationModel {
             "\n Objectives:\n • \tTo inspire the audience by appealing to noble motives and challenging the audience to achieve a higher level of beliefs or achievement.\n" +
             " • \tAppeal to the audience’s needs and emotions, using stories, anecdotes and quotes to add drama.\n" +
             " • \tAvoid using notes.", "People like to be entertained and the entertaining speaker offers listeners a pleasant diversion from their demanding lives. This manual offers five projects that will help you develop your skills as an entertaining speaker. \n" +
-            " 1. The Entertaining Speech \n" +
+            "\n" +" 1. The Entertaining Speech \n" +
             "\n Time: \n5-7 minutes\n" +
             "\n Objectives:\n • \tEntertain the audience through use of humor and/or drama drawn from your personal experience.\n" +
             " \t • \tOrganize an entertaining speech for maximum audience impact. \n" +
@@ -73,7 +73,7 @@ public class EducationModel {
             "\n Time: \n8-10 minutes\n" +
             "\n Objectives:\n • \tPrepare an entertaining after-dinner talk on a specific theme.\n" +
             " \t • \tDeliver the talk extemporaneously, using the skills developed in the preceding entertainment projects.", "Do you want to tell others about a new product, an important discovery, ways to enhance the uality of one's life? By completing the projects in the the Speaking To Inform manual, you'll learn to effectively communicate your ideas. \n" +
-            "1. The Speech to Inform\n" +
+            "\n" +"1. The Speech to Inform\n" +
             "\n Time: \n5-7 minutes\n" +
             "\n Objectives:\n • \tSelect new and useful information for presentation to the audience.\n" +
             " \t • \tOrganize the information for easy understandability and retention.\n" +
@@ -96,7 +96,7 @@ public class EducationModel {
             "\n Time: \n6-8 minutes\n" +
             "\n Objectives:\n • \tResearch and organize the thought of experts on an abstract concept, theory, historical force, or social/political issue.\n" +
             " \t • \tPresent the ideas in a clear and interesting manner. \n",
-            " 1. The Goodwill Speech\n" +
+            "\n" +" 1. The Goodwill Speech\n" +
             "\n Time: \n5-7 minutes\n" +
             "\n Objectives:\n  \tPrepare a talk that will build goodwill for your organization by supplying useful information of interest to the audience. \n" +
             "\n 2. The Radio Talk Show\n" +
@@ -161,7 +161,7 @@ public class EducationModel {
             "\n Objectives:\n • \tFocus on the special occasion talk from the standpoint of the introducer (function, chairman, toastmaster, master of ceremonies).\n" +
             " \t • \tBecome knowledgeable and skilled in the functions associated with the master of ceremonies.\n" +
                     "\n" +" \t • \tHandle the introduction of other speakers at a club meeting.",
-            " 1. The Briefing\n" +
+            "\n" +" 1. The Briefing\n" +
 
             "\n Time: \n3-5 minutes plus 2-3 minutes Q&A\n" +
             "\n Objectives:\n  \tGive a briefing according to a specific objective so the audience will have an understanding of the information." +
@@ -181,7 +181,7 @@ public class EducationModel {
             "\n" +"\n 5. Delivering Bad News\n" +
 
             "\n Time: \n5-7 minutes",
-            " 1. The Keynote Address\n" +
+            "\n" +" 1. The Keynote Address\n" +
             "\n" +
             "\n Time: \n15-20 minutes\n" +
             "\n Objectives:\n • \tIdentify the basic differences between keynote speeches and other kinds of speeches.\n" +
@@ -213,7 +213,7 @@ public class EducationModel {
             "\n Objectives:\n • \tUnderstand the concept and nature of motivational speaking.\n" +
             " \t • \tApply a four-step motivational method with the purpose of persuading and inspiring.\n" +
             " \t • \tDeliver a motivational speech to persuade an audience to emotionally commit to an action.",
-            " 1. The Technical Briefing" +
+            "\n" +" 1. The Technical Briefing" +
             "\n Time: \n8-10 minutes\n" +
             "\n Objectives:\n  \tUsing a systematic approach, organize technical material into a concise presentation.\n" +
             "  \tTailor the presentation to the audience's needs, interests and knowledge levels." +
@@ -242,7 +242,7 @@ public class EducationModel {
             "\n Objectives:\n  \tUnderstand the nature and process of a technical presentation supported with professional level visual aids .\n" +
             "  \tFind or create a post meeting website for further information supporting or enhancing your verbal presentation. You may create a web page and add it to your club's website, making use of podcastng, webcasting or a basic internet template.\n" +
             "  \tUse a desktop computer,Microsoft word, a web browser, a simple graphics program for photos and other images, Mcrosoft Power Point as well as a flip chart to support your presentation."
-    , " 1. The Effective Salesperson\n" +
+    , "\n" +" 1. The Effective Salesperson\n" +
 
             "\n Time: \n8-12 minutes (3-4 min speech, short scenario intro, 3-5 min role play)\n" +
             "\n Objectives:\n • \tLearn a technique for selling an inexpensive product in a retail store.\n" +
@@ -271,7 +271,7 @@ public class EducationModel {
             "\n Time: \n6-8 minutes\n" +
             "\n Objectives:\n • \tCommunicate your vision and mission to an audience.\n" +
             " \t • \tConvince your audience to work toward achieving your vision and mission.", "Through the projects in this manual, you will learn how to present an editorial, appear as a guest on an interview program, be the host of an interview program, conduct a press conference and use television to train." +
-            " 1. Straight Talk\n" +
+            "\n" +" 1. Straight Talk\n" +
 
             "\n Time: \n3 minutes\n" +
             "\n Objectives:\n  \tTo effectively present an opinion or viewpoint in a short time.\n" +
@@ -302,7 +302,7 @@ public class EducationModel {
             "\n Time: \n5-7 minutes plus playback\n" +
             "\n Objectives:\n  \tTo learn how to develop and present an effective training program on television.\n" +
             "  \tTo receive personal feedback through the videotaping of your presentation.", "Everyone loves a good story! The projects in this manual are designed to help you develop stiorytelling skills." +
-            " 1. The Folk Tale\n" +
+            "\n" +" 1. The Folk Tale\n" +
 
             "\n Time: \n7-9 minutes\n" +
             "\n Objectives:\n • \tTo tell a folk tale that is entertaining and enjoyable for a specific age group.\n" +
@@ -328,7 +328,7 @@ public class EducationModel {
             "\n Objectives:\n • \tTo understand the purpose of stories about historical events or people.\n" +
             " \t • \tTo use the storytelling skills developed in the preceding projects to tell a story about a historical event or person.",
 
-                    " 1. Read A Story\n" +
+                        "\n" +" 1. Read A Story\n" +
 
             "\n Time: \n8-10 minutes\n" +
             "\n Objectives:\n • \tTo understand the elements of interpretive reading.\n" +
@@ -355,7 +355,8 @@ public class EducationModel {
             "\n Time: \n8-10 minutes\n" +
             "\n Objectives:\n • \tTo understand the structure of an effective speech.\n" +
             " \t • \tTo interpret and present a famous speech.",
-            " 1. Conversing with Ease\n" +
+
+                    "\n" +" 1. Conversing with Ease\n" +
 
             "\n Time: \n10-14 minutes\n" +
             "\n Objectives:\n • \tIdentify techniques to use in conversing with strangers.\n" +
@@ -383,7 +384,7 @@ public class EducationModel {
             "\n Objectives:\n • \tEnjoy the mental and physical benefits of being assertive.\n" +
             " \t • \tEmply the four-step method for addressing a problem and asking for help.\n" +
             " \t • \tOvercome resistance to your requests.",
-
+            "\n" +
             " 1. Mastering the Toast\n" +
 
             "\n Time: \n2-3 minutes\n" +
@@ -412,7 +413,7 @@ public class EducationModel {
             "\n Objectives:\n • \tAccept an award with dignity, grace and sincerity.\n" +
             " \t • \tAcknowledge the presenting organization.",
 
-
+            "\n" +
                     " 1. Warm Up Your Audience\n" +
 
             "\n Time: \n5-7 minutes\n" +

@@ -20,14 +20,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".educationDetailActivity"
-            android:label="@string/title_activity_education_detail"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
-        </activity>
-        <activity
             android:name=".findClubActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_find_club"
@@ -50,11 +42,6 @@
                 android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
         <activity
-            android:name=".aboutTimer"
-            android:label="@string/title_activity_about_timer"
-            android:parentActivityName=".timerSelectionActivity" >
-        </activity>
-        <activity
             android:name=".aboutToastmastersActivity"
             android:label="@string/title_activity_about_toastmasters"
             android:parentActivityName=".MainActivity" >
@@ -69,14 +56,6 @@
         <activity
             android:name=".ClubSearchActivity"
             android:label="@string/title_activity_club_search" >
-        </activity>
-        <activity
-            android:name=".LeadershipDetailActivity"
-            android:label="@string/title_activity_leadership_detail"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
         </activity>
         <activity
             android:name=".NewWord"

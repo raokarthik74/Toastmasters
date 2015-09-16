@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import models.EducationModel;
+import models.LeadershipModel;
 import models.rolesModel;
 
 
@@ -33,8 +35,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String positionOfSelectionOfObjectFromLeadershipFragment = "com.district92.toastmasters.positionOfLeadership";
     public final static String positionOfSelectionOfObjectFromEducationFragment = "com.district92.toastmasters.positionOfEducation";
     public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
-    public final static String mymessage = "com.district92.toastmasters.positionOfEducation.message";
-    public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.titleOfLeadership";
+    public final static String dataForEducationDetailPage = "com.district92.toastmasters.positionOfEducation.EducationItemsData";
+    public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.positionOfEducation.listOfLeadershipItems";
+    public final static String dataForLeadershipDetailPage = "com.district92.toastmasters.positionOfEducation.LeadershipItemsData";
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
     public final static String roleDataintent = "com.district92.toastmasters.roleData";
 
@@ -257,13 +260,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             clubListView.setAdapter(clubStringArrayAdapter);
             clubListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positionOfClub, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
                    // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
-                    switch(positionOfClub) {
+                    switch(position) {
                         case 0 :
                         Intent intentFromClubFragment = new Intent(getActivity(), timerSelectionActivity.class);
-                        intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub);
+                        intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, position);
                         startActivity(intentFromClubFragment);
                             break;
                         case 1 :
@@ -276,10 +279,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             break;
                         default :
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-                            intentForRemainingRoles.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub-3);
-                            intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[positionOfClub]);
+                            intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[position]);
                             rolesModel dataToSetText = new rolesModel();
-                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(positionOfClub-3));
+                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-3));
                             startActivity(intentForRemainingRoles);
                             break;
                     }
@@ -330,13 +332,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             // Snackbar.make(activity_main,R.string.snack_bar, Snackbar.LENGTH_LONG).show();
             educationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positionOfEducation, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
                      // Snackbar.make(view, "AC - Advanced Communication Track", Snackbar.LENGTH_LONG).show();
-                    Intent intentFromEducationFragment = new Intent(getActivity(), educationDetailActivity.class);
-                    intentFromEducationFragment.putExtra(positionOfSelectionOfObjectFromEducationFragment, positionOfEducation);
-                    intentFromEducationFragment.putExtra(titleOfEducationDetailPage, listOfEducationItems[positionOfEducation]);
-                    startActivity(intentFromEducationFragment);
+                    Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
+                    intentForRemainingRoles.putExtra(roleTitleintent, listOfEducationItems[position]);
+                    EducationModel dataToSetText = new EducationModel();
+                    intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForEducationDetail(position));
+                    startActivity(intentForRemainingRoles);
+//                    Intent intentFromEducationFragment = new Intent(getActivity(), educationDetailActivity.class);
+//                    intentFromEducationFragment.putExtra(positionOfSelectionOfObjectFromEducationFragment, positionOfEducation);
+//                    intentFromEducationFragment.putExtra(titleOfEducationDetailPage, listOfEducationItems[positionOfEducation]);
+//                    startActivity(intentFromEducationFragment);
                 }
             });
             return rootView;
@@ -363,11 +370,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             leadershipListView.setAdapter(leadershipStringArrayAdapter);
             leadershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positionOfLeadership, long id) {
-                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
-                    intentFromLeadershipFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
-                    intentFromLeadershipFragment.putExtra(titleOfEducationDetailPage, listOfLeadershipItems[positionOfLeadership]);
-                    startActivity(intentFromLeadershipFragment);
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
+                    intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
+                    LeadershipModel dataToSetText = new LeadershipModel();
+                    intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForLeadershipDetail(position));
+                    startActivity(intentForRemainingRoles);
+//                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
+//                    intentFromLeadershipFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
+//                    intentFromLeadershipFragment.putExtra(titleOfEducationDetailPage, listOfLeadershipItems[positionOfLeadership]);
+//                    startActivity(intentFromLeadershipFragment);
                 }
             });
             return rootView;
