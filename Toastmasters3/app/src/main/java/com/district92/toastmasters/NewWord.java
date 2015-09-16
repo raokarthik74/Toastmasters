@@ -1,11 +1,16 @@
 package com.district92.toastmasters;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.RelativeLayout;
 
 
 public class NewWord extends ActionBarActivity {
@@ -18,8 +23,18 @@ public class NewWord extends ActionBarActivity {
         mWebView = (WebView)findViewById(R.id.webView2);
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.loadUrl("https://www.wordnik.com/word-of-the-day");
+        if(!isNetworkAvailable()) {
+            RelativeLayout parent = (RelativeLayout) findViewById(R.id.relativelayoutOfNewWord);
+            Snackbar.make(parent, "Internet Connection Required", Snackbar.LENGTH_LONG).show();
+        }
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     private class MyWebViewClient extends WebViewClient {
 
         @Override
@@ -28,6 +43,8 @@ public class NewWord extends ActionBarActivity {
             return false;
         }
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

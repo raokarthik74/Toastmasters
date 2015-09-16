@@ -4,7 +4,8 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
-    tools:context="com.district92.toastmasters.NewWord">
+    tools:context="com.district92.toastmasters.NewWord"
+    android:id="@+id/relativelayoutOfNewWord">
 
     <WebView
         android:layout_width="fill_parent"

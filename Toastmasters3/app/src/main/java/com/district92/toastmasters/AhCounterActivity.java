@@ -22,8 +22,8 @@ public class AhCounterActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ah_counter);
-        RelativeLayout parent = (RelativeLayout) findViewById(R.id.parentRelativeLayoutofAhCounter);
         setTitle("Ah Counter");
+        RelativeLayout parent = (RelativeLayout) findViewById(R.id.parentRelativeLayoutofAhCounter);
         Snackbar.make(parent, "Tap on the numbers to count", Snackbar.LENGTH_LONG).show();
     }
 

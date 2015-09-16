@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Toastmasters</string>
 
-    <string name="title_section1">Club</string>
-    <string name="title_section2">Education</string>
+    <string name="title_section1">Education</string>
+    <string name="title_section2">Club</string>
     <string name="title_section3">Leadership</string>
 
     <string name="hello_world">Hello world!</string>

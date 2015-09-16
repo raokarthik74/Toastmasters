@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,12 +33,6 @@ import models.rolesModel;
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
     public final static String positionOfSelectionOfObjectFromClubFragment = "com.district92.toastmasters.positionOfClub";
-    public final static String positionOfSelectionOfObjectFromLeadershipFragment = "com.district92.toastmasters.positionOfLeadership";
-    public final static String positionOfSelectionOfObjectFromEducationFragment = "com.district92.toastmasters.positionOfEducation";
-    public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
-    public final static String dataForEducationDetailPage = "com.district92.toastmasters.positionOfEducation.EducationItemsData";
-    public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.positionOfEducation.listOfLeadershipItems";
-    public final static String dataForLeadershipDetailPage = "com.district92.toastmasters.positionOfEducation.LeadershipItemsData";
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
     public final static String roleDataintent = "com.district92.toastmasters.roleData";
 
@@ -61,6 +56,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("MainActivity", "onCreateCalled");
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -95,6 +92,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+        mViewPager.setCurrentItem(1);
+        mViewPager.setOffscreenPageLimit(3);
     }
 
 
@@ -140,7 +139,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
         Snackbar snackBar = Snackbar.make(mViewPager, R.string.snack_bar, Snackbar.LENGTH_SHORT);
-        if (tab.getPosition() == 1) {
+        if (tab.getPosition() == 0) {
             snackBar.show();
             mViewPager.setCurrentItem(tab.getPosition());
         }
@@ -174,10 +173,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
-                return new clubFragment();
+                return new educationFragment();
             }
             if (position == 1) {
-                return new educationFragment();
+                return new clubFragment();
             }
             if (position == 2) {
                 return new leadershipFragment();
