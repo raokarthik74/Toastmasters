@@ -87,14 +87,6 @@
             android:label="@string/title_activity_dcp_points" >
         </activity>
         <activity
-            android:name=".AhCounterSelection"
-            android:label="@string/title_activity_ah_counter_selection" >
-        </activity>
-        <activity
-            android:name=".AboutAhCounter"
-            android:label="@string/title_activity_about_ah_counter" >
-        </activity>
-        <activity
             android:name=".roleDetail"
             android:label="@string/title_activity_role_detail"
             android:parentActivityName=".MainActivity" >

@@ -8,7 +8,137 @@ public class rolesModel {
     public String allTheDataForRoleDetail (int dataPosition) {
 
        // "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"
-        String[] dataForRoleDetail = {"The Grammarian role helps you become a better listener.\n" +
+        String[] dataForRoleDetail = {
+                "Introduction \n" +
+                        "\n" +
+                        "Expressing a thought within a specific time is an important skill all toastmasters should practice. As a Timer, you are responsible for monitoring time for each meeting segment and for each speaker. You will also operate the timing signal to indicate to each speaker how long he/she has been talking. Serving as a Timer is an excellent opportunity to practice both – giving instructions and time management – something we do every day.\n" +
+                        "\n" +
+                        "Responsibility of the Timer \n" +
+                        "\n" +
+                        "As the Timer of the meeting, you help the meeting participants to be aware of the timing of their functions. You help keep the meeting on schedule.\n" +
+                        "\n" +
+                        "A Timer has to time, record, signal, and report on the time used by\n" +
+                        "\n" +
+                        "• Speakers, \n" +
+                        "\n" +
+                        "• Table topic speakers, \n" +
+                        "\n" +
+                        "• Individual speech evaluators, and \n" +
+                        "\n" +
+                        "• The General evaluator. \n" +
+                        "\n" +
+                        "Prior to the meeting\n" +
+                        "\n" +
+                        "1. Contact the Toastmaster (MOC) and General Evaluator(GE) and confirm which members are the scheduled program participants \n" +
+                        "\n" +
+                        "2. Contact the individual speakers for any special timing requirements they may have \n" +
+                        "\n" +
+                        "3. Get timing cards and Timer's report form from the Sergeant-at-Arms. \n" +
+                        "\n" +
+                        "4. Make sure you have a functioning stopwatch. \n" +
+                        "\n" +
+                        "5. Sit where everybody can see the signaling device (Timer card) easily. \n" +
+                        "\n" +
+                        "During the meeting \n" +
+                        "\n" +
+                        "When you are asked to explain the timing procedures, stand up, address the Toastmaster/General Evaluator and announce the applicable timing rules. Here is a typical Timer's speech:\n" +
+                        "\n" +
+                        "“As the Timer, I am responsible for keeping track of time. For prepared speeches with a time of 5 to 7 minutes, the green card comes on at 5 minutes, the amber card comes on at 6 minutes, and the red card comes on at 7 minutes. The speaker has 30 seconds to wrap it up. Table Topics responses are for 1 to 2 minutes. The green card comes on at 1 minute, the amber card comes on at 1½ minutes, and the red card comes on at 2 minutes. Speech evaluations are for 2 to 3 minutes. The green card comes on at 2 minutes, the amber card comes on at 2½ minutes, and the red card comes on at 3 minutes. I will give my report when called upon to do so. “\n" +
+                        "\n" +
+                        "You can add one or two lines at the beginning, and modify the speech to your convenience, but ensure that you do not speak over time. \n" +
+                        "\n" +
+                        "• Keep track of the times of Prepared Speakers, Table Topics Speakers and Evaluators. \n" +
+                        "\n" +
+                        "• Record the start time and end time of each segment of the meeting. \n" +
+                        "\n" +
+                        "• Begin timing with the speaker's or evaluator's first definite verbal or non-verbal communication with the audience. This usually will be the first word uttered, but would include any other communication such as sound effects or a staged act by another person. \n" +
+                        "\n" +
+                        "• Signal each program participant according to the timing rules. \n" +
+                        "\n" +
+                        "• Advanced speeches for experienced Toastmasters vary in time. Speakers who need a different amount of time than the above time limits should let the Timer know in advance of the meeting. If the Timer is not sure of requirements, ask speakers before the meeting about their time limits and exactly when they would like the color signal lights. \n" +
+                        "\n" +
+                        "• If a speaker goes over the grace period, wave the red card/clap until the speaker stops. \n" +
+                        "\n" +
+                        "• Record the time used by each table topics speaker, speaker, and evaluator. \n" +
+                        "\n" +
+                        "• When called on by the General Evaluator, give a report from your record. Your duty is to provide the timing report, not to give a speech or an evaluation. Your report should take no more than 1 minute. \n" +
+                        "\n" +
+                        "• If a speaker has exceeded time, DO NOT mention the name of the speaker who has exceeded the time. Just say the number of speakers who have exceeded time. For example, “One speaker has exceeded his/her time limit.” \n" +
+                        "\n" +
+                        "After the meeting \n" +
+                        "\n" +
+                        "• Return the timing device to the Sergeant-at-Arms. \n" +
+                        "\n" +
+                        "• Give the completed Timer's report to the Secretary. \n" +
+                        "\n" +
+                        "• Please put colored folders, and these directions in the bag for use next week \n" +
+                        "\n" +
+                        "How to succeed as Timer\n" +
+                        "\n" +
+                        "Arrive early at the meeting to take care of last-minute details and settle down at a good spot.\n" +
+                        "\n" +
+                        "If a speaker has gone overtime, first try to catch his/her attention and flick the red card again as a reminder. But do it gently and thoughtfully in a way that doesn't look annoying and distracting (this is important to follow especially for ice-breakers.) Use your judgment when applauding someone who speaks beyond the red card. This should be restricted to members who have ignored your signals, to conclude their presentation. For example, Non-Toastmasters guests should never be embarrassed. Remind all the speakers, especially ice-breakers and table topics participants that they should not finish under time as well.\n" +
+                        "\n" +
+                        "Take on this role and the new habits formed will serve you well in your private life and your career. People appreciate a speaker, friend or employee who is mindful of time frames and deadlines.\n",
+
+
+
+                "Introduction\n" +
+                        "\n" +
+                        "The Ah-Counter role is an excellent opportunity to practice your listening skills. It also helps speakers notice their unintentional utterance of crutch words or filler sounds/words during their speech.\n" +
+                        "\n" +
+                        "Responsibilities\n" +
+                        "\n" +
+                        "To count the number of \n" +
+                        "\n" +
+                        "1. crutch words \n" +
+                        "\n" +
+                        "2. filler words \n" +
+                        "\n" +
+                        "3. unwanted pauses and \n" +
+                        "\n" +
+                        "4. gestures \n" +
+                        "\n" +
+                        "Prior to the meeting\n" +
+                        "\n" +
+                        "Prepare a brief explanation of the duties of the Ah-counter for the benefit of the guests\n" +
+                        "\n" +
+                        "During the meeting \n" +
+                        "\n" +
+                        "Explaining your role\n" +
+                        "\n" +
+                        "When called upon by the toastmaster, an Ah counter needs to explain his/her role to the audience. Sample script: “My role as the Ah-Counter is to count the number of crutch words such as `Ah', `Er', `Em's filler words such as `You Know', `I Mean', `well', `but', `so' etc., unwanted pauses and gestures you use when you are speaking on the stage. These are fillers that would affect your effectiveness in delivering your speech. At the end of the meeting I will present my report. Back to you, Toastmaster of the Evening.”\n" +
+                        "\n" +
+                        "Counting\n" +
+                        "\n" +
+                        "Count and note the number of unnecessary sound and repetitive words that speakers utter during their speech.(Ex: “Er” , “Em” , “Ah” , “You know” , “I mean”). Jot down the total number of unnecessary sounds for \n" +
+                        "\n" +
+                        "1. Toastmaster of the Evening (TME) \n" +
+                        "\n" +
+                        "2. Timer (Role Introduction + Report) \n" +
+                        "\n" +
+                        "3. Language Evaluator/Grammarian (Role Introduction + Word of the Day + Report) \n" +
+                        "\n" +
+                        "4. Table Topics Master \n" +
+                        "\n" +
+                        "5. Table Topics Speakers \n" +
+                        "\n" +
+                        "6. Prepared Speech Speakers \n" +
+                        "\n" +
+                        "7. Speech Evaluators \n" +
+                        "\n" +
+                        "8. General Evaluators \n" +
+                        "\n" +
+                        "After the meeting: Reporting\n" +
+                        "\n" +
+                        "At the end of the meeting, read out the report by mentioning the total number of unnecessary sounds a speaker made and specifically pointing out one or two prominently used filler words. Also, include advice on how to minimise the use of filler sounds and words, such as to slow down and pause.\n" +
+                        "\n" +
+                        "How to succeed as Ah-Counter\n" +
+                        "\n" +
+                        "Every speaker WILL have one or the other filler. Make sure to make note of it. It will go a long way in helping the speaker become a better communicator. For you, the role taker, it will be a good opportunity to sharpen your listening skills. By making note of the fillers, you will in turn become aware of the fillers that you might use. It will help you in your private life and career as an impeccable speaker (whose speech precludes fillers.)\n",
+
+
+                "The Grammarian role helps you become a better listener.\n" +
                 "\n" +
                 "Responsibilities\n" +
                 "\n" +
