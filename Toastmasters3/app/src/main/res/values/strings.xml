@@ -35,4 +35,6 @@
     <string name="title_activity_new_word">NewWord</string>
     <string name="title_activity_meeting_roles">MeetingRoles</string>
     <string name="title_activity_dcp_points">dcpPoints</string>
+    <string name="title_activity_ah_counter_selection">ahCounterSelection</string>
+    <string name="title_activity_list_view_for_parent_as_main">ListViewForParentAsMain</string>
 </resources>

@@ -20,14 +20,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".clubDetailActivity"
-            android:label="@string/title_activity_club_detail"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
-        </activity>
-        <activity
             android:name=".educationDetailActivity"
             android:label="@string/title_activity_education_detail"
             android:parentActivityName=".MainActivity" >
@@ -44,10 +36,10 @@
         <activity
             android:name=".timerSelectionActivity"
             android:label="@string/title_activity_timer_selection"
-            android:parentActivityName=".clubDetailActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.clubDetailActivity" />
+                android:value="com.district92.toastmasters.MainActivity" />
         </activity>
         <activity
             android:name=".speechTimer"
@@ -59,7 +51,8 @@
         </activity>
         <activity
             android:name=".aboutTimer"
-            android:label="@string/title_activity_about_timer" >
+            android:label="@string/title_activity_about_timer"
+            android:parentActivityName=".timerSelectionActivity" >
         </activity>
         <activity
             android:name=".aboutToastmastersActivity"
@@ -72,10 +65,10 @@
         <activity
             android:name=".AhCounterActivity"
             android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".clubDetailActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.clubDetailActivity" />
+                android:value="com.district92.toastmasters.MainActivity" />
         </activity>
         <activity
             android:name=".ClubSearchActivity"
@@ -90,10 +83,6 @@
                 android:value="com.district92.toastmasters.MainActivity" />
         </activity>
         <activity
-            android:name=".WordFortheDay"
-            android:label="@string/title_activity_word_forthe_day" >
-        </activity>
-        <activity
             android:name=".NewWord"
             android:label="@string/title_activity_new_word" >
         </activity>
@@ -104,6 +93,10 @@
         <activity
             android:name=".dcpPoints"
             android:label="@string/title_activity_dcp_points" >
+        </activity>
+        <activity
+            android:name=".ListViewForParentAsMain"
+            android:label="@string/title_activity_list_view_for_parent_as_main" >
         </activity>
     </application>
 
