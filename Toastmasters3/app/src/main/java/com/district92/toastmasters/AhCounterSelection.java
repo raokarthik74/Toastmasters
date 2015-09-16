@@ -28,14 +28,14 @@ public class AhCounterSelection extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                switch (position) {
-//                    case 0:
+                switch (position) {
+                    case 0:
                         startActivity(intentToStartAhCounter);
-//                        break;
-//                    default:
-//                        startActivity(intentToKnowAboutAhCounter);
-//                        break;
-//                }
+                        break;
+                    default:
+                        startActivity(intentToKnowAboutAhCounter);
+                        break;
+                }
 
             }
         });

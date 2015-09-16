@@ -267,7 +267,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                         startActivity(intentFromClubFragment);
                             break;
                         case 1 :
-                            Intent intentForAhCounter = new Intent(getActivity(), AhCounterActivity.class);
+                            Intent intentForAhCounter = new Intent(getActivity(), AhCounterSelection.class);
                             startActivity(intentForAhCounter);
                             break;
                         case 2 :
