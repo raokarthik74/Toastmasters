@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,12 +26,13 @@ public class speechTimer extends ActionBarActivity {
         setTitle("Speech Timer");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speech_timer);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     public void startChronometer(final View view) {
         ((Chronometer) findViewById(R.id.chronometer)).start();
         Intent intent = getIntent();
         final long greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
-        final TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setText("Dont forget to flash the cards !");
         ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
@@ -39,62 +41,40 @@ public class speechTimer extends ActionBarActivity {
                 long elapsedTimeInMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
                 long elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
                 if (greenValue == 1 || greenValue == 2) {
-                    long endTimeInSeconds = ((greenValue*60)+120);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60) ||elapsedTimeInSeconds == endTimeInSeconds) {
+                    long endTimeInSeconds = ((greenValue * 60) + 120);
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds) {
                         Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         timerVibrator.vibrate(500);
                     }
-                    if (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds < (greenValue*60)+30) {
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.green));
+                    if (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds < (greenValue * 60) + 30) {
+                        turnGreen();
                     }
-                    if (elapsedTimeInSeconds > (greenValue*60)+30 && elapsedTimeInSeconds < (greenValue*60)+60) {
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.amber));
+                    if (elapsedTimeInSeconds > (greenValue * 60) + 30 && elapsedTimeInSeconds < (greenValue * 60) + 60) {
+                        turnAmber();
                     }
-                    if (elapsedTimeInMinutes == greenValue + 1){
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.icons));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.red));
+                    if (elapsedTimeInMinutes == greenValue + 1) {
+                        turnRed();
                     }
                     if (elapsedTimeInSeconds > endTimeInSeconds) {
-                        timeUpText.setTextColor(getResources().getColor(R.color.icons));
-                        long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
-                        timeUpText.setText("Time Up ! \n Time Exceeded by \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime%60 );
+                        timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
                     }
                 } else {
-                    long endTimeInSeconds2 = ((greenValue*60)+180);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 2 && elapsedTimeInSeconds == (greenValue * 60) + 60) ||elapsedTimeInSeconds == endTimeInSeconds2) {
+                    long endTimeInSeconds2 = ((greenValue * 60) + 150);
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 2 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds2) {
                         Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         timerVibrator.vibrate(500);
                     }
-                    if (elapsedTimeInMinutes == greenValue && elapsedTimeInMinutes < greenValue+1) {
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.green));
+                    if (elapsedTimeInMinutes > greenValue && elapsedTimeInMinutes < (greenValue + 1)) {
+                        turnGreen();
                     }
-                    if (elapsedTimeInMinutes > greenValue+1 && elapsedTimeInMinutes < greenValue+2) {
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.amber));
+                    else if (elapsedTimeInMinutes > (greenValue + 1) && elapsedTimeInMinutes < (greenValue + 2)) {
+                        turnAmber();
                     }
-                    if (elapsedTimeInMinutes == greenValue + 2){
-                        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.icons));
-                        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-                        View rootView = timerRelativeLayout.getRootView();
-                        rootView.setBackgroundColor(getResources().getColor(R.color.red));
+                    else if (elapsedTimeInMinutes > (greenValue + 2)) {
+                        turnRed();
                     }
-                    if (elapsedTimeInSeconds > endTimeInSeconds2 ) {
-                        timeUpText.setTextColor(getResources().getColor(R.color.icons));
-                        long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds2);
-                        timeUpText.setText("Time Up ! \n Time Exceeded by \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+                    if (elapsedTimeInSeconds > endTimeInSeconds2) {
+                        timeEnded(endTimeInSeconds2, elapsedTimeInSeconds);
                     }
                 }
             }
@@ -115,7 +95,30 @@ public class speechTimer extends ActionBarActivity {
         timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
     }
 
-
+    public void turnGreen () {
+        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
+        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
+        View rootView = timerRelativeLayout.getRootView();
+        rootView.setBackgroundColor(getResources().getColor(R.color.green));
+    }
+    public void turnAmber () {
+        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
+        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
+        View rootView = timerRelativeLayout.getRootView();
+        rootView.setBackgroundColor(getResources().getColor(R.color.amber));
+    }
+    public void turnRed () {
+        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.icons));
+        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
+        View rootView = timerRelativeLayout.getRootView();
+        rootView.setBackgroundColor(getResources().getColor(R.color.red));
+    }
+    public void timeEnded (long end, long elapsed) {
+        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+        timeUpText.setTextColor(getResources().getColor(R.color.icons));
+        long exceededTime = (elapsed - end);
+        timeUpText.setText("Time Up ! \n Time Exceeded by \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
