@@ -138,16 +138,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.
-        Snackbar snackBar = Snackbar.make(mViewPager, R.string.snack_bar, Snackbar.LENGTH_SHORT);
-        if (tab.getPosition() == 0) {
-            snackBar.show();
+//        Snackbar snackBar = Snackbar.make(mViewPager, R.string.snack_bar, Snackbar.LENGTH_SHORT);
+//        if (tab.getPosition() == 0) {
+//            snackBar.show();
+//            mViewPager.setCurrentItem(tab.getPosition());
+//        }
+//        else
+//        {
             mViewPager.setCurrentItem(tab.getPosition());
-        }
-        else
-        {
-            mViewPager.setCurrentItem(tab.getPosition());
-            snackBar.dismiss();
-        }
     }
 
     @Override
