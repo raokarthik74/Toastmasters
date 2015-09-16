@@ -30,7 +30,7 @@ public class webView extends AppCompatActivity {
         mWebView = (WebView)findViewById(R.id.webView);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
-        mWebView.getSettings().setBuiltInZoomControls(true); 
+        mWebView.getSettings().setBuiltInZoomControls(true);
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.loadUrl(intent.getStringExtra(MainActivity.url));
         if(!isNetworkAvailable()) {

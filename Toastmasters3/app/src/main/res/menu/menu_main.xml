@@ -11,9 +11,5 @@
         android:title="Find a Club"
         app:showAsAction="never"
         />
-    <item
-        android:id="@+id/dcpPoints"
-        android:title="DCP Points"
-        app:showAsAction="never"
-        />
+
 </menu>

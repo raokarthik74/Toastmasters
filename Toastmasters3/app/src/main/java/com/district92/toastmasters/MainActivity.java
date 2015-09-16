@@ -130,14 +130,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 findClubIntent.putExtra(roleTitleintent, "Find A Club");
                 startActivity(findClubIntent);
                 return true;
-            case R.id.dcpPoints:
 
-                Intent dcpPointsIntent = new Intent (this, webView.class);
-                //   https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/E51A693193F749AE91FD79F6DB839534.ashx
-                dcpPointsIntent.putExtra(url, "http://dashboards.toastmasters.org/mobi/");
-                dcpPointsIntent.putExtra(roleTitleintent, "DCP Points");
-                startActivity(dcpPointsIntent);
-                return true;
             default: return super.onOptionsItemSelected(item);
         }
 
@@ -251,7 +244,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Word For The Day", "Meeting roles Manual","Contest Rule Book","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
+        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Word For The Day", "Meeting roles Manual","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -292,17 +285,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             meetingRolesIntent.putExtra(roleTitleintent, "Meeting Roles");
                             startActivity(meetingRolesIntent);
                             break;
-                        case 4 :
-                        Intent  contestHandbookIntent = new Intent (getActivity(), webView.class);
-                            contestHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=https://www.toastmasters.org/~/media/3117F77BBF4D430B8A403ECECDD5F99F.ashx");
-                            contestHandbookIntent.putExtra(roleTitleintent, "Contest Rule Book");
-                        startActivity(contestHandbookIntent);
-                        break;
                         default :
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
                             intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[position]);
                             rolesModel dataToSetText = new rolesModel();
-                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-5));
+                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-4));
                             startActivity(intentForRemainingRoles);
                             break;
                     }
@@ -375,8 +362,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook","District Director","Program Quality Director ","Club Growth Director ","Public Relations Manager", "Administration Manager ",
-                "Finance Manager ","Division Director ","Area Director","President", "VP - Education", "VP - Membership", "VP - Public Relations", "Secretary", "Treasurer", "Sergeant-at-Arms"};
+        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -397,20 +383,44 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                         case 0:
                             Intent  DistrictLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
                             DistrictLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/16C089D17AFD4553A4CEA648B8E9946A.ashx");
-                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "DCP Points");
+                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "District Leadership Handbook");
                             startActivity(DistrictLeadershipHandbookIntent);
                             break;
                         case 1:
                             Intent clubLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
                             clubLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/E51A693193F749AE91FD79F6DB839534.ashx");
-                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "DCP Points");
+                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "Club Leadership Handbook");
                             startActivity(clubLeadershipHandbookIntent);
                             break;
-                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
-                        LeadershipModel dataToSetText = new LeadershipModel();
-                        intentForRemainingRoles.putExtra(roleDataintent, dataToSetText.allTheDataForLeadershipDetail(position - 2));
-                        startActivity(intentForRemainingRoles);
+                        case 2 :
+                            Intent  contestHandbookIntent = new Intent (getActivity(), webView.class);
+                            contestHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=https://www.toastmasters.org/~/media/3117F77BBF4D430B8A403ECECDD5F99F.ashx");
+                            contestHandbookIntent.putExtra(roleTitleintent, "Contest Rule Book");
+                            startActivity(contestHandbookIntent);
+                            break;
+                        case 3:
+                            Intent dcpPointsIntent = new Intent (getActivity(), webView.class);
+                            dcpPointsIntent.putExtra(url, "http://dashboards.toastmasters.org/mobi/");
+                            dcpPointsIntent.putExtra(roleTitleintent, "DCP Points");
+                            startActivity(dcpPointsIntent);
+                            break;
+                        case 4:
+                            Intent districtCentralIntent = new Intent (getActivity(), webView.class);
+                            districtCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
+                            districtCentralIntent.putExtra(roleTitleintent, "District Central");
+                            startActivity(districtCentralIntent);
+                            break;
+                        case 5:
+                            Intent clubCentralIntent = new Intent (getActivity(), webView.class);
+                            clubCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
+                            clubCentralIntent.putExtra(roleTitleintent, "Club Central");
+                            startActivity(clubCentralIntent);
+                            break;
+//                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
+//                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
+//                        LeadershipModel dataToSetText = new LeadershipModel();
+//                        intentForRemainingRoles.putExtra(roleDataintent, dataToSetText.allTheDataForLeadershipDetail(position - 6));
+//                        startActivity(intentForRemainingRoles);
                     }
 
 //                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
