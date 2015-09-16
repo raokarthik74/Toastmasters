@@ -1,22 +1,34 @@
 package com.district92.toastmasters;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-public class ListViewForParentAsMain extends AppCompatActivity {
+import models.rolesModel;
+
+public class roleDetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view_for_parent_as_main);
+        setContentView(R.layout.activity_role_detail);
+        Intent intent = getIntent();
+        int positionOfSelection = intent.getIntExtra(MainActivity.positionOfSelectionOfObjectFromClubFragment, 0);
+        setTitle(intent.getStringExtra(MainActivity.roleTitleintent));
+        TextView textViewForRoleDetailDisplay = (TextView) findViewById(R.id.textViewForRoleDetailDisplay);
+        textViewForRoleDetailDisplay.setMovementMethod(new ScrollingMovementMethod());
+        rolesModel dataToSetText = new rolesModel();
+        textViewForRoleDetailDisplay.setText(dataToSetText.allTheDataForRoleDetail(positionOfSelection));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list_view_for_parent_as_main, menu);
+        getMenuInflater().inflate(R.menu.menu_role_detail, menu);
         return true;
     }
 

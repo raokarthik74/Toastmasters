@@ -64,11 +64,7 @@
         </activity>
         <activity
             android:name=".AhCounterActivity"
-            android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
+            android:label="@string/title_activity_ah_counter" >
         </activity>
         <activity
             android:name=".ClubSearchActivity"
@@ -95,8 +91,20 @@
             android:label="@string/title_activity_dcp_points" >
         </activity>
         <activity
-            android:name=".ListViewForParentAsMain"
-            android:label="@string/title_activity_list_view_for_parent_as_main" >
+            android:name=".AhCounterSelection"
+            android:label="@string/title_activity_ah_counter_selection" >
+        </activity>
+        <activity
+            android:name=".AboutAhCounter"
+            android:label="@string/title_activity_about_ah_counter" >
+        </activity>
+        <activity
+            android:name=".roleDetail"
+            android:label="@string/title_activity_role_detail"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.MainActivity" />
         </activity>
     </application>
 

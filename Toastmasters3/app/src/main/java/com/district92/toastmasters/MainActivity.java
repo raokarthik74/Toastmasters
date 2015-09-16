@@ -33,6 +33,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String titleOfEducationDetailPage = "com.district92.toastmasters.positionOfEducation.listOfEducationItems";
     public final static String mymessage = "com.district92.toastmasters.positionOfEducation.message";
     public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.titleOfLeadership";
+    public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
+
+
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -235,7 +238,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer", "Ah-Counter", "Word For The Day"};
+        String[] listOfClubItems = {"Timer", "Ah-Counter", "Word For The Day", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -267,6 +270,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                         case 2 :
                             Intent intentForWordForTheDay = new Intent(getActivity(), NewWord.class);
                             startActivity(intentForWordForTheDay);
+                            break;
+                        default :
+                            Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
+                            intentForRemainingRoles.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub-3);
+                            intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[positionOfClub]);
+                            startActivity(intentForRemainingRoles);
                             break;
                     }
                 }
