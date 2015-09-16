@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import models.rolesModel;
+
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -34,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String mymessage = "com.district92.toastmasters.positionOfEducation.message";
     public final static String titleOfLeadershipDetailPage = "com.district92.toastmasters.titleOfLeadership";
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
+    public final static String roleDataintent = "com.district92.toastmasters.roleData";
 
 
     /**
@@ -275,6 +278,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
                             intentForRemainingRoles.putExtra(positionOfSelectionOfObjectFromClubFragment, positionOfClub-3);
                             intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[positionOfClub]);
+                            rolesModel dataToSetText = new rolesModel();
+                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(positionOfClub-3));
                             startActivity(intentForRemainingRoles);
                             break;
                     }

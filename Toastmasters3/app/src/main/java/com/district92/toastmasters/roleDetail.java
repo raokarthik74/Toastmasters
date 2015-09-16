@@ -17,12 +17,10 @@ public class roleDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_detail);
         Intent intent = getIntent();
-        int positionOfSelection = intent.getIntExtra(MainActivity.positionOfSelectionOfObjectFromClubFragment, 0);
         setTitle(intent.getStringExtra(MainActivity.roleTitleintent));
         TextView textViewForRoleDetailDisplay = (TextView) findViewById(R.id.textViewForRoleDetailDisplay);
         textViewForRoleDetailDisplay.setMovementMethod(new ScrollingMovementMethod());
-        rolesModel dataToSetText = new rolesModel();
-        textViewForRoleDetailDisplay.setText(dataToSetText.allTheDataForRoleDetail(positionOfSelection));
+        textViewForRoleDetailDisplay.setText(intent.getStringExtra(MainActivity.roleDataintent));
     }
 
     @Override
