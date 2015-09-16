@@ -60,4 +60,27 @@ public class LeadershipModel {
                         "by latecomers"};
         return dataForEducationDetail[dataPosition];
     }
+        public String aboutToastmastersString () {
+                String aboutToastmasters = ("Toastmasters International is a world leader in communication and leadership development. Our membership is more than 332,000 members. Members improve their speaking and leadership skills by attending one of the 15,400 clubs in 135 countries that make up our global network of meeting locations.\n" +
+                                "\n" +
+                                "The world needs leaders. Leaders head families, coach teams, run businesses and mentor others. These leaders must not only accomplish, they must communicate. By regularly giving speeches, gaining feedback, leading teams and guiding others to achieve their goals in a supportive atmosphere, leaders emerge from the Toastmasters program. Every Toastmasters journey begins with a single speech. During their journey, they learn to tell their stories. They listen and answer. They plan and lead. They give feedback—and accept it. Through our community of learners, they find their path to leadership.\n" +
+                                "\n" +
+                                "Toastmasters International Mission\n" +
+                                "\nWe empower individuals to become more effective communicators and leaders.\n" +
+                                "\n" +
+                                "District Mission\n" +
+                                "\nWe build new clubs and support all clubs in achieving excellence.\n" +
+                                "\n" +
+                                "Club Mission\n" +
+                                "\nWe provide a supportive and positive learning experience in which members are empowered to develop communication and leadership skills, resulting in greater self-confidence and personal growth.\n" +
+                                "\n" +
+                                "Toastmasters International Values\n" +
+                                "\nIntegrity\n" +
+                                "Respect\n" +
+                                "Service\n" +
+                                "Excellence\n" +
+                                "\nToastmasters International Envisioned Future\n" +
+                                "\nTo be the first-choice provider of dynamic, high-value, experiential communication and leadership skills development.");
+                return aboutToastmasters;
+        }
 }

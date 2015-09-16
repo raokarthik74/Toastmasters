@@ -117,8 +117,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 //        }
         switch (item.getItemId()) {
             case R.id.aboutToastmasters:
-                Intent aboutToastmastersIntent = new Intent(this, aboutToastmastersActivity.class);
-                startActivity(aboutToastmastersIntent);
+                Intent intentForRemainingRoles = new Intent(this, roleDetail.class);
+                intentForRemainingRoles.putExtra(roleTitleintent, "About Toastmasters");
+                LeadershipModel dataToSetText = new LeadershipModel();
+                intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.aboutToastmastersString());
+                startActivity(intentForRemainingRoles);
                 return true;
             case R.id.findClub:
                 Intent findClubIntent = new Intent (this, ClubSearchActivity.class);
