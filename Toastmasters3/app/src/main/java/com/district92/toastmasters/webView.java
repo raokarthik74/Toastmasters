@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.RelativeLayout;
@@ -27,6 +28,9 @@ public class webView extends AppCompatActivity {
         setTitle(intent.getStringExtra(MainActivity.roleTitleintent));
         setContentView(R.layout.activity_web_view);
         mWebView = (WebView)findViewById(R.id.webView);
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        mWebView.getSettings().setBuiltInZoomControls(true); 
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.loadUrl(intent.getStringExtra(MainActivity.url));
         if(!isNetworkAvailable()) {

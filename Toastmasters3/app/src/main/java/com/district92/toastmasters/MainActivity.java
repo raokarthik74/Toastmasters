@@ -133,6 +133,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             case R.id.dcpPoints:
 
                 Intent dcpPointsIntent = new Intent (this, webView.class);
+                //   https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/E51A693193F749AE91FD79F6DB839534.ashx
                 dcpPointsIntent.putExtra(url, "http://dashboards.toastmasters.org/mobi/");
                 dcpPointsIntent.putExtra(roleTitleintent, "DCP Points");
                 startActivity(dcpPointsIntent);
@@ -250,7 +251,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Word For The Day","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
+        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Word For The Day", "Meeting roles Manual","Contest Rule Book","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -282,14 +283,26 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                         case 2 :
                             Intent wordForTheDayIntent = new Intent (getActivity(), webView.class);
                             wordForTheDayIntent.putExtra(url, "https://www.wordnik.com/word-of-the-day");
-                            wordForTheDayIntent.putExtra(roleTitleintent, "DCP Points");
+                            wordForTheDayIntent.putExtra(roleTitleintent, "Word For The Day");
                             startActivity(wordForTheDayIntent);
                             break;
+                        case 3 :
+                            Intent meetingRolesIntent = new Intent (getActivity(), webView.class);
+                            meetingRolesIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAYkVsbnZXeDJfWVhGUTFoTVhtWS1DMkQ5eTdv/view?usp=sharing");
+                            meetingRolesIntent.putExtra(roleTitleintent, "Meeting Roles");
+                            startActivity(meetingRolesIntent);
+                            break;
+                        case 4 :
+                        Intent  contestHandbookIntent = new Intent (getActivity(), webView.class);
+                            contestHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=https://www.toastmasters.org/~/media/3117F77BBF4D430B8A403ECECDD5F99F.ashx");
+                            contestHandbookIntent.putExtra(roleTitleintent, "Contest Rule Book");
+                        startActivity(contestHandbookIntent);
+                        break;
                         default :
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
                             intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[position]);
                             rolesModel dataToSetText = new rolesModel();
-                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-3));
+                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-5));
                             startActivity(intentForRemainingRoles);
                             break;
                     }
@@ -362,7 +375,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"President", "VP - Education", "VP - Membership", "VP - Public Relations", "Secretary", "Treasurer", "Sergeant-at-Arms"};
+        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook","District Director","Program Quality Director ","Club Growth Director ","Public Relations Manager", "Administration Manager ",
+                "Finance Manager ","Division Director ","Area Director","President", "VP - Education", "VP - Membership", "VP - Public Relations", "Secretary", "Treasurer", "Sergeant-at-Arms"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -379,11 +393,26 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             leadershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-                    intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
-                    LeadershipModel dataToSetText = new LeadershipModel();
-                    intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForLeadershipDetail(position));
-                    startActivity(intentForRemainingRoles);
+                    switch (position) {
+                        case 0:
+                            Intent  DistrictLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
+                            DistrictLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/16C089D17AFD4553A4CEA648B8E9946A.ashx");
+                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "DCP Points");
+                            startActivity(DistrictLeadershipHandbookIntent);
+                            break;
+                        case 1:
+                            Intent clubLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
+                            clubLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/E51A693193F749AE91FD79F6DB839534.ashx");
+                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "DCP Points");
+                            startActivity(clubLeadershipHandbookIntent);
+                            break;
+                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
+                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
+                        LeadershipModel dataToSetText = new LeadershipModel();
+                        intentForRemainingRoles.putExtra(roleDataintent, dataToSetText.allTheDataForLeadershipDetail(position - 2));
+                        startActivity(intentForRemainingRoles);
+                    }
+
 //                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
 //                    intentFromLeadershipFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
 //                    intentFromLeadershipFragment.putExtra(titleOfEducationDetailPage, listOfLeadershipItems[positionOfLeadership]);

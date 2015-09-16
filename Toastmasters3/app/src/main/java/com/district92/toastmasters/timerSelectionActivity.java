@@ -47,9 +47,12 @@ public class timerSelectionActivity extends ActionBarActivity {
                     case 4:
                         greenTime = 2;
                         break;
+                    default:
+                        greenTime = 5;
+                        break;
                 }
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                startActivity(intentFromSelectProjectActivity);
                     }
 
 
@@ -57,12 +60,6 @@ public class timerSelectionActivity extends ActionBarActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_select_project, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

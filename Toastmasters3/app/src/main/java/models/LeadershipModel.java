@@ -5,7 +5,34 @@ package models;
  */
 public class LeadershipModel {
     public String allTheDataForLeadershipDetail (int dataPosition) {
-        String[] dataForEducationDetail = {"As the person who sets the tone for the club, you are expected to provide helpful," +
+        String[] dataForEducationDetail = {
+                "The district director supervises and guides all elected and appointed district leaders and is responsible for their success. Your leadership skills provide more than just" +
+                        "a means of directing and facilitating the work of the district; your personal leader- ship style sets the tone and direction for the entire district." +
+                        "It is the district director who inspires and motivates team members to achieve goals, keeping in mind their development needs." +
+                        "The district director delegates tasks and authority as appropriate." +
+                        "When conflicts arise, the district director assists in their resolution." +
+                        "The district director collaborates with people inside and outside of the district to achieve district goals.",
+
+                "As the program quality director, you are responsible for all aspects of education and training within the district. This includes supporting quality club programming efforts, promoting the Distinguished Club Program and planning, organizing and executing the district conference.",
+
+                "As the club growth director, you are responsible for all aspects of marketing, club- building and club-retention efforts within the district. This includes defining an overall marketing strategy for the district, developing outreach and retention efforts with existing community and corporate clubs and penetrating new markets. Additionally, the club growth director supports challenged clubs and helps them to become Distinguished.",
+
+                "As the public relations manager, you are responsible for coordinating publicity efforts in the district. By establishing and maintaining lines of communication between the district and its members, as well as between the district and the public, you work to increase awareness of Toastmasters through all available media.",
+
+                "As the administration manager, you are responsible for maintaining the historical records of the district, recording and distributing meeting minutes and otherwise maintaining accurate, timely records of district business.",
+
+                "As the finance manager, you are tasked with the fiscal oversight and management of the district. The finance manager works closely with the district director, program quality director and club grown director to ensure that the district is making cost- effective decisions—within policy—that result in effective fiscal management.\n" +
+                        "The finance manager should have knowledge of accounting and be acquainted with the handling of financial matters.",
+
+                "As division director, you provide motiva- tion, guidance and supervision to area directors to help them fulfill their roles and responsibilities.\n" +
+                        "This includes contacting area directors at least monthly to discuss progress in the Distinguished Area Program, club visits and the Distinguished Club Program.",
+
+                "As area director, you are responsible for leading your area by serving the needs of clubs.\n" +
+                        "In order to understand clubs’ needs, the area director contacts club presidents monthly to discuss their performance in the Distinguished Club Program.\n" +
+                        "The area director also discusses district training and other district events with the area clubs.\n" +
+                        "As area director, you follow up on items identified during previous contact with club presidents.",
+
+                "As the person who sets the tone for the club, you are expected to provide helpful," +
                 "supportive leadership for all of the club’s activities." +
                 "You motivate, make peace and facilitate as required. Though you must occasionally" +
                 "step in and make a difficult decision, rarely do so without consulting club members" +

@@ -60,7 +60,7 @@ public class speechTimer extends ActionBarActivity {
                     }
                 } else {
                     long endTimeInSeconds2 = ((greenValue * 60) + 150);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 2 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds2) {
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInSeconds == ((greenValue * 60) +60)) || (elapsedTimeInMinutes == (greenValue + 2) && elapsedTimeInSeconds == ((greenValue * 60) + 120))|| elapsedTimeInSeconds == endTimeInSeconds2) {
                         Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         timerVibrator.vibrate(500);
                     }
@@ -93,6 +93,7 @@ public class speechTimer extends ActionBarActivity {
         ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
+        timeUpText.setText("Dont forget to flash the cards !");
     }
 
     public void turnGreen () {
@@ -120,12 +121,7 @@ public class speechTimer extends ActionBarActivity {
         timeUpText.setText("Time Up ! \n Time Exceeded by \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_speech_chronometer, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
