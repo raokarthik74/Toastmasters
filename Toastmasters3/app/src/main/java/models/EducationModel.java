@@ -113,7 +113,7 @@ public class EducationModel {
             " \t  \tConduct a question-and-answer period on the speech subject. \n" +
             "\n 5. The Crisis Management Speech\n" +
             "\n Time: \n4-6 minutes, plus 3-5 minutes Q & A", "Group discussions are common, and this manual provides instruction in facilitating the most common types of discussions. Learn about moderating a panel discussion, facilitating a brainstorming meeting, leading a problem-solving discussion, handling challenging people during discussions, and helping a problem-solving group achieve a consensus." +
-            "\n 1. The Panel Moderator\n" +
+            "\n" +"\n 1. The Panel Moderator\n" +
             "\n Time: \n  \t28-30 (or 22-26) minutes presentation\n" +
             "\n Objectives:\n  \tOrganize and moderate a panel discussion.\n" +
             " \t  \tIdentify differing viewpoints to be addressed by panelists." +
@@ -214,7 +214,7 @@ public class EducationModel {
             " \t • \tApply a four-step motivational method with the purpose of persuading and inspiring.\n" +
             " \t • \tDeliver a motivational speech to persuade an audience to emotionally commit to an action.",
             "\n" +" 1. The Technical Briefing" +
-            "\n Time: \n8-10 minutes\n" +
+                    "\n" +"\n Time: \n8-10 minutes\n" +
             "\n Objectives:\n  \tUsing a systematic approach, organize technical material into a concise presentation.\n" +
             "  \tTailor the presentation to the audience's needs, interests and knowledge levels." +
             "\n" +"\n 2. The Proposal\n" +
@@ -271,7 +271,7 @@ public class EducationModel {
             "\n Time: \n6-8 minutes\n" +
             "\n Objectives:\n • \tCommunicate your vision and mission to an audience.\n" +
             " \t • \tConvince your audience to work toward achieving your vision and mission.", "Through the projects in this manual, you will learn how to present an editorial, appear as a guest on an interview program, be the host of an interview program, conduct a press conference and use television to train." +
-            "\n" +" 1. Straight Talk\n" +
+            "\n" + "\n" +" 1. Straight Talk\n" +
 
             "\n Time: \n3 minutes\n" +
             "\n Objectives:\n  \tTo effectively present an opinion or viewpoint in a short time.\n" +
@@ -302,7 +302,7 @@ public class EducationModel {
             "\n Time: \n5-7 minutes plus playback\n" +
             "\n Objectives:\n  \tTo learn how to develop and present an effective training program on television.\n" +
             "  \tTo receive personal feedback through the videotaping of your presentation.", "Everyone loves a good story! The projects in this manual are designed to help you develop stiorytelling skills." +
-            "\n" +" 1. The Folk Tale\n" +
+            "\n" + "\n" +" 1. The Folk Tale\n" +
 
             "\n Time: \n7-9 minutes\n" +
             "\n Objectives:\n • \tTo tell a folk tale that is entertaining and enjoyable for a specific age group.\n" +
