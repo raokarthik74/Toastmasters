@@ -67,10 +67,10 @@ public class speechTimer extends ActionBarActivity {
                     if (elapsedTimeInMinutes == greenValue && elapsedTimeInMinutes < (greenValue + 1)) {
                         turnGreen();
                     }
-                    else if (elapsedTimeInMinutes > (greenValue + 1) && elapsedTimeInMinutes < (greenValue + 2)) {
+                    if (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInMinutes < (greenValue + 2)) {
                         turnAmber();
                     }
-                    else if (elapsedTimeInMinutes > (greenValue + 2)) {
+                    if (elapsedTimeInMinutes == (greenValue + 2)) {
                         turnRed();
                     }
                     if (elapsedTimeInSeconds > endTimeInSeconds2) {

@@ -35,6 +35,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String positionOfSelectionOfObjectFromClubFragment = "com.district92.toastmasters.positionOfClub";
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
     public final static String roleDataintent = "com.district92.toastmasters.roleData";
+    public final static String url = "com.district92.toastmasters.url";
 
 
     /**
@@ -124,12 +125,17 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 startActivity(intentForRemainingRoles);
                 return true;
             case R.id.findClub:
-                Intent findClubIntent = new Intent (this, ClubSearchActivity.class);
+                Intent findClubIntent = new Intent (this, webView.class);
+                findClubIntent.putExtra(url, "http://www.toastmasters.org/Find-a-Club");
+                findClubIntent.putExtra(roleTitleintent, "Find A Club");
                 startActivity(findClubIntent);
                 return true;
             case R.id.dcpPoints:
-                Intent DCPPoint = new Intent (this, dcpPoints.class);
-                startActivity(DCPPoint);
+
+                Intent dcpPointsIntent = new Intent (this, webView.class);
+                dcpPointsIntent.putExtra(url, "http://dashboards.toastmasters.org/mobi/");
+                dcpPointsIntent.putExtra(roleTitleintent, "DCP Points");
+                startActivity(dcpPointsIntent);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
@@ -274,8 +280,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             startActivity(intentForAhCounter);
                             break;
                         case 2 :
-                            Intent intentForWordForTheDay = new Intent(getActivity(), NewWord.class);
-                            startActivity(intentForWordForTheDay);
+                            Intent wordForTheDayIntent = new Intent (getActivity(), webView.class);
+                            wordForTheDayIntent.putExtra(url, "https://www.wordnik.com/word-of-the-day");
+                            wordForTheDayIntent.putExtra(roleTitleintent, "DCP Points");
+                            startActivity(wordForTheDayIntent);
                             break;
                         default :
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
