@@ -97,7 +97,7 @@ public class speechTimer extends ActionBarActivity {
         long greenValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.greenValue, 0);
         long amberValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.amberValue, 0);
         long redValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.redValue, 0);
-        if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue) {
+        if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue || elapsedTimeInSeconds == redValue+30) {
             Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             timerVibrator.vibrate(500);
         }
