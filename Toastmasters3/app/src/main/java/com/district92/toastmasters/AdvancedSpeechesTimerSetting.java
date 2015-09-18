@@ -168,7 +168,7 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
         if (redNumberPicker.getValue() < amberNumberPicker.getValue() || redNumberPicker.getValue() < greenNumberPicker.getValue() || amberNumberPicker.getValue() < greenNumberPicker.getValue()) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Error");
-            alertDialog.setMessage("Always \n Red > Amber > Green");
+            alertDialog.setMessage("Always \n Red > Amber > Green \n Choose Correct Values and try again");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                     new DialogInterface.OnClickListener() {
                         @Override
