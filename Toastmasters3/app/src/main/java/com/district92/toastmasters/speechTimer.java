@@ -130,6 +130,7 @@ public class speechTimer extends ActionBarActivity {
 
     public void resetChronometer(View view) {
         ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
+        ((EditText) findViewById(R.id.enterNameForTimer)).setText("");
         RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
         View rootView = timerRelativeLayout.getRootView();
         rootView.setBackgroundColor(getResources().getColor(R.color.icons));

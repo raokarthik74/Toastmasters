@@ -72,6 +72,7 @@ public class AhCounterActivity extends ActionBarActivity {
     }
     public void ahCounterResetButton (View view) {
         crutch=filler=pause=0;
+        ((EditText) findViewById(R.id.enterName)).setText("");
         crutchButton = (Button) findViewById(R.id.crutchWordId);
         fillerButton = (Button) findViewById(R.id.fillerIncrementId);
         pauseButton = (Button) findViewById(R.id.pauseIncrementId);

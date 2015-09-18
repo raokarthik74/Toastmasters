@@ -63,15 +63,27 @@
         </activity>
         <activity
             android:name=".DataSaveActivity"
-            android:label="@string/title_activity_data_save" >
+            android:label="@string/title_activity_data_save"
+            android:parentActivityName=".AhCounterActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.AhCounterActivity" />
         </activity>
         <activity
             android:name=".TimerReport"
-            android:label="@string/title_activity_timer_report" >
+            android:label="@string/title_activity_timer_report"
+            android:parentActivityName=".speechTimer" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.speechTimer" />
         </activity>
         <activity
             android:name=".AdvancedSpeechesTimerSetting"
-            android:label="@string/title_activity_advanced_speeches_timer_setting" >
+            android:label="@string/title_activity_advanced_speeches_timer_setting"
+            android:parentActivityName=".timerSelectionActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
     </application>
 
