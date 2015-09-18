@@ -12,14 +12,20 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
 
+import models.TimerReportModel;
+
 
 public class speechTimer extends ActionBarActivity {
+
+    long elapsedTimeInSeconds;
+    long endTimeInSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +45,9 @@ public class speechTimer extends ActionBarActivity {
             public void onChronometerTick(Chronometer chronometer) {
                 long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
                 long elapsedTimeInMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
-                long elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
                 if (greenValue == 1 || greenValue == 2) {
-                    long endTimeInSeconds = ((greenValue * 60) + 90);
+                    endTimeInSeconds = ((greenValue * 60) + 90);
                     if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds) {
                         Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         timerVibrator.vibrate(500);
@@ -59,8 +65,8 @@ public class speechTimer extends ActionBarActivity {
                         timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
                     }
                 } else {
-                    long endTimeInSeconds2 = ((greenValue * 60) + 150);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInSeconds == ((greenValue * 60) +60)) || (elapsedTimeInMinutes == (greenValue + 2) && elapsedTimeInSeconds == ((greenValue * 60) + 120))|| elapsedTimeInSeconds == endTimeInSeconds2) {
+                    endTimeInSeconds = ((greenValue * 60) + 150);
+                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInSeconds == ((greenValue * 60) + 60)) || (elapsedTimeInMinutes == (greenValue + 2) && elapsedTimeInSeconds == ((greenValue * 60) + 120)) || elapsedTimeInSeconds == endTimeInSeconds) {
                         Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         timerVibrator.vibrate(500);
                     }
@@ -73,8 +79,8 @@ public class speechTimer extends ActionBarActivity {
                     if (elapsedTimeInMinutes == (greenValue + 2)) {
                         turnRed();
                     }
-                    if (elapsedTimeInSeconds > endTimeInSeconds2) {
-                        timeEnded(endTimeInSeconds2, elapsedTimeInSeconds);
+                    if (elapsedTimeInSeconds > endTimeInSeconds) {
+                        timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
                     }
                 }
             }
@@ -113,6 +119,8 @@ public class speechTimer extends ActionBarActivity {
         RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
         View rootView = timerRelativeLayout.getRootView();
         rootView.setBackgroundColor(getResources().getColor(R.color.red));
+        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+        timeUpText.setTextColor(getResources().getColor(R.color.icons));
     }
     public void timeEnded (long end, long elapsed) {
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
@@ -136,5 +144,22 @@ public class speechTimer extends ActionBarActivity {
 //        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void timerReportCallingMethod (View view) {
+        EditText nameFromActivity = (EditText) findViewById(R.id.enterNameForTimer);
+        String name = nameFromActivity.getText().toString();
+        long minutes=0, seconds=0;
+        minutes = TimeUnit.SECONDS.toMinutes(elapsedTimeInSeconds);
+        seconds = elapsedTimeInSeconds%60;
+        if (elapsedTimeInSeconds > endTimeInSeconds) {
+            long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
+            TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+"\n Time Exceeded By:"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+        }
+        else {
+            TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+        }
+        Intent forDataSaveActivity = new Intent(this, TimerReport.class);
+        startActivity(forDataSaveActivity);
     }
 }

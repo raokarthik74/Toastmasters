@@ -41,4 +41,5 @@
     <string name="title_activity_role_detail">roleDetail</string>
     <string name="title_activity_web_view">webView</string>
     <string name="title_activity_data_save">DataSaveActivity</string>
+    <string name="title_activity_timer_report">TimerReport</string>
 </resources>

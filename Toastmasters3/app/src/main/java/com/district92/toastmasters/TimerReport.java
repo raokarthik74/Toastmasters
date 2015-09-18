@@ -7,42 +7,39 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import models.TimerReportModel;
 import models.ahCounterReport;
 
-public class DataSaveActivity extends AppCompatActivity {
-
-
+public class TimerReport extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_data_save);
-        setTitle("Ah Counter Report");
+        setContentView(R.layout.activity_timer_report);
+        setTitle("Timer Report");
         Intent intent = getIntent();
-        ListView listView = (ListView) findViewById(R.id.dataSaveListView);
+        ListView listView = (ListView) findViewById(R.id.timerReportListView);
         ArrayList<String> listOfData = new ArrayList<String>();
-        listOfData = ahCounterReport.getDataFromArray();
+        listOfData = TimerReportModel.getDataFromTimerArray();
         ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfData);
         listView.setAdapter(dataToBeDisplayed);
     }
 
-    public void floatingActionButton (View view) {
-        Intent intentFromDataSave = new Intent(this, AhCounterActivity.class);
+    public void floatingActionButtonforTimer (View view) {
+        Intent intentFromDataSave = new Intent(this, timerSelectionActivity.class);
         startActivity(intentFromDataSave);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.reportReset:
-                ahCounterReport.resetArrayList();
+            case R.id.timerReset:
+                TimerReportModel.resetArrayListOFTimer();
                 finish();
                 startActivity(getIntent());
                 return true;
@@ -53,7 +50,7 @@ public class DataSaveActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_data_save, menu);
+        getMenuInflater().inflate(R.menu.menu_timer_report, menu);
         return true;
     }
 
