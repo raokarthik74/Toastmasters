@@ -380,19 +380,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     switch (position) {
                         case 0:
                             Intent  DistrictLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
-                            DistrictLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/16C089D17AFD4553A4CEA648B8E9946A.ashx");
-                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "District Leadership Handbook");
+                            DistrictLeadershipHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTASUF4eFBMR2xUY3c/view?usp=sharing");
+                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "District Leadership");
                             startActivity(DistrictLeadershipHandbookIntent);
                             break;
                         case 1:
                             Intent clubLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
-                            clubLeadershipHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=http://www.toastmasters.org/~/media/E51A693193F749AE91FD79F6DB839534.ashx");
-                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "Club Leadership Handbook");
+                            clubLeadershipHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAZkJXd1BZVUtkNUE/view?usp=sharing");
+                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "Club Leadership");
                             startActivity(clubLeadershipHandbookIntent);
                             break;
                         case 2 :
                             Intent  contestHandbookIntent = new Intent (getActivity(), webView.class);
-                            contestHandbookIntent.putExtra(url, "https://docs.google.com/gview?embedded=true&url=https://www.toastmasters.org/~/media/3117F77BBF4D430B8A403ECECDD5F99F.ashx");
+                            contestHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAVlZ6SkMtUEc2NFU/view?usp=sharing");
                             contestHandbookIntent.putExtra(roleTitleintent, "Contest Rule Book");
                             startActivity(contestHandbookIntent);
                             break;

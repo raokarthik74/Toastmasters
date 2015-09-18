@@ -26,16 +26,25 @@ public class speechTimer extends ActionBarActivity {
 
     long elapsedTimeInSeconds;
     long endTimeInSeconds;
+    long timeWhenStopped;
+    boolean isPaused;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Speech Timer");
         super.onCreate(savedInstanceState);
+        isPaused = false;
         setContentView(R.layout.activity_speech_timer);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     public void startChronometer(final View view) {
-        ((Chronometer) findViewById(R.id.chronometer)).start();
+        if (isPaused) {
+            ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
+        else {
+            ((Chronometer) findViewById(R.id.chronometer)).start();
+        }
         final Intent intent = getIntent();
         final boolean isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
         final long greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
@@ -112,7 +121,10 @@ public class speechTimer extends ActionBarActivity {
     });
     }
 
+
     public void stopChronometer(View view) {
+        isPaused = true;
+        timeWhenStopped = ((Chronometer) findViewById(R.id.chronometer)).getBase() - SystemClock.elapsedRealtime();
         ((Chronometer) findViewById(R.id.chronometer)).stop();
     }
 

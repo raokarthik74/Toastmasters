@@ -21,7 +21,6 @@
         android:id="@+id/getcurrent"
         android:textSize="25dp"
         android:gravity="center"
-        android:layout_marginTop="25dp"
         android:layout_below="@+id/enterNameForTimer"
         android:layout_centerHorizontal="true" />
 
@@ -30,7 +29,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/chronometer"
         android:textSize="100dp"
-        android:layout_marginBottom="25dp"
         android:layout_below="@+id/getcurrent"
         android:layout_centerHorizontal="true" />
 
@@ -71,13 +69,14 @@
     <Button
         android:id="@+id/saveToReportTimerButton"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:text="save to report"
         android:onClick="timerReportCallingMethod"
         android:textColor="@color/icons"
-        android:layout_below="@+id/button2"
         android:gravity="center"
-         />
+        android:layout_below="@+id/resetButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
