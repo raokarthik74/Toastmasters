@@ -39,7 +39,12 @@ public class speechTimer extends ActionBarActivity {
         intent = getIntent();
         isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
         greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
-        setTitle(intent.getStringExtra(timerSelectionActivity.TimerTitle));
+        if(isAdvanced) {
+            setTitle(intent.getStringExtra(AdvancedSpeechesTimerSetting.timerTitle));
+        }
+        else {
+            setTitle(intent.getStringExtra(timerSelectionActivity.TimerTitle));
+        }
         greenValue = TimeUnit.MINUTES.toSeconds(greenValue);
         setContentView(R.layout.activity_speech_timer);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
