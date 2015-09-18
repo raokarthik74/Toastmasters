@@ -83,7 +83,7 @@ public class AhCounterActivity extends ActionBarActivity {
     public void ahCounterSaveButton (View view) {
         EditText nameFromActivity = (EditText) findViewById(R.id.enterName);
         String name = nameFromActivity.getText().toString();
-        ahCounterReport.setDataToArray(name);
+        ahCounterReport.setDataToArray(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:"+ pause);
        // dataForDisplay.add(name);
         Intent forDataSaveActivity = new Intent(this, DataSaveActivity.class);
        // forDataSaveActivity.putStringArrayListExtra(dataToDisplay, dataForDisplay);
