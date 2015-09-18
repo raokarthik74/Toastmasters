@@ -48,7 +48,7 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Pause"
+        android:text="Pause / Stop"
         android:textColor="@color/icons"
         android:onClick="stopChronometer"
         android:layout_below="@+id/button1"
