@@ -224,6 +224,11 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.resetTime:
+                ((NumberPicker) findViewById(R.id.numberPicker)).setValue(0);
+                ((NumberPicker) findViewById(R.id.numberPicker2)).setValue(1);
+                ((NumberPicker) findViewById(R.id.numberPicker3)).setValue(2);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
