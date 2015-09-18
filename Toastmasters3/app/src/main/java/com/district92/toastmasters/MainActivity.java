@@ -32,7 +32,6 @@ import models.rolesModel;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    public final static String positionOfSelectionOfObjectFromClubFragment = "com.district92.toastmasters.positionOfClub";
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
     public final static String roleDataintent = "com.district92.toastmasters.roleData";
     public final static String url = "com.district92.toastmasters.url";

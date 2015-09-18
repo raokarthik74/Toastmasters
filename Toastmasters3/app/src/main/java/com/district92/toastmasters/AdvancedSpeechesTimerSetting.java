@@ -2,6 +2,7 @@ package com.district92.toastmasters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
+
+    public final static String greenValue = "com.district92.toastmasters.greenValue";
+    public final static String amberValue = "com.district92.toastmasters.amberValue";
+    public final static String redValue = "com.district92.toastmasters.redValue";
+    public final static String isAdvanced = "com.district92.toastmasters.isAdvanced";
 
     String[] listOfNumbers = {"0.5",
             "1",
@@ -149,22 +155,35 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
                 currentNumberPicker.setMaxValue(listOfNumbers.length - 1);
                 currentNumberPicker.setMinValue(0);
         currentNumberPicker.setWrapSelectorWheel(false);
-        currentNumberPicker.setValue(setValue + 2);
+        currentNumberPicker.setValue(setValue + 1);
         currentNumberPicker.setDisplayedValues(listOfNumbers);
     }
 
     public void doneButton (View view) {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Alert");
-        alertDialog.setMessage("Alert message to be shown");
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                } );
-        alertDialog.show();
+        NumberPicker greenNumberPicker = (NumberPicker) findViewById(R.id.numberPicker);
+        NumberPicker amberNumberPicker = (NumberPicker) findViewById(R.id.numberPicker2);
+        NumberPicker redNumberPicker = (NumberPicker) findViewById(R.id.numberPicker3);
+        if (redNumberPicker.getValue() < amberNumberPicker.getValue() || redNumberPicker.getValue() < greenNumberPicker.getValue() || amberNumberPicker.getValue() < greenNumberPicker.getValue()) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("Error");
+            alertDialog.setMessage("Always \n Red > Amber > Green");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
+        else {
+            Intent intentFromAdvanced = new Intent(this, speechTimer.class);
+            intentFromAdvanced.putExtra(greenValue, greenNumberPicker.getValue());
+            intentFromAdvanced.putExtra(redValue, redNumberPicker.getValue());
+            intentFromAdvanced.putExtra(amberValue,amberNumberPicker.getValue());
+            intentFromAdvanced.putExtra(isAdvanced, 1);
+            startActivity(intentFromAdvanced);
+        }
     }
 
     @Override
