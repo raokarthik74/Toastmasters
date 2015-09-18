@@ -14,6 +14,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -70,6 +71,10 @@ public class webView extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.netRefresh:
+                finish();
+                startActivity(getIntent());
                 return true;
         }
         return super.onOptionsItemSelected(item);

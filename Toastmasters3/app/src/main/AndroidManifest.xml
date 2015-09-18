@@ -69,6 +69,10 @@
             android:name=".TimerReport"
             android:label="@string/title_activity_timer_report" >
         </activity>
+        <activity
+            android:name=".AdvancedSpeechesTimerSetting"
+            android:label="@string/title_activity_advanced_speeches_timer_setting" >
+        </activity>
     </application>
 
 </manifest>

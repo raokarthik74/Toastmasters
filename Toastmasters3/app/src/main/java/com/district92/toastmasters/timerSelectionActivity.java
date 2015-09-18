@@ -23,9 +23,10 @@ public class timerSelectionActivity extends ActionBarActivity {
         setTitle("Select Project");
         super.onCreate(savedInstanceState);
         final Intent intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
+        final Intent intentForAdvancedProjects = new Intent(this, AdvancedSpeechesTimerSetting.class);
         setContentView(R.layout.activity_timer_selection);
         ListView selectProjectListView;
-        String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation"};
+        String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches"};
 
         ListView projectSelectListView = (ListView) findViewById(R.id.timerSelectionListView);
         ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfProjects);
@@ -37,22 +38,35 @@ public class timerSelectionActivity extends ActionBarActivity {
                 switch (positionOfProject) {
                     case 0:
                         greenTime = 4;
+                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                        startActivity(intentFromSelectProjectActivity);
+                        break;
+                    case 1:
+                        greenTime = 5;
+                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                        startActivity(intentFromSelectProjectActivity);
                         break;
                     case 2:
                         greenTime = 8;
+                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                        startActivity(intentFromSelectProjectActivity);
                         break;
                     case 3:
                         greenTime = 1;
+                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                        startActivity(intentFromSelectProjectActivity);
                         break;
                     case 4:
                         greenTime = 2;
+                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
+                        startActivity(intentFromSelectProjectActivity);
                         break;
-                    default:
-                        greenTime = 5;
+                    case 5:
+                        startActivity(intentForAdvancedProjects);
                         break;
+
                 }
-                intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                startActivity(intentFromSelectProjectActivity);
+
                     }
 
 

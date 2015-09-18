@@ -154,7 +154,7 @@ public class speechTimer extends ActionBarActivity {
         seconds = elapsedTimeInSeconds%60;
         if (elapsedTimeInSeconds > endTimeInSeconds) {
             long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
-            TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+"\n Time Exceeded By:"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+            TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+"\n Time Exceeded By \n"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
         }
         else {
             TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));

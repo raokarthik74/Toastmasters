@@ -42,4 +42,6 @@
     <string name="title_activity_web_view">webView</string>
     <string name="title_activity_data_save">DataSaveActivity</string>
     <string name="title_activity_timer_report">TimerReport</string>
+    <string name="title_activity_advanced_speeches_timer_setting">AdvancedSpeechesTimerSetting
+    </string>
 </resources>
