@@ -13,6 +13,7 @@ import android.widget.NumberPicker;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
 
@@ -178,10 +179,34 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
         }
         else {
             Intent intentFromAdvanced = new Intent(this, speechTimer.class);
-            intentFromAdvanced.putExtra(greenValue, greenNumberPicker.getValue());
-            intentFromAdvanced.putExtra(redValue, redNumberPicker.getValue());
-            intentFromAdvanced.putExtra(amberValue,amberNumberPicker.getValue());
-            intentFromAdvanced.putExtra(isAdvanced, 1);
+            long green, amber,red;
+            float greenf, amberf, redf;
+            greenf = Float.parseFloat(listOfNumbers[greenNumberPicker.getValue()]);
+            amberf = Float.parseFloat(listOfNumbers[amberNumberPicker.getValue()]);
+            redf = Float.parseFloat(listOfNumbers[redNumberPicker.getValue()]);
+            if(greenf%1 == 0){
+                green = TimeUnit.MINUTES.toSeconds(Long.parseLong(listOfNumbers[greenNumberPicker.getValue()], 10));
+            }
+            else {
+               green= TimeUnit.MINUTES.toSeconds((long) greenf) + 30;
+            }
+            if(amberf%1 == 0){
+                amber = TimeUnit.MINUTES.toSeconds(Long.parseLong(listOfNumbers[amberNumberPicker.getValue()], 10));
+            }
+            else {
+                amber= TimeUnit.MINUTES.toSeconds((long) amberf) + 30;
+            }
+            if(redf%1 == 0){
+                red = TimeUnit.MINUTES.toSeconds(Long.parseLong(listOfNumbers[redNumberPicker.getValue()], 10));
+            }
+            else {
+                red = TimeUnit.MINUTES.toSeconds((long) redf) + 30;
+            }
+
+            intentFromAdvanced.putExtra(greenValue, green);
+            intentFromAdvanced.putExtra(redValue, red);
+            intentFromAdvanced.putExtra(amberValue,amber);
+            intentFromAdvanced.putExtra(isAdvanced, true);
             startActivity(intentFromAdvanced);
         }
     }

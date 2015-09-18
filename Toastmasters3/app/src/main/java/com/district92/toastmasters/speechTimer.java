@@ -36,7 +36,8 @@ public class speechTimer extends ActionBarActivity {
     }
     public void startChronometer(final View view) {
         ((Chronometer) findViewById(R.id.chronometer)).start();
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
+        final boolean isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
         final long greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setText("Dont forget to flash the cards !");
@@ -46,6 +47,29 @@ public class speechTimer extends ActionBarActivity {
                 long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
                 long elapsedTimeInMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
                 elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                if(isAdvanced) {
+                    long greenValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.greenValue, 0);
+                    long amberValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.amberValue, 0);
+                    long redValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.redValue, 0);
+                    if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue) {
+                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        timerVibrator.vibrate(500);
+                    }
+                    if (elapsedTimeInSeconds > greenValue && elapsedTimeInSeconds < amberValue) {
+                        turnGreen();
+                    }
+                    if (elapsedTimeInSeconds > amberValue && elapsedTimeInSeconds < redValue) {
+                        turnAmber();
+                    }
+                    if (elapsedTimeInSeconds > redValue) {
+                        turnRed();
+                    }
+                    if (elapsedTimeInSeconds > redValue+30) {
+                        timeEnded(redValue+30, elapsedTimeInSeconds);
+                    }
+
+                }
+                else {
                 if (greenValue == 1 || greenValue == 2) {
                     endTimeInSeconds = ((greenValue * 60) + 90);
                     if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds) {
@@ -84,7 +108,8 @@ public class speechTimer extends ActionBarActivity {
                     }
                 }
             }
-        });
+        }
+    });
     }
 
     public void stopChronometer(View view) {
