@@ -21,6 +21,7 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
     public final static String amberValue = "com.district92.toastmasters.amberValue";
     public final static String redValue = "com.district92.toastmasters.redValue";
     public final static String isAdvanced = "com.district92.toastmasters.isAdvanced";
+    public final static String timerTitle = "com.district92.toastmasters.title";
 
     String[] listOfNumbers = {"0.5",
             "1",
@@ -207,6 +208,7 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
             intentFromAdvanced.putExtra(redValue, red);
             intentFromAdvanced.putExtra(amberValue,amber);
             intentFromAdvanced.putExtra(isAdvanced, true);
+            intentFromAdvanced.putExtra(timerTitle, "Advanced Projects");
             startActivity(intentFromAdvanced);
         }
     }

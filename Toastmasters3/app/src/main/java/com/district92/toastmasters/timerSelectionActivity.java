@@ -16,17 +16,21 @@ import android.widget.ListView;
 
 public class timerSelectionActivity extends ActionBarActivity {
 
+    Intent intentFromSelectProjectActivity;
+    Intent intentForAdvancedProjects;
+
     public final static String greenTimer = "com.district92.toastmasters.greenTime";
+    public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Select Project");
         super.onCreate(savedInstanceState);
-        final Intent intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
-        final Intent intentForAdvancedProjects = new Intent(this, AdvancedSpeechesTimerSetting.class);
+        intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
+        intentForAdvancedProjects = new Intent(this, AdvancedSpeechesTimerSetting.class);
         setContentView(R.layout.activity_timer_selection);
         ListView selectProjectListView;
-        String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches"};
+        final String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches"};
 
         ListView projectSelectListView = (ListView) findViewById(R.id.timerSelectionListView);
         ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfProjects);
@@ -38,28 +42,23 @@ public class timerSelectionActivity extends ActionBarActivity {
                 switch (positionOfProject) {
                     case 0:
                         greenTime = 4;
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                        callTheTimer(greenTime, listOfProjects[0]);
                         break;
                     case 1:
                         greenTime = 5;
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                        callTheTimer(greenTime, listOfProjects[1]);
                         break;
                     case 2:
                         greenTime = 8;
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                        callTheTimer(greenTime, listOfProjects[2]);
                         break;
                     case 3:
                         greenTime = 1;
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                        callTheTimer(greenTime, listOfProjects[3]);
                         break;
                     case 4:
                         greenTime = 2;
-                        intentFromSelectProjectActivity.putExtra(greenTimer, greenTime);
-                        startActivity(intentFromSelectProjectActivity);
+                        callTheTimer(greenTime, listOfProjects[4]);
                         break;
                     case 5:
                         startActivity(intentForAdvancedProjects);
@@ -72,6 +71,12 @@ public class timerSelectionActivity extends ActionBarActivity {
 
         });
 
+    }
+
+    public void callTheTimer (int green, String title) {
+        intentFromSelectProjectActivity.putExtra(greenTimer, green);
+        intentFromSelectProjectActivity.putExtra(TimerTitle, title);
+        startActivity(intentFromSelectProjectActivity);
     }
 
 

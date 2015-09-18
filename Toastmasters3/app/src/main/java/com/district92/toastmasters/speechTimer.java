@@ -28,12 +28,19 @@ public class speechTimer extends ActionBarActivity {
     long endTimeInSeconds;
     long timeWhenStopped;
     boolean isPaused;
+    Intent intent;
+    long greenValue;
+    boolean isAdvanced;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Speech Timer");
         super.onCreate(savedInstanceState);
         isPaused = false;
+        intent = getIntent();
+        isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
+        greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
+        setTitle(intent.getStringExtra(timerSelectionActivity.TimerTitle));
+        greenValue = TimeUnit.MINUTES.toSeconds(greenValue);
         setContentView(R.layout.activity_speech_timer);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -45,80 +52,102 @@ public class speechTimer extends ActionBarActivity {
         else {
             ((Chronometer) findViewById(R.id.chronometer)).start();
         }
-        final Intent intent = getIntent();
-        final boolean isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
-        final long greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setText("Dont forget to flash the cards !");
-        ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer chronometer) {
-                long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
-                long elapsedTimeInMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
-                elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
-                if(isAdvanced) {
-                    long greenValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.greenValue, 0);
-                    long amberValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.amberValue, 0);
-                    long redValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.redValue, 0);
-                    if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue) {
-                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                        timerVibrator.vibrate(500);
-                    }
-                    if (elapsedTimeInSeconds > greenValue && elapsedTimeInSeconds < amberValue) {
-                        turnGreen();
-                    }
-                    if (elapsedTimeInSeconds > amberValue && elapsedTimeInSeconds < redValue) {
-                        turnAmber();
-                    }
-                    if (elapsedTimeInSeconds > redValue) {
-                        turnRed();
-                    }
-                    if (elapsedTimeInSeconds > redValue+30) {
-                        timeEnded(redValue+30, elapsedTimeInSeconds);
-                    }
 
+        if (isAdvanced) {
+            ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+                @Override
+                public void onChronometerTick(Chronometer chronometer) {
+                    long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
+                    elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                    advancedTimerExecution();
                 }
-                else {
-                if (greenValue == 1 || greenValue == 2) {
-                    endTimeInSeconds = ((greenValue * 60) + 90);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60) + 30) || (elapsedTimeInMinutes == greenValue + 1 && elapsedTimeInSeconds == (greenValue * 60) + 60) || elapsedTimeInSeconds == endTimeInSeconds) {
-                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                        timerVibrator.vibrate(500);
-                    }
-                    if (elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds < (greenValue * 60) + 30) {
-                        turnGreen();
-                    }
-                    if (elapsedTimeInSeconds > (greenValue * 60) + 30 && elapsedTimeInSeconds < (greenValue * 60) + 60) {
-                        turnAmber();
-                    }
-                    if (elapsedTimeInMinutes == greenValue + 1) {
-                        turnRed();
-                    }
-                    if (elapsedTimeInSeconds > endTimeInSeconds) {
-                        timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
-                    }
-                } else {
-                    endTimeInSeconds = ((greenValue * 60) + 150);
-                    if ((elapsedTimeInMinutes == greenValue && elapsedTimeInSeconds == (greenValue * 60)) || (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInSeconds == ((greenValue * 60) + 60)) || (elapsedTimeInMinutes == (greenValue + 2) && elapsedTimeInSeconds == ((greenValue * 60) + 120)) || elapsedTimeInSeconds == endTimeInSeconds) {
-                        Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                        timerVibrator.vibrate(500);
-                    }
-                    if (elapsedTimeInMinutes == greenValue && elapsedTimeInMinutes < (greenValue + 1)) {
-                        turnGreen();
-                    }
-                    if (elapsedTimeInMinutes == (greenValue + 1) && elapsedTimeInMinutes < (greenValue + 2)) {
-                        turnAmber();
-                    }
-                    if (elapsedTimeInMinutes == (greenValue + 2)) {
-                        turnRed();
-                    }
-                    if (elapsedTimeInSeconds > endTimeInSeconds) {
-                        timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
-                    }
-                }
-            }
+            });
         }
-    });
+        else if (greenValue == 60 || greenValue == 120) {
+            ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+                @Override
+                public void onChronometerTick(Chronometer chronometer) {
+                    long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
+                    elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                    greenValue1or2Execution();
+                }
+            });
+        }
+        else  {
+            ((Chronometer) findViewById(R.id.chronometer)).setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+                @Override
+                public void onChronometerTick(Chronometer chronometer) {
+                    long elapsedTime = SystemClock.elapsedRealtime() - chronometer.getBase();
+                    elapsedTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+                    normalTimerExecution();
+                }
+            });
+        }
+    }
+
+
+    public void advancedTimerExecution () {
+        long greenValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.greenValue, 0);
+        long amberValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.amberValue, 0);
+        long redValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.redValue, 0);
+        if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue) {
+            Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            timerVibrator.vibrate(500);
+        }
+        if (elapsedTimeInSeconds > greenValue && elapsedTimeInSeconds < amberValue) {
+            turnGreen();
+        }
+        if (elapsedTimeInSeconds > amberValue && elapsedTimeInSeconds < redValue) {
+            turnAmber();
+        }
+        if (elapsedTimeInSeconds > redValue) {
+            turnRed();
+        }
+        if (elapsedTimeInSeconds > redValue+30) {
+            timeEnded(redValue+30, elapsedTimeInSeconds);
+        }
+    }
+
+    public void greenValue1or2Execution () {
+        endTimeInSeconds = greenValue + 90;
+        if ( elapsedTimeInSeconds == greenValue  || elapsedTimeInSeconds == greenValue + 30 || elapsedTimeInSeconds == greenValue + 60 || elapsedTimeInSeconds == endTimeInSeconds) {
+            Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            timerVibrator.vibrate(500);
+        }
+        if (elapsedTimeInSeconds > greenValue && elapsedTimeInSeconds < greenValue+30) {
+            turnGreen();
+        }
+        if (elapsedTimeInSeconds > greenValue  + 30 && elapsedTimeInSeconds < greenValue  + 60) {
+            turnAmber();
+        }
+        if (elapsedTimeInSeconds > greenValue  + 60) {
+            turnRed();
+        }
+        if (elapsedTimeInSeconds > endTimeInSeconds) {
+            timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
+        }
+    }
+
+    public void normalTimerExecution () {
+        endTimeInSeconds = greenValue  + 150;
+        if (elapsedTimeInSeconds == greenValue  || elapsedTimeInSeconds == greenValue + 60 || elapsedTimeInSeconds == greenValue + 120 || elapsedTimeInSeconds == endTimeInSeconds) {
+            Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            timerVibrator.vibrate(500);
+        }
+        if (elapsedTimeInSeconds > greenValue && elapsedTimeInSeconds < greenValue+60) {
+            turnGreen();
+        }
+        if (elapsedTimeInSeconds > greenValue  + 60 && elapsedTimeInSeconds < greenValue  + 120) {
+            turnAmber();
+        }
+        if (elapsedTimeInSeconds > greenValue  + 120) {
+            turnRed();
+        }
+        if (elapsedTimeInSeconds > endTimeInSeconds) {
+            timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
+        }
     }
 
 
@@ -132,6 +161,7 @@ public class speechTimer extends ActionBarActivity {
 
     public void resetChronometer(View view) {
         ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
+        timeWhenStopped = 0;
         ((EditText) findViewById(R.id.enterNameForTimer)).setText("");
         RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
         View rootView = timerRelativeLayout.getRootView();
@@ -139,7 +169,7 @@ public class speechTimer extends ActionBarActivity {
         ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
-        timeUpText.setText("");
+        timeUpText.setText("Dont forget to flash the cards !");
     }
 
     public void turnGreen () {
