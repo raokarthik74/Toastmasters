@@ -38,9 +38,6 @@ public class DataSaveActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
             case R.id.reportReset:
                 ahCounterReport.resetArrayList();
                 finish();
