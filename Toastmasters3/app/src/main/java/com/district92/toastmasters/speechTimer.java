@@ -137,7 +137,7 @@ public class speechTimer extends ActionBarActivity {
         ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
-        timeUpText.setText("Dont forget to flash the cards !");
+        timeUpText.setText("");
     }
 
     public void turnGreen () {
