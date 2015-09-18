@@ -266,7 +266,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     switch(position) {
                         case 0 :
                         Intent intentFromClubFragment = new Intent(getActivity(), timerSelectionActivity.class);
-                        intentFromClubFragment.putExtra(positionOfSelectionOfObjectFromClubFragment, position);
                         startActivity(intentFromClubFragment);
                             break;
                         case 1 :

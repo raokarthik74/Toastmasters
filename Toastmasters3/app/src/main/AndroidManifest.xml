@@ -61,6 +61,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.MainActivity" />
         </activity>
+        <activity
+            android:name=".DataSaveActivity"
+            android:label="@string/title_activity_data_save" >
+        </activity>
     </application>
 
 </manifest>

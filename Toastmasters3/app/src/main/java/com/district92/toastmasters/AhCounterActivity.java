@@ -1,5 +1,6 @@
 package com.district92.toastmasters;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,10 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+
+import models.EducationModel;
+import models.ahCounterReport;
 
 
 public class AhCounterActivity extends ActionBarActivity {
+
+    public final static String dataToDisplay = "com.district92.toastmasters.datatodisplay";
+   // ArrayList<String> dataForDisplay = new ArrayList<String>();
 
     int crutch=0, filler=0, pause=0;
 
@@ -68,5 +78,15 @@ public class AhCounterActivity extends ActionBarActivity {
         crutchButton.setText("0");
         fillerButton.setText("0");
         pauseButton.setText("0");
+    }
+
+    public void ahCounterSaveButton (View view) {
+        EditText nameFromActivity = (EditText) findViewById(R.id.enterName);
+        String name = nameFromActivity.getText().toString();
+        ahCounterReport.setDataToArray(name);
+       // dataForDisplay.add(name);
+        Intent forDataSaveActivity = new Intent(this, DataSaveActivity.class);
+       // forDataSaveActivity.putStringArrayListExtra(dataToDisplay, dataForDisplay);
+        startActivity(forDataSaveActivity);
     }
 }
