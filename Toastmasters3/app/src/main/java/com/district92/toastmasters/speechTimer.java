@@ -34,6 +34,7 @@ public class speechTimer extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        timeWhenStopped = 0;
         super.onCreate(savedInstanceState);
         isPaused = false;
         intent = getIntent();
@@ -50,13 +51,8 @@ public class speechTimer extends ActionBarActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     public void startChronometer(final View view) {
-        if (isPaused) {
             ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
             ((Chronometer) findViewById(R.id.chronometer)).start();
-        }
-        else {
-            ((Chronometer) findViewById(R.id.chronometer)).start();
-        }
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setText("Dont forget to flash the cards !");
 
