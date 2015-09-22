@@ -2,6 +2,8 @@ package com.district92.toastmasters;
 
 import java.util.Locale;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
@@ -35,6 +37,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
     public final static String roleDataintent = "com.district92.toastmasters.roleData";
     public final static String url = "com.district92.toastmasters.url";
+    //public final static String PREFERENCE = "MyPrefsFile";
 
 
     /**
@@ -56,8 +59,22 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if (isFirstRun) {
+            final AlertDialog first = new AlertDialog.Builder(this).create();
+            first.setTitle("Welcome !");
+            first.setMessage("Swagata");
+            first.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            first.dismiss();
+                        }
+                    });
+            first.show();
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
+        }
 
-        Log.d("MainActivity", "onCreateCalled");
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -95,7 +112,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         mViewPager.setCurrentItem(1);
         mViewPager.setOffscreenPageLimit(3);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
