@@ -24,4 +24,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.android.support:design:23.0.0'
     compile 'com.android.support:support-v4:23.0.0'
+    compile files('/Users/Karthik/Toastmasters/Toastmasters3/libs/Parse-1.10.2.jar')
+}
+
+dependencies {
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile fileTree(dir: 'libs', include: 'Parse-1.10.2.jar')
 }

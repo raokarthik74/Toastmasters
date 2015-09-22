@@ -27,6 +27,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseInstallation;
+
 import models.EducationModel;
 import models.LeadershipModel;
 import models.rolesModel;
@@ -74,6 +77,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             first.show();
             getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
         }
+
+
 
 
         // Set up the action bar.
