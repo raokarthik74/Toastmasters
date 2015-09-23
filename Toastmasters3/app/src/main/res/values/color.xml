@@ -7,6 +7,8 @@
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
+    <color name="spinner">#A0FFFFFF</color>
+    <color name="spinnerdone">#EC903041</color>
     <color name="divider">#B6B6B6</color>
     <color name="red">#FF0000</color>
     <color name="amber">#FFC200</color>

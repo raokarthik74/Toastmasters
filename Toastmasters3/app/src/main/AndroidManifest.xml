@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.district92.toastmasters"
-    >
+    package="com.district92.toastmasters" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,10 +13,11 @@
       IMPORTANT: Change "com.parse.starter.permission.C2D_MESSAGE" in the lines below
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
-    <permission android:protectionLevel="signature"
-        android:name="com.district92.toastmasters.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.district92.toastmasters.permission.C2D_MESSAGE" />
+    <permission
+        android:name="com.district92.toastmasters.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
+    <uses-permission android:name="com.district92.toastmasters.permission.C2D_MESSAGE" />
 
     <application
         android:name=".ParseNotification"
@@ -25,8 +25,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:launchMode="singleTop"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -100,9 +99,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.district92.toastmasters.timerSelectionActivity" />
         </activity>
+
         <service android:name="com.parse.PushService" />
+
         <receiver
-            android:name="com.district92.toastmasters.util.Receiver"
+            android:name=".util.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -110,20 +111,30 @@
                 <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
-        <receiver android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <!--
-                  IMPORTANT: Change "com.parse.starter" to match your app's package name.
-                -->
+                <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
                 <category android:name="com.district92.toastmasters" />
             </intent-filter>
         </receiver>
-        <meta-data android:name="com.parse.push.notification_icon"
-            android:resource="@mipmap/ic_launcher"/>
+
+        <meta-data
+            android:name="com.parse.push.notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+
+        <activity
+            android:name=".DistrictSelectionActivity"
+            android:label="@string/title_activity_district_selection" >
+        </activity>
+        <activity
+            android:name=".WebactivityForParse"
+            android:label="@string/title_activity_webactivity_for_parse" >
+        </activity>
     </application>
 
 </manifest>

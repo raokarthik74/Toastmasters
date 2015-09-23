@@ -11,5 +11,10 @@
         android:title="Find a Club"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/selectDistrict"
+        android:title="Select District"
+        app:showAsAction="never"
+        />
 
 </menu>

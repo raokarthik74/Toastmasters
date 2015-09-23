@@ -44,4 +44,19 @@
     <string name="title_activity_timer_report">TimerReport</string>
     <string name="title_activity_advanced_speeches_timer_setting">AdvancedSpeechesTimerSetting
     </string>
+    <string name="title_activity_district_selection">DistrictSelectionActivity</string>
+
+    <string name="district_prompt">Choose Your District</string>
+
+    <string-array name="district_arrays">
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+    <string name="title_activity_webactivity_for_parse">WebactivityForParse</string>
 </resources>

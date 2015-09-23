@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.parse.Parse;
 import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 
 /**
  * Created by Karthik on 9/22/15.
