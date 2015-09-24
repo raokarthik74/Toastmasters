@@ -135,6 +135,10 @@
             android:name=".WebactivityForParse"
             android:label="@string/title_activity_webactivity_for_parse" >
         </activity>
+        <activity
+            android:name=".PushNotificationActivity"
+            android:label="@string/title_activity_push_notification" >
+        </activity>
     </application>
 
 </manifest>

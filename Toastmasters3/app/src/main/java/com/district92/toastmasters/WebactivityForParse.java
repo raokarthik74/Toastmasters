@@ -46,7 +46,6 @@ public class WebactivityForParse extends AppCompatActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        setTitle("");
         if(!isNetworkAvailable()) {
             TextView textView = new TextView(this);
             textView.setTextSize(25);
@@ -85,6 +84,10 @@ private class MyWebViewClient extends WebViewClient {
             case R.id.netRefreshParse:
                 finish();
                 startActivity(getIntent());
+                return true;
+            case R.id.home:
+                Intent homeIntent = new Intent(this, MainActivity.class);
+                startActivity(homeIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -4,4 +4,7 @@
     tools:context="com.district92.toastmasters.WebactivityForParse">
     <item android:id="@+id/netRefreshParse" android:title="REFRESH"
         android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/home" android:title="REFRESH"
+        android:orderInCategory="100" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_home_white_24dp"/>
 </menu>

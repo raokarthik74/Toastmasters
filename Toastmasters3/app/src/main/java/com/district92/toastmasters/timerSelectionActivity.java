@@ -18,6 +18,7 @@ public class timerSelectionActivity extends ActionBarActivity {
 
     Intent intentFromSelectProjectActivity;
     Intent intentForAdvancedProjects;
+    Intent intentForReport;
 
     public final static String greenTimer = "com.district92.toastmasters.greenTime";
     public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
@@ -28,9 +29,10 @@ public class timerSelectionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
         intentForAdvancedProjects = new Intent(this, AdvancedSpeechesTimerSetting.class);
+        intentForReport = new Intent(this, TimerReport.class);
         setContentView(R.layout.activity_timer_selection);
         ListView selectProjectListView;
-        final String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches"};
+        final String[] listOfProjects = {"Ice-Breaker", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches", "View Report"};
 
         ListView projectSelectListView = (ListView) findViewById(R.id.timerSelectionListView);
         ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfProjects);
@@ -62,6 +64,9 @@ public class timerSelectionActivity extends ActionBarActivity {
                         break;
                     case 5:
                         startActivity(intentForAdvancedProjects);
+                        break;
+                    case 6:
+                        startActivity(intentForReport);
                         break;
 
                 }

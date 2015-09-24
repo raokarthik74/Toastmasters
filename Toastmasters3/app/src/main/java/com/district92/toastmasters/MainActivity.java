@@ -377,7 +377,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central"};
+        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central", "Push Notification"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -430,6 +430,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             clubCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
                             clubCentralIntent.putExtra(roleTitleintent, "Club Central");
                             startActivity(clubCentralIntent);
+                            break;
+                        case 6:
+                            Intent pushNotoficationIntent = new Intent (getActivity(), PushNotificationActivity.class);
+                            startActivity(pushNotoficationIntent);
                             break;
 //                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
 //                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
