@@ -1,4 +1,4 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;

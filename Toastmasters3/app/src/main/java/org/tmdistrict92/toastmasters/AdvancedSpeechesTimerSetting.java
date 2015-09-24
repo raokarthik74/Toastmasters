@@ -1,4 +1,4 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,9 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.NumberPicker;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class AdvancedSpeechesTimerSetting extends AppCompatActivity {

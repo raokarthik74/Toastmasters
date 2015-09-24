@@ -1,4 +1,4 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

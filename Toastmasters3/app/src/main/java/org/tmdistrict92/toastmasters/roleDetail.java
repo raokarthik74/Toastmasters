@@ -1,4 +1,4 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import models.rolesModel;
 
 public class roleDetail extends AppCompatActivity {
 

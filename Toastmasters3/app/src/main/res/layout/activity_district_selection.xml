@@ -4,7 +4,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context="com.district92.toastmasters.DistrictSelectionActivity"
+    tools:context="org.tmdistrict92.toastmasters.DistrictSelectionActivity"
     android:background="@drawable/background"
     >
 

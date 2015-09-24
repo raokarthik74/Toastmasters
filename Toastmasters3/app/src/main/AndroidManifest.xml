@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.district92.toastmasters" >
+    package="org.tmdistrict92.toastmasters" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,20 +14,20 @@
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
     <permission
-        android:name="com.district92.toastmasters.permission.C2D_MESSAGE"
+        android:name="org.tmdistrict92.toastmasters.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.district92.toastmasters.permission.C2D_MESSAGE" />
+    <uses-permission android:name="org.tmdistrict92.toastmasters.permission.C2D_MESSAGE" />
 
     <application
-        android:name=".ParseNotification"
+        android:name="org.tmdistrict92.toastmasters.ParseNotification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:launchMode="singleTop"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="org.tmdistrict92.toastmasters.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,74 +36,74 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".timerSelectionActivity"
+            android:name="org.tmdistrict92.toastmasters.timerSelectionActivity"
             android:label="@string/title_activity_timer_selection"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
+                android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
         <activity
-            android:name=".speechTimer"
+            android:name="org.tmdistrict92.toastmasters.speechTimer"
             android:label="@string/title_activity_speech_timer"
-            android:parentActivityName=".timerSelectionActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.timerSelectionActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.timerSelectionActivity" />
+                android:value="org.tmdistrict92.toastmasters.timerSelectionActivity" />
         </activity>
         <activity
-            android:name=".AhCounterActivity"
+            android:name="org.tmdistrict92.toastmasters.AhCounterActivity"
             android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
+                android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
         <activity
-            android:name=".roleDetail"
+            android:name="org.tmdistrict92.toastmasters.roleDetail"
             android:label="@string/title_activity_role_detail"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
+                android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
         <activity
-            android:name=".webView"
+            android:name="org.tmdistrict92.toastmasters.webView"
             android:label="@string/title_activity_web_view"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.MainActivity" />
+                android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
         <activity
-            android:name=".DataSaveActivity"
+            android:name="org.tmdistrict92.toastmasters.DataSaveActivity"
             android:label="@string/title_activity_data_save"
-            android:parentActivityName=".AhCounterActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.AhCounterActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.AhCounterActivity" />
+                android:value="org.tmdistrict92.toastmasters.AhCounterActivity" />
         </activity>
         <activity
-            android:name=".TimerReport"
+            android:name="org.tmdistrict92.toastmasters.TimerReport"
             android:label="@string/title_activity_timer_report"
-            android:parentActivityName=".speechTimer" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.speechTimer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.speechTimer" />
+                android:value="org.tmdistrict92.toastmasters.speechTimer" />
         </activity>
         <activity
-            android:name=".AdvancedSpeechesTimerSetting"
+            android:name="org.tmdistrict92.toastmasters.AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-            android:parentActivityName=".timerSelectionActivity" >
+            android:parentActivityName="org.tmdistrict92.toastmasters.timerSelectionActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.district92.toastmasters.timerSelectionActivity" />
+                android:value="org.tmdistrict92.toastmasters.timerSelectionActivity" />
         </activity>
 
         <service android:name="com.parse.PushService" />
 
         <receiver
-            android:name=".util.Receiver"
+            android:name="org.tmdistrict92.toastmasters.util.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -128,15 +128,15 @@
             android:resource="@mipmap/ic_launcher" />
 
         <activity
-            android:name=".DistrictSelectionActivity"
+            android:name="org.tmdistrict92.toastmasters.DistrictSelectionActivity"
             android:label="@string/title_activity_district_selection" >
         </activity>
         <activity
-            android:name=".WebactivityForParse"
+            android:name="org.tmdistrict92.toastmasters.WebactivityForParse"
             android:label="@string/title_activity_webactivity_for_parse" >
         </activity>
         <activity
-            android:name=".PushNotificationActivity"
+            android:name="org.tmdistrict92.toastmasters.PushNotificationActivity"
             android:label="@string/title_activity_push_notification" >
         </activity>
     </application>

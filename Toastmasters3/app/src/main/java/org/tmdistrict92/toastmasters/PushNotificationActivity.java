@@ -1,19 +1,16 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.district92.toastmasters.entities.PushDataInfo;
-import com.district92.toastmasters.util.DatePickerFragment;
+import org.tmdistrict92.toastmasters.entities.PushDataInfo;
+import org.tmdistrict92.toastmasters.util.DatePickerFragment;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.parse.ParsePush;
 
 import org.json.JSONException;

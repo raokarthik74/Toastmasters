@@ -1,4 +1,4 @@
-package com.district92.toastmasters.util;
+package org.tmdistrict92.toastmasters.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

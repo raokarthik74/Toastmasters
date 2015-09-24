@@ -1,10 +1,9 @@
-package com.district92.toastmasters.util;
+package org.tmdistrict92.toastmasters.util;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.district92.toastmasters.MainActivity;
-import com.district92.toastmasters.WebactivityForParse;
+import org.tmdistrict92.toastmasters.WebactivityForParse;
 import com.parse.ParsePushBroadcastReceiver;
 
 /**

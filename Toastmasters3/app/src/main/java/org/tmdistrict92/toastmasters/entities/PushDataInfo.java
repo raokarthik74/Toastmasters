@@ -1,4 +1,4 @@
-package com.district92.toastmasters.entities;
+package org.tmdistrict92.toastmasters.entities;
 
 /**
  * Created by Karthik on 9/24/15.

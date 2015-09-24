@@ -1,22 +1,18 @@
-package com.district92.toastmasters;
+package org.tmdistrict92.toastmasters;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.parse.ParseInstallation;
 import com.parse.ParsePush;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class DistrictSelectionActivity extends AppCompatActivity {
