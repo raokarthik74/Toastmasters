@@ -1,11 +1,19 @@
 package com.district92.toastmasters;
 
+import android.app.DialogFragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
+import com.district92.toastmasters.entities.PushDataInfo;
+import com.district92.toastmasters.util.DatePickerFragment;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.parse.ParsePush;
 
 import org.json.JSONException;
@@ -26,29 +34,38 @@ public class PushNotificationActivity extends AppCompatActivity {
         return true;
     }
 
+    public void selectDate(View v) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getFragmentManager(), "datePicker");
+    }
+
     public void pushNotification (View view) {
         try {
-            JSONObject data = new JSONObject("{\"alert\": \"Few Days Remaining\",\"pagetitle\": \"Hello\",\"title\": \"Jamboree\",\"url\": \"https://www.google.co.in\"}");
+            PushDataInfo pushDataInfo = new PushDataInfo();
+            pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+            pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
+            pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
+            //JSONObject data = new JSONObject("{\"alert\": \"The Mets scored!\",\"title\": \"Whats up !\",\"url\": \"www.google.com\"}");
+
+            Gson gson = new Gson();
+            JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
+
             ParsePush push = new ParsePush();
             push.setChannel("DISTRICT-92");
-            push.setData(data);
+
+            push.setData(jsonObject);
             push.sendInBackground();
         }
         catch (JSONException e) {
 
         }
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
 
         return super.onOptionsItemSelected(item);
     }
 }
+
+

@@ -6,13 +6,88 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.district92.toastmasters.PushNotificationActivity">
 
-
-    <Button
+    <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button3"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:text="Notification Title"
+        android:id="@+id/notificationTitleView"
+        android:textSize="20sp"
+         />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notificationTitleEditText"
+        android:layout_below="@+id/notificationTitleView" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Message"
+        android:id="@+id/notificationMessageView"
+        android:layout_below="@+id/notificationTitleEditText"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notificationMessageEditText"
+        android:layout_below="@+id/notificationMessageView"
+        
+         />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Link URl"
+        android:id="@+id/notificationLinkUrlTextView"
+        android:layout_below="@+id/notificationMessageEditText"
+        android:textSize="20sp"
+         />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/notificationLinkUrlEditText"
+        android:layout_below="@+id/notificationLinkUrlTextView"
+         />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Expiry Date"
+        android:id="@+id/notificationExpiryDate"
+        android:layout_below="@+id/notificationLinkUrlEditText"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="60dp"
+        android:text="Set Expiry Date"
+        android:id="@+id/setExpiryDate"
+        android:background="@null"
+        android:onClick="selectDate"
+        android:layout_below="@+id/notificationExpiryDate"
+        android:layout_toRightOf="@+id/notificationExpiryDate"
+        android:layout_toEndOf="@+id/notificationExpiryDate" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Send"
+        android:id="@+id/sendPushButton"
+        android:textColor="@color/icons"
+        android:layout_below="@+id/setExpiryDate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp"
         android:onClick="pushNotification"/>
+
 </RelativeLayout>
