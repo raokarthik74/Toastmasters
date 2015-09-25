@@ -73,7 +73,7 @@ public class PushNotificationActivity extends AppCompatActivity {
 
                 ParsePush push = new ParsePush();
                 Intent intentFromLogin = getIntent();
-                push.setChannel(intentFromLogin.getStringExtra(LoginActivity.userID));
+                push.setChannel("DISTRICT-92");
                 push.setData(jsonObject);
                 push.sendInBackground();
             } catch (JSONException e) {

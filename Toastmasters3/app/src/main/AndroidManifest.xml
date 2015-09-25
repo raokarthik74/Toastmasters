@@ -20,82 +20,91 @@
     <uses-permission android:name="org.tmdistrict92.toastmasters.permission.C2D_MESSAGE" />
 
     <application
-        android:screenOrientation="portrait"
         android:name=".util.ParseNotification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:launchMode="singleTop"
+        android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".timerSelectionActivity"
             android:label="@string/title_activity_timer_selection"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".speechTimer"
             android:label="@string/title_activity_speech_timer"
-            android:parentActivityName=".timerSelectionActivity" >
+            android:parentActivityName=".timerSelectionActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.timerSelectionActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".AhCounterActivity"
             android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".roleDetail"
             android:label="@string/title_activity_role_detail"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".webView"
             android:label="@string/title_activity_web_view"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.MainActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".DataSaveActivity"
             android:label="@string/title_activity_data_save"
-            android:parentActivityName=".AhCounterActivity" >
+            android:parentActivityName=".AhCounterActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.AhCounterActivity" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".TimerReport"
             android:label="@string/title_activity_timer_report"
-            android:parentActivityName=".speechTimer" >
+            android:parentActivityName=".speechTimer"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.speechTimer" />
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-            android:parentActivityName=".timerSelectionActivity" >
+            android:parentActivityName=".timerSelectionActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.tmdistrict92.toastmasters.timerSelectionActivity" />
@@ -128,21 +137,43 @@
             android:name="com.parse.push.notification_icon"
             android:resource="@mipmap/ic_launcher" />
 
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".DistrictSelectionActivity"
-            android:label="@string/title_activity_district_selection" >
+            android:label="@string/title_activity_district_selection"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".WebactivityForParse"
-            android:label="@string/title_activity_webactivity_for_parse" >
+            android:label="@string/title_activity_webactivity_for_parse"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".PushNotificationActivity"
-            android:label="@string/title_activity_push_notification" >
+            android:label="@string/title_activity_push_notification"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:screenOrientation="portrait"
+        <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".NotificationList"
+            android:label="@string/title_activity_notification_list"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.tmdistrict92.toastmasters.MainActivity" />
+        </activity>
+        <activity
+            android:name=".WebViewForNotification"
+            android:label="@string/title_activity_web_view_for_notification"
+            android:parentActivityName=".NotificationList"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.tmdistrict92.toastmasters.NotificationList" />
         </activity>
     </application>
 

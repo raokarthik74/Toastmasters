@@ -61,4 +61,6 @@
     <string name="title_activity_webactivity_for_parse">WebactivityForParse</string>
     <string name="title_activity_push_notification">PushNotificationActivity</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_notification_list">NotificationList</string>
+    <string name="title_activity_web_view_for_notification">WebViewForNotification</string>
 </resources>

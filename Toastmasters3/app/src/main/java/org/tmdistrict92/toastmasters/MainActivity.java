@@ -140,6 +140,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 Intent adminLoginIntent = new Intent(this, LoginActivity.class);
                 startActivity(adminLoginIntent);
                 return true;
+            case R.id.NotificationHistory:
+                Intent notificationListIntent = new Intent(this, NotificationList.class);
+                startActivity(notificationListIntent);
+                return true;
 
             default: return super.onOptionsItemSelected(item);
         }

@@ -20,6 +20,8 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import models.AllNotifications;
+
 public class WebactivityForParse extends AppCompatActivity {
 
     WebView mWebView;
@@ -52,8 +54,13 @@ public class WebactivityForParse extends AppCompatActivity {
                 String jsonData = extras.getString("com.parse.Data");
                 JSONObject json;
                 json = new JSONObject(jsonData);
-                mWebView.loadUrl(json.getString("url"));
-                setTitle(json.getString("title"));
+                String url =  json.getString("url");
+                mWebView.loadUrl(url);
+                String title = json.getString("title");
+                setTitle(title);
+                String alert = json.getString("alert");
+                AllNotifications.setDataToNotoficaitons("Title: " +title + "\n" + "Message: " + alert);
+                AllNotifications.setUrlsForNotifications(url);
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block
