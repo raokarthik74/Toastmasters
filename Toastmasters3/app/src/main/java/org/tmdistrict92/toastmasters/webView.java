@@ -56,7 +56,6 @@ public class webView extends AppCompatActivity {
             setContentView(textView);
         }
     }
-
     private class MyWebViewClient extends WebViewClient {
 
         @Override
