@@ -60,4 +60,5 @@
     </string-array>
     <string name="title_activity_webactivity_for_parse">WebactivityForParse</string>
     <string name="title_activity_push_notification">PushNotificationActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>

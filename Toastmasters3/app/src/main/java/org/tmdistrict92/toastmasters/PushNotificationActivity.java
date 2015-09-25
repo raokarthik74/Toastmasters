@@ -1,15 +1,21 @@
 package org.tmdistrict92.toastmasters;
 
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.tmdistrict92.toastmasters.entities.PushDataInfo;
-import org.tmdistrict92.toastmasters.util.DatePickerFragment;
+
 import com.google.gson.Gson;
 import com.parse.ParsePush;
 
@@ -21,6 +27,15 @@ public class PushNotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Send Notifications");
+        if(!isNetworkAvailable()) {
+            TextView textView = new TextView(this);
+            textView.setTextSize(25);
+            textView.setText("Internet required \n Check internet connection and try again");
+            textView.setGravity(Gravity.CENTER);
+            setContentView(textView);
+        }
+        else
         setContentView(R.layout.activity_push_notification);
     }
 
@@ -31,38 +46,50 @@ public class PushNotificationActivity extends AppCompatActivity {
         return true;
     }
 
-    public void selectDate(View v) {
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getFragmentManager(), "datePicker");
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     public void pushNotification (View view) {
-        try {
-            PushDataInfo pushDataInfo = new PushDataInfo();
-            pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
-            pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
-            pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
-            //JSONObject data = new JSONObject("{\"alert\": \"The Mets scored!\",\"title\": \"Whats up !\",\"url\": \"www.google.com\"}");
 
-            Gson gson = new Gson();
-            JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
+            try {
+                ParsePush.subscribeInBackground("DISTRICT-92");
+                PushDataInfo pushDataInfo = new PushDataInfo();
+                pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
+                pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
 
-            ParsePush push = new ParsePush();
-            push.setChannel("DISTRICT-92");
+                Gson gson = new Gson();
+                JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
 
-            push.setData(jsonObject);
-            push.sendInBackground();
-        }
-        catch (JSONException e) {
+                ParsePush push = new ParsePush();
+                push.setChannel("DISTRICT-92");
 
-        }
+                push.setData(jsonObject);
+                push.sendInBackground();
+            } catch (JSONException e) {
+
+            }
+        Intent intentToReturn = new Intent(this, MainActivity.class);
+        startActivity(intentToReturn);
+        finish();
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        switch (item.getItemId()) {
+            case R.id.netRefreshForPush:
+                finish();
+                startActivity(getIntent());
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
+
 
 

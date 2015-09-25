@@ -136,6 +136,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                // selectDistrictMenuIntent.putExtra(roleTitleintent, "Find A Club");
                 startActivity(selectDistrictMenuIntent);
                 return true;
+            case R.id.admin:
+                Intent adminLoginIntent = new Intent(this, LoginActivity.class);
+                startActivity(adminLoginIntent);
+                return true;
 
             default: return super.onOptionsItemSelected(item);
         }
@@ -250,7 +254,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView clubListView;
-        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Word For The Day", "Meeting roles Manual","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
+        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Meeting roles Manual","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -279,12 +283,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             startActivity(intentForAhCounter);
                             break;
                         case 2 :
-                            Intent wordForTheDayIntent = new Intent (getActivity(), webView.class);
-                            wordForTheDayIntent.putExtra(url, "https://www.wordnik.com/word-of-the-day");
-                            wordForTheDayIntent.putExtra(roleTitleintent, "Word For The Day");
-                            startActivity(wordForTheDayIntent);
-                            break;
-                        case 3 :
                             Intent meetingRolesIntent = new Intent (getActivity(), webView.class);
                             meetingRolesIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAYkVsbnZXeDJfWVhGUTFoTVhtWS1DMkQ5eTdv/view?usp=sharing");
                             meetingRolesIntent.putExtra(roleTitleintent, "Meeting Roles");
@@ -294,7 +292,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
                             intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[position]);
                             rolesModel dataToSetText = new rolesModel();
-                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-4));
+                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-3));
                             startActivity(intentForRemainingRoles);
                             break;
                     }
@@ -367,7 +365,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
         private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central", "Push Notification"};
+        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central"};
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -420,10 +418,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             clubCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
                             clubCentralIntent.putExtra(roleTitleintent, "Club Central");
                             startActivity(clubCentralIntent);
-                            break;
-                        case 6:
-                            Intent pushNotoficationIntent = new Intent (getActivity(), PushNotificationActivity.class);
-                            startActivity(pushNotoficationIntent);
                             break;
 //                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
 //                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);

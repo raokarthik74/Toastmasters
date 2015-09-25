@@ -7,7 +7,7 @@
     tools:context="org.tmdistrict92.toastmasters.PushNotificationActivity">
 
     <TextView
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notification Title"
@@ -16,13 +16,14 @@
          />
 
     <EditText
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notificationTitleEditText"
         android:layout_below="@+id/notificationTitleView" />
 
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Message"
@@ -31,6 +32,7 @@
         android:textSize="20sp"/>
 
     <EditText
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notificationMessageEditText"
@@ -39,55 +41,31 @@
          />
 
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Link URl"
+        android:text="Link URL"
         android:id="@+id/notificationLinkUrlTextView"
         android:layout_below="@+id/notificationMessageEditText"
         android:textSize="20sp"
          />
 
     <EditText
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notificationLinkUrlEditText"
         android:layout_below="@+id/notificationLinkUrlTextView"
          />
 
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Expiry Date"
-        android:id="@+id/notificationExpiryDate"
-        android:layout_below="@+id/notificationLinkUrlEditText"
-        android:textSize="20sp"
-        />
-
     <Button
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:gravity="center"
-        android:layout_height="60dp"
-        android:text="Set Expiry Date"
-        android:id="@+id/setExpiryDate"
-        android:background="@null"
-        android:onClick="selectDate"
-        android:layout_below="@+id/notificationExpiryDate"
-        android:layout_toRightOf="@+id/notificationExpiryDate"
-        android:layout_toEndOf="@+id/notificationExpiryDate" />
-
-    <Button
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Send"
         android:id="@+id/sendPushButton"
         android:textColor="@color/icons"
-        android:layout_below="@+id/setExpiryDate"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp"
-        android:onClick="pushNotification"/>
+        android:onClick="pushNotification"
+        android:layout_below="@id/notificationLinkUrlEditText" />
 
 </RelativeLayout>
