@@ -49,6 +49,10 @@ public class AhCounterActivity extends ActionBarActivity {
             case android.R.id.home:
                 finish();
                 return true;
+            case R.id.goToAhCounterReport:
+                Intent goToReport = new Intent(this, DataSaveActivity.class);
+                startActivity(goToReport);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

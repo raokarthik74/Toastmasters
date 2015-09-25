@@ -56,7 +56,6 @@ public class PushNotificationActivity extends AppCompatActivity {
     public void pushNotification (View view) {
 
             try {
-                ParsePush.subscribeInBackground("DISTRICT-92");
                 PushDataInfo pushDataInfo = new PushDataInfo();
                 pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
@@ -66,8 +65,8 @@ public class PushNotificationActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
 
                 ParsePush push = new ParsePush();
-                push.setChannel("DISTRICT-92");
-
+                Intent intentFromLogin = getIntent();
+                push.setChannel(intentFromLogin.getStringExtra(LoginActivity.userID));
                 push.setData(jsonObject);
                 push.sendInBackground();
             } catch (JSONException e) {

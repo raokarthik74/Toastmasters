@@ -19,9 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.parse.GetCallback;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     String password;
     Intent intentToPush;
     AlertDialog wrongAuth;
+    public final static String userID = "com.district92.toastmasters.userid";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         userId = ((EditText) findViewById(R.id.userIdForLogin)).getText().toString();
         password = ((EditText) findViewById(R.id.passwordForLogin)).getText().toString();
         wrongAuth = new AlertDialog.Builder(this).create();
-                if(userId.equals("admin") && password.equals("admin")){
+        ParseUser.logInInBackground(userId, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser parseUser, ParseException e) {
+                if (parseUser != null) {
+                    intentToPush.putExtra(userID, userId);
                     startActivity(intentToPush);
                     finish();
-                }
-                else {
+                } else {
                     wrongAuth.setTitle("Error");
                     wrongAuth.setMessage("Check User ID and Password");
                     wrongAuth.setButton(AlertDialog.BUTTON_NEUTRAL, "Try Again", new DialogInterface.OnClickListener() {
@@ -65,11 +71,10 @@ public class LoginActivity extends AppCompatActivity {
                             dialog.dismiss();
                         }
                     });
-                wrongAuth.show();
-               }
-//            }
-//        });
-
+                    wrongAuth.show();
+                }
+            }
+        });
     }
 
     private boolean isNetworkAvailable() {

@@ -5,32 +5,88 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     tools:context="org.tmdistrict92.toastmasters.DistrictSelectionActivity"
-    android:background="@drawable/background"
     >
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select District"
+        android:textSize="18sp"
+        android:id="@+id/selectDistrictTextView"
+        />
+
     <Spinner
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/spinner"
+        android:id="@+id/spinnerForDistrictSelection"
+        android:layout_below="@+id/selectDistrictTextView"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Division"
+        android:textSize="18sp"
+        android:id="@+id/selectDivisionTextView"
+        android:layout_below="@id/spinnerForDistrictSelection"
+        />
+
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/spinnerForDivisionSelection"
+        android:layout_below="@+id/selectDivisionTextView"
+         />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Area"
+        android:textSize="18sp"
+        android:id="@+id/selectAreaTextView"
+        android:layout_below="@id/spinnerForDivisionSelection"
+        />
+
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/spinnerForAreaSelection"
+        android:layout_below="@+id/selectAreaTextView"
+        />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Club"
+        android:textSize="18sp"
+        android:id="@+id/selectClubTextView"
+        android:layout_below="@+id/spinnerForAreaSelection"
+        />
+
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/spinnerForClubSelection"
         android:prompt="@string/district_prompt"
-        android:background="@color/spinner"
-        android:layout_above="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="15dp" />
+        android:layout_below="@+id/selectClubTextView"
+        />
 
     <Button
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Done"
         android:id="@+id/button"
         android:textColor="@color/icons"
         android:onClick="districtDoneButton"
-        android:background="@color/spinnerdone"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="46dp" />
+        android:layout_below="@id/spinnerForClubSelection" />
 
 
 </RelativeLayout>

@@ -13,6 +13,7 @@
         android:text="Notification Title"
         android:id="@+id/notificationTitleView"
         android:textSize="20sp"
+
          />
 
     <EditText
@@ -20,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notificationTitleEditText"
-        android:layout_below="@+id/notificationTitleView" />
+        android:layout_below="@+id/notificationTitleView"
+        android:singleLine="true"/>
 
     <TextView
         android:layout_marginTop="25dp"
@@ -37,7 +39,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/notificationMessageEditText"
         android:layout_below="@+id/notificationMessageView"
-        
+        android:singleLine="true"
          />
 
     <TextView
@@ -56,6 +58,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/notificationLinkUrlEditText"
         android:layout_below="@+id/notificationLinkUrlTextView"
+        android:singleLine="true"
          />
 
     <Button

@@ -12,11 +12,6 @@
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/selectDistrict"
-        android:title="Select District"
-        app:showAsAction="never"
-        />
-    <item
         android:id="@+id/admin"
         android:title="Admin"
         app:showAsAction="never"

@@ -51,12 +51,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-        if (isFirstRun) {
-            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
-            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
-            startActivity(intentToSelectDistrict);
-        }
+//        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+//        if (isFirstRun) {
+//            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
+//            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
+//            startActivity(intentToSelectDistrict);
+//        }
 
 
 
@@ -130,12 +130,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 findClubIntent.putExtra(roleTitleintent, "Find A Club");
                 startActivity(findClubIntent);
                 return true;
-            case R.id.selectDistrict:
-                Intent selectDistrictMenuIntent = new Intent (this, DistrictSelectionActivity.class);
-               // selectDistrictMenuIntent.putExtra(url, "http://www.toastmasters.org/Find-a-Club");
-               // selectDistrictMenuIntent.putExtra(roleTitleintent, "Find A Club");
-                startActivity(selectDistrictMenuIntent);
-                return true;
+//            case R.id.selectDistrict:
+//                Intent selectDistrictMenuIntent = new Intent (this, DistrictSelectionActivity.class);
+//               // selectDistrictMenuIntent.putExtra(url, "http://www.toastmasters.org/Find-a-Club");
+//               // selectDistrictMenuIntent.putExtra(roleTitleintent, "Find A Club");
+//                startActivity(selectDistrictMenuIntent);
+//                return true;
             case R.id.admin:
                 Intent adminLoginIntent = new Intent(this, LoginActivity.class);
                 startActivity(adminLoginIntent);
