@@ -38,7 +38,7 @@ public class WebactivityForParse extends AppCompatActivity {
                 JSONObject json;
                 json = new JSONObject(jsonData);
                 mWebView.loadUrl(json.getString("url"));
-                setTitle(json.getString("pagetitle"));
+                setTitle(json.getString("title"));
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block

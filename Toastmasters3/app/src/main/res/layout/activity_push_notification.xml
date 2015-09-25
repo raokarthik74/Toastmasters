@@ -22,7 +22,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/notificationTitleEditText"
         android:layout_below="@+id/notificationTitleView"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:hint="District Event"
+        />
 
     <TextView
         android:layout_marginTop="25dp"
@@ -40,6 +42,7 @@
         android:id="@+id/notificationMessageEditText"
         android:layout_below="@+id/notificationMessageView"
         android:singleLine="true"
+        android:hint="All Are Welcome"
          />
 
     <TextView
@@ -59,6 +62,7 @@
         android:id="@+id/notificationLinkUrlEditText"
         android:layout_below="@+id/notificationLinkUrlTextView"
         android:singleLine="true"
+        android:hint="FORMAT: https://www.google.co.in"
          />
 
     <Button
