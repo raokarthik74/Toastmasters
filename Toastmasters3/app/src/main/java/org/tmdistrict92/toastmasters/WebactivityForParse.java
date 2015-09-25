@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -31,6 +34,18 @@ public class WebactivityForParse extends AppCompatActivity {
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setBuiltInZoomControls(true);
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbarForParse);
+        progressBar.setProgress(0);
+        progressBar.setMax(100);
+        progressBar.setVisibility(View.VISIBLE);
+        mWebView.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {
+                progressBar.setProgress(progress);
+                if (progress == 100) {
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
         try {
             Bundle extras = intent.getExtras();
             if (extras != null) {

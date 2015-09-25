@@ -2,6 +2,7 @@ package org.tmdistrict92.toastmasters.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.PowerManager;
 
 import org.tmdistrict92.toastmasters.WebactivityForParse;
 import com.parse.ParsePushBroadcastReceiver;
@@ -18,5 +19,6 @@ public class Receiver extends ParsePushBroadcastReceiver {
         i.putExtras(intent.getExtras());
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
+
     }
 }
