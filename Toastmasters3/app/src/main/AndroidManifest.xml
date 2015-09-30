@@ -94,11 +94,11 @@
         <activity
             android:name=".TimerReport"
             android:label="@string/title_activity_timer_report"
-            android:parentActivityName=".speechTimer"
+            android:parentActivityName=".timerSelectionActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.tmdistrict92.toastmasters.speechTimer" />
+                android:value="org.tmdistrict92.toastmasters.timerSelectionActivity" />
         </activity>
         <activity
             android:name=".AdvancedSpeechesTimerSetting"

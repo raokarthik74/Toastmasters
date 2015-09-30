@@ -28,12 +28,14 @@ public class speechTimer extends ActionBarActivity {
     Intent intent;
     long greenValue;
     boolean isAdvanced;
+    boolean isExceeded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         timeWhenStopped = 0;
         super.onCreate(savedInstanceState);
         isPaused = false;
+        isExceeded = false;
         intent = getIntent();
         isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
         greenValue = intent.getIntExtra(timerSelectionActivity.greenTimer, 0);
@@ -191,6 +193,7 @@ public class speechTimer extends ActionBarActivity {
         timeUpText.setTextColor(getResources().getColor(R.color.icons));
     }
     public void timeEnded (long end, long elapsed) {
+        isExceeded = true;
         TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
         timeUpText.setTextColor(getResources().getColor(R.color.icons));
         long exceededTime = (elapsed - end);
@@ -220,9 +223,11 @@ public class speechTimer extends ActionBarActivity {
         long minutes=0, seconds=0;
         minutes = TimeUnit.SECONDS.toMinutes(elapsedTimeInSeconds);
         seconds = elapsedTimeInSeconds%60;
-        if (elapsedTimeInSeconds > endTimeInSeconds) {
+        if (isExceeded) {
             long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
-            TimerReportModel.setDataToTimerArray("Name: " + name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+"\n Time Exceeded By \n"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+
+                TimerReportModel.setDataToTimerArray("Name: " + name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+
+                        "\n Time Exceeded By \n"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
         }
         else {
             TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
