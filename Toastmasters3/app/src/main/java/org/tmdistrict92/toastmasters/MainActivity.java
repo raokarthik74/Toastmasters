@@ -135,6 +135,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 Intent settingsIntent = new Intent(this, DistrictSelectionActivity.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.deleteNotifications:
+                AllNotifications.resetNotificationList();
+                AllNotifications.resetUrlsForNotifications();
+                finish();
+                startActivity(getIntent());
+                return true;
             default: return super.onOptionsItemSelected(item);
         }
 
@@ -260,7 +266,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             intentFromSelectProjectActivity = new Intent(getActivity(), speechTimer.class);
             intentForAdvancedProjects = new Intent(getActivity(), AdvancedSpeechesTimerSetting.class);
             intentForReport = new Intent(getActivity(), TimerReport.class);
-            final String[] listOfProjects = {"Project 1", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches", "View Report"};
+            final String[] listOfProjects = {"Project 1", "Project 2 - 9", "Project 10", "Topics", "Evaluation", "Advanced Speeches", "View Report"};
             ListView projectSelectListView = (ListView) rootView.findViewById(R.id.timerSelectionListView);
             ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfProjects);
             projectSelectListView.setAdapter(clubStringArrayAdapter);

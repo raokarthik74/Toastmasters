@@ -12,6 +12,11 @@
         android:title="Settings"
         app:showAsAction="never"
         />
+    <item
+        android:id="@+id/deleteNotifications"
+        android:title="Delete Notifications"
+        app:showAsAction="never"
+        />
 
 
 </menu>

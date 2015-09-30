@@ -67,7 +67,7 @@ public class WebactivityForParse extends AppCompatActivity {
                 String title = json.getString("title");
                 String alert = json.getString("alert");
                // AllNotifications.setDataToNotificaitons(title);
-                AllNotifications.setDataToNotificationMessage(title + "\n" + "Message: \n" + alert);
+                AllNotifications.setDataToNotificationMessage(title + "\n" + "Message: \n" + alert+ "\n" );
                 AllNotifications.setUrlsForNotifications(url);
             }
         } catch (JSONException e) {
