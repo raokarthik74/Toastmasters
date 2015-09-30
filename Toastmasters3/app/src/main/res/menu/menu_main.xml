@@ -1,26 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item
-        android:id="@+id/aboutToastmasters"
-        android:title="About"
-        app:showAsAction="never"
-        />
-    <item
-        android:id="@+id/findClub"
-        android:title="Find a Club"
-        app:showAsAction="never"
-        />
+
     <item
         android:id="@+id/admin"
         android:title="Admin"
         app:showAsAction="never"
         />
-    <item
-        android:id="@+id/NotificationHistory"
-        android:title="Notification History"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_notifications_none_white_24dp"
-        />
+
 
 </menu>

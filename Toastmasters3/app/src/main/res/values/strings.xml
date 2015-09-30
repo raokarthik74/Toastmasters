@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Toastmasters</string>
+    <string name="app_name">Toast Director</string>
 
-    <string name="title_section1">Education</string>
-    <string name="title_section2">Club</string>
-    <string name="title_section3">Leadership</string>
+    <string name="title_section1">Tapper</string>
+    <string name="title_section2">Timer</string>
+    <string name="title_section3">Notifications</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="snack_bar">AC - Advanced Communication</string>

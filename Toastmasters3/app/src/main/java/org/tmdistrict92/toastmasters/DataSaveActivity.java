@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 
 import java.util.ArrayList;
 
@@ -31,8 +32,7 @@ public class DataSaveActivity extends AppCompatActivity {
     }
 
     public void floatingActionButton (View view) {
-        Intent intentFromDataSave = new Intent(this, AhCounterActivity.class);
-        startActivity(intentFromDataSave);
+        finish();
     }
 
     @Override
@@ -42,6 +42,9 @@ public class DataSaveActivity extends AppCompatActivity {
                 ahCounterReport.resetArrayList();
                 finish();
                 startActivity(getIntent());
+                return true;
+            case android.R.id.home:
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

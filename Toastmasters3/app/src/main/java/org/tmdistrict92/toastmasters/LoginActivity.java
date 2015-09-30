@@ -49,10 +49,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void checkAuth (View view) {
+
         intentToPush = new Intent(this, PushNotificationActivity.class);
         userId = ((EditText) findViewById(R.id.userIdForLogin)).getText().toString();
         password = ((EditText) findViewById(R.id.passwordForLogin)).getText().toString();
         wrongAuth = new AlertDialog.Builder(this).create();
+        TextView textView = new TextView(this);
+        textView.setTextSize(25);
+        textView.setText("LOADING...");
+        textView.setGravity(Gravity.CENTER);
+        setContentView(textView);
         ParseUser.logInInBackground(userId, password, new LogInCallback() {
             @Override
             public void done(ParseUser parseUser, ParseException e) {

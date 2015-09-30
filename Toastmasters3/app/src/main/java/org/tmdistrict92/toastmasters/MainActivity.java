@@ -3,6 +3,7 @@ package org.tmdistrict92.toastmasters;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -11,26 +12,34 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import models.EducationModel;
-import models.LeadershipModel;
-import models.rolesModel;
+import models.AllNotifications;
+import models.ahCounterReport;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    public final static String roleTitleintent = "com.district92.toastmasters.roleTitle";
-    public final static String roleDataintent = "com.district92.toastmasters.roleData";
-    public final static String url = "com.district92.toastmasters.url";
-
+    public final static String greenTimer = "com.district92.toastmasters.greenTime";
+    public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
+    public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
+    Button crutchButton;
+    Button fillerButton;
+    Button pauseButton;
+    int crutch = 0, filler = 0, pause = 0;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -117,34 +126,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 //            return true;
 //        }
         switch (item.getItemId()) {
-            case R.id.aboutToastmasters:
-                Intent intentForRemainingRoles = new Intent(this, roleDetail.class);
-                intentForRemainingRoles.putExtra(roleTitleintent, "About Toastmasters");
-                LeadershipModel dataToSetText = new LeadershipModel();
-                intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.aboutToastmastersString());
-                startActivity(intentForRemainingRoles);
-                return true;
-            case R.id.findClub:
-                Intent findClubIntent = new Intent (this, webView.class);
-                findClubIntent.putExtra(url, "http://www.toastmasters.org/Find-a-Club");
-                findClubIntent.putExtra(roleTitleintent, "Find A Club");
-                startActivity(findClubIntent);
-                return true;
-//            case R.id.selectDistrict:
-//                Intent selectDistrictMenuIntent = new Intent (this, DistrictSelectionActivity.class);
-//               // selectDistrictMenuIntent.putExtra(url, "http://www.toastmasters.org/Find-a-Club");
-//               // selectDistrictMenuIntent.putExtra(roleTitleintent, "Find A Club");
-//                startActivity(selectDistrictMenuIntent);
-//                return true;
             case R.id.admin:
                 Intent adminLoginIntent = new Intent(this, LoginActivity.class);
                 startActivity(adminLoginIntent);
                 return true;
-            case R.id.NotificationHistory:
-                Intent notificationListIntent = new Intent(this, NotificationList.class);
-                startActivity(notificationListIntent);
-                return true;
-
             default: return super.onOptionsItemSelected(item);
         }
 
@@ -188,13 +173,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
-                return new educationFragment();
+                return new ahCounterFragment();
             }
             if (position == 1) {
-                return new clubFragment();
+                return new timerFragment();
             }
             if (position == 2) {
-                return new leadershipFragment();
+                return new notificationFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
@@ -253,190 +238,174 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
     }
 
-    public static class clubFragment extends Fragment {
+    public static class timerFragment extends Fragment {
 
-
-
-        private ListView clubListView;
-        String[] listOfClubItems = {"Timer Chronometer", "Ah-Counter Tapper", "Meeting roles Manual","Timer","Ah Counter", "Grammarian", "Toastmaster", "Topics Master", "General Evaluator", "Individual Evaluator"};
+        Intent intentFromSelectProjectActivity;
+        Intent intentForAdvancedProjects;
+        Intent intentForReport;
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public clubFragment() {
+        public timerFragment() {
         }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_club, container, false);
-            clubListView = (ListView)rootView.findViewById(R.id.listView_club);
-            ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfClubItems);
-            clubListView.setAdapter(clubStringArrayAdapter);
-            clubListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            View rootView = inflater.inflate(R.layout.activity_timer_selection, container, false);
+            super.onCreate(savedInstanceState);
+            intentFromSelectProjectActivity = new Intent(getActivity(), speechTimer.class);
+            intentForAdvancedProjects = new Intent(getActivity(), AdvancedSpeechesTimerSetting.class);
+            intentForReport = new Intent(getActivity(), TimerReport.class);
+            final String[] listOfProjects = {"Project 1", "Project 2 - 9", "Project 10", "Table Topics", "Evaluation", "Advanced Speeches", "View Report"};
+            ListView projectSelectListView = (ListView) rootView.findViewById(R.id.timerSelectionListView);
+            ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfProjects);
+            projectSelectListView.setAdapter(clubStringArrayAdapter);
+            projectSelectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
-                   // Snackbar.make(view, listStrings[position], Snackbar.LENGTH_LONG).show();
-                    switch(position) {
-                        case 0 :
-                        Intent intentFromClubFragment = new Intent(getActivity(), timerSelectionActivity.class);
-                        startActivity(intentFromClubFragment);
-                            break;
-                        case 1 :
-                            Intent intentForAhCounter = new Intent(getActivity(), AhCounterActivity.class);
-                            startActivity(intentForAhCounter);
-                            break;
-                        case 2 :
-                            Intent meetingRolesIntent = new Intent (getActivity(), webView.class);
-                            meetingRolesIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAYkVsbnZXeDJfWVhGUTFoTVhtWS1DMkQ5eTdv/view?usp=sharing");
-                            meetingRolesIntent.putExtra(roleTitleintent, "Meeting Roles");
-                            startActivity(meetingRolesIntent);
-                            break;
-                        default :
-                            Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-                            intentForRemainingRoles.putExtra(roleTitleintent, listOfClubItems[position]);
-                            rolesModel dataToSetText = new rolesModel();
-                            intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForRoleDetail(position-3));
-                            startActivity(intentForRemainingRoles);
-                            break;
-                    }
-                }
-            });
-            return rootView;
-        }
-
-        public void startFindClubActivity (View view){
-
-        }
-    }
-    public static class educationFragment extends Fragment {
-
-
-
-        private ListView educationListView;
-        String[] listOfEducationItems = {"1 - The Ice Breaker", "2 - Organize Your Speech", "3 - Get To The Point", "4 - How To Say It", "5 - Your Body Speaks",
-        "6 - Vocal Variety", "7 - Research Your Topic", "8 - Get Comfortable With visual Aids", "9 - Persuade With Power", "10 - Inspire Your Audience",
-                "AC - The Entertaining Speaker",
-                "AC - Speaking to Inform",
-                "AC - Public Relations",
-                "AC - Facilitating Discussion",
-                "AC - Specialty Speeches",
-                "AC - Speeches by Management",
-                "AC - The Professional Speaker",
-                "AC - Technical Presentations",
-                "AC - Persuasive Speaking",
-                "AC - Communicating on Video",
-                "AC - Storytelling" ,
-                "AC - Interpretive Reading" ,
-                "AC - Interpersonal Communication" ,
-                "AC - Special Occasion Speeches",
-                "AC - Humorously Speaking" };
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public educationFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_education, container, false);
-            educationListView = (ListView)rootView.findViewById(R.id.education_listview);
-            ArrayAdapter<String> educationStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfEducationItems);
-            educationListView.setAdapter(educationStringArrayAdapter);
-            // Snackbar.make(activity_main,R.string.snack_bar, Snackbar.LENGTH_LONG).show();
-            educationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    //Toast.makeText(getActivity(), listStrings[position], Toast.LENGTH_LONG).show();
-                     // Snackbar.make(view, "AC - Advanced Communication Track", Snackbar.LENGTH_LONG).show();
-                    Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-                    intentForRemainingRoles.putExtra(roleTitleintent, listOfEducationItems[position]);
-                    EducationModel dataToSetText = new EducationModel();
-                    intentForRemainingRoles.putExtra(roleDataintent,dataToSetText.allTheDataForEducationDetail(position));
-                    startActivity(intentForRemainingRoles);
-//                    Intent intentFromEducationFragment = new Intent(getActivity(), educationDetailActivity.class);
-//                    intentFromEducationFragment.putExtra(positionOfSelectionOfObjectFromEducationFragment, positionOfEducation);
-//                    intentFromEducationFragment.putExtra(titleOfEducationDetailPage, listOfEducationItems[positionOfEducation]);
-//                    startActivity(intentFromEducationFragment);
-                }
-            });
-            return rootView;
-        }
-    }
-    public static class leadershipFragment extends Fragment {
-
-
-
-        private ListView leadershipListView;
-        String[] listOfLeadershipItems = {"District Leadership Handbook","Club Leadership Handbook", "Contest Rule Book", "DCP Points", "District Central", "Club Central"};
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public leadershipFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_leadership, container, false);
-            leadershipListView = (ListView)rootView.findViewById(R.id.leadership_listView);
-            ArrayAdapter<String> leadershipStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfLeadershipItems);
-            leadershipListView.setAdapter(leadershipStringArrayAdapter);
-            leadershipListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    switch (position) {
+                public void onItemClick(AdapterView<?> parent, View view, int positionOfProject, long id) {
+                    int greenTime = 4;
+                    switch (positionOfProject) {
                         case 0:
-                            Intent  DistrictLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
-                            DistrictLeadershipHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTASUF4eFBMR2xUY3c/view?usp=sharing");
-                            DistrictLeadershipHandbookIntent.putExtra(roleTitleintent, "District Leadership");
-                            startActivity(DistrictLeadershipHandbookIntent);
+                            greenTime = 4;
+                            callTheTimer(greenTime, listOfProjects[0]);
                             break;
                         case 1:
-                            Intent clubLeadershipHandbookIntent = new Intent (getActivity(), webView.class);
-                            clubLeadershipHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAZkJXd1BZVUtkNUE/view?usp=sharing");
-                            clubLeadershipHandbookIntent.putExtra(roleTitleintent, "Club Leadership");
-                            startActivity(clubLeadershipHandbookIntent);
+                            greenTime = 5;
+                            callTheTimer(greenTime, listOfProjects[1]);
                             break;
-                        case 2 :
-                            Intent  contestHandbookIntent = new Intent (getActivity(), webView.class);
-                            contestHandbookIntent.putExtra(url, "https://drive.google.com/file/d/0B58Y2SgFWjTAVlZ6SkMtUEc2NFU/view?usp=sharing");
-                            contestHandbookIntent.putExtra(roleTitleintent, "Contest Rule Book");
-                            startActivity(contestHandbookIntent);
+                        case 2:
+                            greenTime = 8;
+                            callTheTimer(greenTime, listOfProjects[2]);
                             break;
                         case 3:
-                            Intent dcpPointsIntent = new Intent (getActivity(), webView.class);
-                            dcpPointsIntent.putExtra(url, "http://dashboards.toastmasters.org/mobi/");
-                            dcpPointsIntent.putExtra(roleTitleintent, "DCP Points");
-                            startActivity(dcpPointsIntent);
+                            greenTime = 1;
+                            callTheTimer(greenTime, listOfProjects[3]);
                             break;
                         case 4:
-                            Intent districtCentralIntent = new Intent (getActivity(), webView.class);
-                            districtCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
-                            districtCentralIntent.putExtra(roleTitleintent, "District Central");
-                            startActivity(districtCentralIntent);
+                            greenTime = 2;
+                            callTheTimer(greenTime, listOfProjects[4]);
                             break;
                         case 5:
-                            Intent clubCentralIntent = new Intent (getActivity(), webView.class);
-                            clubCentralIntent.putExtra(url, "https://www.toastmasters.org/login.aspx?returnUrl=/My-Toastmasters/Profile/Club-Central");
-                            clubCentralIntent.putExtra(roleTitleintent, "Club Central");
-                            startActivity(clubCentralIntent);
+                            startActivity(intentForAdvancedProjects);
                             break;
-//                        default: Intent intentForRemainingRoles = new Intent(getActivity(), roleDetail.class);
-//                        intentForRemainingRoles.putExtra(roleTitleintent, listOfLeadershipItems[position]);
-//                        LeadershipModel dataToSetText = new LeadershipModel();
-//                        intentForRemainingRoles.putExtra(roleDataintent, dataToSetText.allTheDataForLeadershipDetail(position - 6));
-//                        startActivity(intentForRemainingRoles);
+                        case 6:
+                            startActivity(intentForReport);
+                            break;
                     }
 
-//                    Intent intentFromLeadershipFragment = new Intent(getActivity(), LeadershipDetailActivity.class);
-//                    intentFromLeadershipFragment.putExtra(positionOfSelectionOfObjectFromLeadershipFragment, positionOfLeadership);
-//                    intentFromLeadershipFragment.putExtra(titleOfEducationDetailPage, listOfLeadershipItems[positionOfLeadership]);
-//                    startActivity(intentFromLeadershipFragment);
                 }
+
+
             });
             return rootView;
         }
+        public void callTheTimer (int green, String title) {
+            intentFromSelectProjectActivity.putExtra(greenTimer, green);
+            intentFromSelectProjectActivity.putExtra(TimerTitle, title);
+            startActivity(intentFromSelectProjectActivity);
+        }
     }
+
+    public static class ahCounterFragment extends Fragment {
+
+
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public ahCounterFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.activity_ah_counter, container, false);
+            // ArrayList<String> dataForDisplay = new ArrayList<String>();
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+           // RelativeLayout parent = (RelativeLayout) rootView.findViewById(R.id.parentRelativeLayoutofAhCounter);
+            //Snackbar.make(rootView, "Tap on the numbers to count", Snackbar.LENGTH_LONG).show();
+            return rootView;
+        }
+
+
+    }
+
+    public void crutchIncrement(View view) {
+        ++crutch;
+        crutchButton = (Button) findViewById(R.id.crutchWordId);
+        crutchButton.setText(" " + crutch);
+    }
+
+    public void fillerIncrement(View view) {
+        ++filler;
+        fillerButton = (Button) findViewById(R.id.fillerIncrementId);
+        fillerButton.setText(" " + filler);
+    }
+
+    public void pauseIncrement(View view) {
+        ++pause;
+        pauseButton = (Button) findViewById(R.id.pauseIncrementId);
+        pauseButton.setText(" " + pause);
+    }
+
+    public void ahCounterResetButton(View view) {
+        crutch = filler = pause = 0;
+        ((EditText) findViewById(R.id.enterName)).setText("");
+        crutchButton = (Button) findViewById(R.id.crutchWordId);
+        fillerButton = (Button) findViewById(R.id.fillerIncrementId);
+        pauseButton = (Button) findViewById(R.id.pauseIncrementId);
+        crutchButton.setText("0");
+        fillerButton.setText("0");
+        pauseButton.setText("0");
+    }
+
+    public void ahCounterSaveButton(View view) {
+        EditText nameFromActivity = (EditText) findViewById(R.id.enterName);
+        String name = nameFromActivity.getText().toString();
+        ahCounterReport.setDataToArray(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
+        // dataForDisplay.add(name);
+        Intent forDataSaveActivity = new Intent(this, DataSaveActivity.class);
+        // forDataSaveActivity.putStringArrayListExtra(dataToDisplay, dataForDisplay);
+        startActivity(forDataSaveActivity);
+    }
+
+    public void goToReport (View view) {
+        Intent goToReport = new Intent(this, DataSaveActivity.class);
+        startActivity(goToReport);
+    }
+
+    public static class notificationFragment extends Fragment {
+
+        Intent intentForWebViewFromNotifications;
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public notificationFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.activity_notification_list, container, false);
+            intentForWebViewFromNotifications = new Intent(getActivity(), WebViewForNotification.class);
+            ListView listView = (ListView) rootView.findViewById(R.id.listViewOfNotifications);
+            ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, AllNotifications.getDataFromNotificaitons());
+            listView.setAdapter(adaptorForNotifications);
+            if (AllNotifications.getDataFromNotificaitons().isEmpty()) {
+                TextView textView = new TextView(getActivity());
+                textView.setTextSize(25);
+                textView.setText("No Notifications");
+                textView.setGravity(Gravity.CENTER);
+                return textView;
+            } else {
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        intentForWebViewFromNotifications.putExtra(urlForNotification, AllNotifications.getUrlsForNotifications(position));
+                        startActivity(intentForWebViewFromNotifications);
+                    }
+                });
+                return rootView;
+            }
+        }
+        }
 }
+

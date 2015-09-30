@@ -29,8 +29,7 @@ public class TimerReport extends AppCompatActivity {
     }
 
     public void floatingActionButtonforTimer (View view) {
-        Intent intentFromDataSave = new Intent(this, timerSelectionActivity.class);
-        startActivity(intentFromDataSave);
+        finish();
     }
 
     @Override

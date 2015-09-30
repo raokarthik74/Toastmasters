@@ -24,7 +24,7 @@ public class WebViewForNotification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view_for_notification);
         Intent intent = getIntent();
-        String url = intent.getStringExtra(NotificationList.urlForNotification);
+        String url = intent.getStringExtra(MainActivity.urlForNotification);
         setTitle("Notification");
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbarForNotificationList);
         WebView mWebView = (WebView)findViewById(R.id.webViewForNotificationList);
