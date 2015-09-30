@@ -41,11 +41,6 @@ public class PushNotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push_notification);
     }
 
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager = (InputMethodManager)  activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -61,19 +56,17 @@ public class PushNotificationActivity extends AppCompatActivity {
     }
 
     public void pushNotification (View view) {
-
             try {
+                Intent intentFromLogin = getIntent();
+                String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
-                pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setTitle("\n" + userID + ":\n" +  ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
-
                 Gson gson = new Gson();
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
-
                 ParsePush push = new ParsePush();
-                Intent intentFromLogin = getIntent();
-                push.setChannel("DISTRICT-92");
+                push.setChannel(userID);
                 push.setData(jsonObject);
                 push.sendInBackground();
             } catch (JSONException e) {

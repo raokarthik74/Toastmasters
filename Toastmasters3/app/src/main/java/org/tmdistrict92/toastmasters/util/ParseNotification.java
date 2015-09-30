@@ -14,7 +14,6 @@ public class ParseNotification extends Application{
         super.onCreate();
         Parse.initialize(this, "D0o3CCt4nwYWbIgmb9HUes1RZD1tcBHpFZSoEDZQ", "26Y4hyhHOKFl501zkmX3XmzZCcZ0zIm8AH7IWVHz");
         ParseInstallation.getCurrentInstallation().saveInBackground();
-        ParsePush.subscribeInBackground("DISTRICT-92");
     }
 
 }

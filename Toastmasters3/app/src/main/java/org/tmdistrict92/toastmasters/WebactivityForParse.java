@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -30,6 +31,7 @@ public class WebactivityForParse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
+        setTitle("Notification");
         setContentView(R.layout.activity_webactivity_for_parse);
         mWebView = (WebView)findViewById(R.id.webView2);
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -37,12 +39,9 @@ public class WebactivityForParse extends AppCompatActivity {
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setBuiltInZoomControls(true);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbarForParse);
-        progressBar.setProgress(0);
-        progressBar.setMax(100);
         progressBar.setVisibility(View.VISIBLE);
         mWebView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-                progressBar.setProgress(progress);
                 if (progress == 100) {
                     progressBar.setVisibility(View.GONE);
                 }
@@ -55,11 +54,20 @@ public class WebactivityForParse extends AppCompatActivity {
                 JSONObject json;
                 json = new JSONObject(jsonData);
                 String url =  json.getString("url");
-                mWebView.loadUrl(url);
+                if (URLUtil.isValidUrl(url)) {
+                    mWebView.loadUrl(url);
+                }
+                else {
+                    TextView textView = new TextView(this);
+                    textView.setTextSize(25);
+                    textView.setText("No Webpage \n To Show");
+                    textView.setGravity(Gravity.CENTER);
+                    setContentView(textView);
+                }
                 String title = json.getString("title");
-                setTitle(title);
                 String alert = json.getString("alert");
-                AllNotifications.setDataToNotoficaitons("Title: " +title + "\n" + "Message: " + alert);
+               // AllNotifications.setDataToNotificaitons(title);
+                AllNotifications.setDataToNotificationMessage(title + "\n" + "Message: \n" + alert);
                 AllNotifications.setUrlsForNotifications(url);
             }
         } catch (JSONException e) {

@@ -7,19 +7,29 @@ import java.util.ArrayList;
  */
 public class AllNotifications {
 
-    public static ArrayList<String> notificationsForDisplay = new ArrayList<String>();
+    //public static ArrayList<String> notificationsForDisplay = new ArrayList<String>();
+    public static ArrayList<String> notificationsForDisplayMessage = new ArrayList<String>();
     public static ArrayList<String> UrlsForNotifications = new ArrayList<String>();
 
-    public static void setDataToNotoficaitons (String name) {
-        notificationsForDisplay.add(name);
+//    public static void setDataToNotificaitons (String name) {
+//        notificationsForDisplay.add(name);
+//    }
+//
+//    public static String getDataFromNotificaitons (int position) {
+//        return notificationsForDisplay.get(position);
+//    }
+
+    public static void setDataToNotificationMessage (String name) {
+        notificationsForDisplayMessage.add(name);
     }
 
-    public static ArrayList<String> getDataFromNotificaitons () {
-        return notificationsForDisplay;
+    public static ArrayList<String> getDataFromNotificationMessage () {
+        return notificationsForDisplayMessage;
     }
 
-    public static void resetNotoficationList () {
-        notificationsForDisplay.clear();
+    public static void resetNotificationList () {
+       // notificationsForDisplay.clear();
+        notificationsForDisplayMessage.clear();
     }
 
     public static void setUrlsForNotifications (String name) {

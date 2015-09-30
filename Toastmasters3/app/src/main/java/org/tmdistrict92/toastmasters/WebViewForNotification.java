@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -31,15 +32,22 @@ public class WebViewForNotification extends AppCompatActivity {
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
         mWebView.getSettings().setBuiltInZoomControls(true);
-        progressBar.setProgress(0);
-        progressBar.setMax(100);
         progressBar.setVisibility(View.VISIBLE);
         mWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-        mWebView.loadUrl(url);
+        if (URLUtil.isValidUrl(url)) {
+            mWebView.loadUrl(url);
+        }
+        else {
+            TextView textView = new TextView(this);
+            textView.setTextSize(25);
+            textView.setText("No WebPage \n To Show");
+            textView.setGravity(Gravity.CENTER);
+            setContentView(textView);
+        }
+
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-                progressBar.setProgress(progress);
                 if(progress == 100) {
                     progressBar.setVisibility(View.GONE);
                 }
@@ -84,9 +92,7 @@ public class WebViewForNotification extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

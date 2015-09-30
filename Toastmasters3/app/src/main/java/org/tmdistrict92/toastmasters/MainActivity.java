@@ -36,6 +36,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String greenTimer = "com.district92.toastmasters.greenTime";
     public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
     public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
+    public final static String titleForNotification = "com.district92.toastmasters.titleForNotification";
     Button crutchButton;
     Button fillerButton;
     Button pauseButton;
@@ -60,12 +61,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-//        if (isFirstRun) {
-//            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
-//            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
-//            startActivity(intentToSelectDistrict);
-//        }
+        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if (isFirstRun) {
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
+            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
+            startActivity(intentToSelectDistrict);
+        }
 
 
 
@@ -129,6 +130,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             case R.id.admin:
                 Intent adminLoginIntent = new Intent(this, LoginActivity.class);
                 startActivity(adminLoginIntent);
+                return true;
+            case R.id.settings:
+                Intent settingsIntent = new Intent(this, DistrictSelectionActivity.class);
+                startActivity(settingsIntent);
                 return true;
             default: return super.onOptionsItemSelected(item);
         }
@@ -387,9 +392,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             View rootView = inflater.inflate(R.layout.activity_notification_list, container, false);
             intentForWebViewFromNotifications = new Intent(getActivity(), WebViewForNotification.class);
             ListView listView = (ListView) rootView.findViewById(R.id.listViewOfNotifications);
-            ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, AllNotifications.getDataFromNotificaitons());
+            ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, AllNotifications.getDataFromNotificationMessage());
             listView.setAdapter(adaptorForNotifications);
-            if (AllNotifications.getDataFromNotificaitons().isEmpty()) {
+            if (AllNotifications.getDataFromNotificationMessage().isEmpty()) {
                 TextView textView = new TextView(getActivity());
                 textView.setTextSize(25);
                 textView.setText("No Notifications");
@@ -400,6 +405,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         intentForWebViewFromNotifications.putExtra(urlForNotification, AllNotifications.getUrlsForNotifications(position));
+                      //  intentForWebViewFromNotifications.putExtra(titleForNotification, AllNotifications.getDataFromNotificaitons(position));
                         startActivity(intentForWebViewFromNotifications);
                     }
                 });

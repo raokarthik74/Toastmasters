@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.parse.GetCallback;
@@ -54,11 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         userId = ((EditText) findViewById(R.id.userIdForLogin)).getText().toString();
         password = ((EditText) findViewById(R.id.passwordForLogin)).getText().toString();
         wrongAuth = new AlertDialog.Builder(this).create();
-        TextView textView = new TextView(this);
-        textView.setTextSize(25);
-        textView.setText("LOADING...");
-        textView.setGravity(Gravity.CENTER);
-        setContentView(textView);
+        final ProgressBar loading = (ProgressBar) findViewById(R.id.progressBarOfLoading);
+        loading.setVisibility(View.VISIBLE);
         ParseUser.logInInBackground(userId, password, new LogInCallback() {
             @Override
             public void done(ParseUser parseUser, ParseException e) {
@@ -75,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                             ((EditText) findViewById(R.id.userIdForLogin)).setText("");
                             ((EditText) findViewById(R.id.passwordForLogin)).setText("");
                             dialog.dismiss();
+                            loading.setVisibility(View.INVISIBLE);
                         }
                     });
                     wrongAuth.show();
