@@ -1,5 +1,7 @@
 package org.tmdistrict92.toastmasters;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +34,10 @@ public class DistrictSelectionActivity extends AppCompatActivity {
     }
 
     public void addItemsToSpinner () {
+        Spinner districtSpinner = (Spinner) findViewById(R.id.spinnerForDistrictSelection);
+        ArrayAdapter<String> districtArrayAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerClass.divisionData());
+        districtArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        districtSpinner.setAdapter(districtArrayAdaptor);
         Spinner divisionSpinner = (Spinner) findViewById(R.id.spinnerForDivisionSelection);
         ArrayAdapter<String> divisionArrayAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerClass.divisionData());
         divisionArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -47,13 +53,13 @@ public class DistrictSelectionActivity extends AppCompatActivity {
     }
 
     public void districtDoneButton (View view) {
-       // String districtValue = ((Spinner) findViewById(R.id.spinnerForDistrictSelection)).getSelectedItem().toString();
+        String districtValue = ((Spinner) findViewById(R.id.spinnerForDistrictSelection)).getSelectedItem().toString();
         String divisionValue = ((Spinner) findViewById(R.id.spinnerForDivisionSelection)).getSelectedItem().toString();
         String areaValue = ((Spinner) findViewById(R.id.spinnerForAreaSelection)).getSelectedItem().toString();
         String clubValue = ((Spinner) findViewById(R.id.spinnerForClubSelection)).getSelectedItem().toString();
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.remove("channels");
-        ParsePush.subscribeInBackground("DISTRICT-92");
+        ParsePush.subscribeInBackground(districtValue);
             ParsePush.subscribeInBackground(divisionValue);
             ParsePush.subscribeInBackground(areaValue);
             ParsePush.subscribeInBackground(clubValue);

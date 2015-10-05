@@ -52,7 +52,7 @@
         android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Link URL"
+        android:text="Link URL / Detail Message"
         android:id="@+id/notificationLinkUrlTextView"
         android:layout_below="@+id/notificationMessageEditText"
         android:textSize="20sp"
@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/notificationLinkUrlEditText"
         android:layout_below="@+id/notificationLinkUrlTextView"
+        android:hint="https://www.google.co.in"
         android:singleLine="true"
-        android:hint="FORMAT: https://www.google.co.in"
          />
 
     <Button

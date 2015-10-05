@@ -60,7 +60,8 @@ public class WebactivityForParse extends AppCompatActivity {
                 else {
                     TextView textView = new TextView(this);
                     textView.setTextSize(25);
-                    textView.setText("No Webpage \n To Show");
+                    textView.setText(url);
+                    textView.setPadding(25, 0, 25, 0);
                     textView.setGravity(Gravity.CENTER);
                     setContentView(textView);
                 }

@@ -9,7 +9,7 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/enterName"
@@ -27,12 +27,12 @@
         android:layout_below="@+id/enterName"
         >
         <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:id="@+id/crutchWordId"
             android:onClick="crutchIncrement"
             android:text="0"
-            android:textSize="45sp"
+            android:textSize="30sp"
             android:textColor="@color/icons" />
         <TextView
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:text="Crutch Words"
         android:id="@+id/textView1"
         android:layout_gravity="center"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_weight="0.75"
         android:gravity="center"/>
     </LinearLayout>
@@ -54,12 +54,12 @@
         android:layout_alignParentStart="true"
         >
         <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:id="@+id/fillerIncrementId"
             android:onClick="fillerIncrement"
             android:text="0"
-            android:textSize="45sp"
+            android:textSize="30sp"
             android:textColor="@color/icons" />
         <TextView
             android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
             android:text="Filler Words"
             android:id="@+id/textView2"
             android:layout_gravity="center"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:layout_weight="0.75"
             android:gravity="center"/>
     </LinearLayout>
@@ -80,12 +80,12 @@
         android:layout_alignParentStart="true"
         >
         <Button
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:id="@+id/pauseIncrementId"
             android:onClick="pauseIncrement"
             android:text="0"
-            android:textSize="45sp"
+            android:textSize="30sp"
             android:textColor="@color/icons" />
         <TextView
             android:layout_width="wrap_content"
@@ -93,14 +93,14 @@
             android:text="Unwanted \n Pauses"
             android:id="@+id/textView3"
             android:layout_gravity="center"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:layout_weight="0.75"
             android:gravity="center"/>
     </LinearLayout>
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
         android:text="SAVE TO REPORT"
         android:textColor="@color/icons"
         android:id="@+id/ahCounterSaveButtonId"
@@ -113,7 +113,7 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
         android:text="Reset"
         android:textColor="@color/icons"
         android:id="@+id/ahCounterResetButtonId"
@@ -124,7 +124,7 @@
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
         android:text="REPORT"
         android:textColor="@color/icons"
         android:id="@+id/goToReport"

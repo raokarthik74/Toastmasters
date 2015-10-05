@@ -2,7 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Karthik on 30/09/15.
@@ -10,8 +12,8 @@ import java.util.List;
 public class spinnerClass {
 
 
-//    public static List<String> districtData () {
-//        List<String> itemsToDistrictSpinner = new ArrayList<String>();
+    public static List<String> districtData () {
+        List<String> itemsToDistrictSpinner = new ArrayList<String>();
 //        itemsToDistrictSpinner.add("DISTRICT-2");
 //        itemsToDistrictSpinner.add("DISTRICT-9");
 //        itemsToDistrictSpinner.add("DISTRICT-15");
@@ -95,7 +97,7 @@ public class spinnerClass {
 //        itemsToDistrictSpinner.add("DISTRICT-72");
 //        itemsToDistrictSpinner.add("DISTRICT-73");
 //        itemsToDistrictSpinner.add("DISTRICT-90");
-//        itemsToDistrictSpinner.add("DISTRICT-92");
+        itemsToDistrictSpinner.add("DISTRICT-92");
 //        itemsToDistrictSpinner.add("DISTRICT-41");
 //        itemsToDistrictSpinner.add("DISTRICT-67");
 //        itemsToDistrictSpinner.add("DISTRICT-76");
@@ -109,30 +111,34 @@ public class spinnerClass {
 //        itemsToDistrictSpinner.add("DISTRICT-80");
 //        itemsToDistrictSpinner.add("DISTRICT-87");
 //        itemsToDistrictSpinner.add("DISTRICT-97");
-//        return itemsToDistrictSpinner;
-//    }
+        return itemsToDistrictSpinner;
+    }
 
     public static List<String> divisionData () {
         List<String> itemsToDivisionSpinner = new ArrayList<String>();
-        itemsToDivisionSpinner.addAll(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H", "I"));
+        itemsToDivisionSpinner.addAll(Arrays.asList("F"));
         return itemsToDivisionSpinner;
     }
 
-    public static List<String> areaData (String div) {
+    public static List<String> areaData () {
         List<String> itemsToAreaSpinner = new ArrayList<String>();
-        if (div.equals("G") || div.equals("H")) {
-            itemsToAreaSpinner.addAll(Arrays.asList("1", "2", "3"));
-        }
-        else {
-            itemsToAreaSpinner.addAll(Arrays.asList("1", "2", "3", "4"));
-        }
+//        if (div.equals("G") || div.equals("H")) {
+//            itemsToAreaSpinner.addAll(Arrays.asList("1", "2", "3"));
+//        }
+       // else {
+            itemsToAreaSpinner.addAll(Arrays.asList("4"));
+       // }
         return itemsToAreaSpinner;
     }
 
-    public static List<String> clubData (String div, String area) {
-
+    public static List<String> clubData () {
         List<String> itemsToClubSpinner = new ArrayList<String>();
-        itemsToClubSpinner.addAll(Arrays.asList("Mysore", "Bangalore"));
+        itemsToClubSpinner.addAll(Arrays.asList("Infosys Toastmasters Mysore",
+                "Mysore Toastmasters",
+                "Leaders Garden",
+                "Mysore Impact Club",
+                "SDMIMD Toastmasters",
+                "Myra Toastmasters Club"));
         return itemsToClubSpinner;
     }
 }
