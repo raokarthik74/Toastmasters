@@ -32,7 +32,7 @@
             android:id="@+id/crutchWordId"
             android:onClick="crutchIncrement"
             android:text="0"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             />
@@ -61,7 +61,7 @@
             android:id="@+id/fillerIncrementId"
             android:onClick="fillerIncrement"
             android:text="0"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             android:layout_marginTop="10dp"/>
@@ -89,7 +89,7 @@
             android:id="@+id/pauseIncrementId"
             android:onClick="pauseIncrement"
             android:text="0"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             android:layout_marginTop="10dp"
