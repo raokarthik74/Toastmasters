@@ -35,7 +35,7 @@ public class DistrictSelectionActivity extends AppCompatActivity {
 
     public void addItemsToSpinner () {
         Spinner districtSpinner = (Spinner) findViewById(R.id.spinnerForDistrictSelection);
-        ArrayAdapter<String> districtArrayAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerClass.divisionData());
+        ArrayAdapter<String> districtArrayAdaptor = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerClass.districtData());
         districtArrayAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         districtSpinner.setAdapter(districtArrayAdaptor);
         Spinner divisionSpinner = (Spinner) findViewById(R.id.spinnerForDivisionSelection);
