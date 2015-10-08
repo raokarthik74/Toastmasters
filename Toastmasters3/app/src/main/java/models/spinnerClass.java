@@ -133,12 +133,12 @@ public class spinnerClass {
 
     public static List<String> clubData () {
         List<String> itemsToClubSpinner = new ArrayList<String>();
-        itemsToClubSpinner.addAll(Arrays.asList("Infosys Toastmasters Mysore",
-                "Mysore Toastmasters",
-                "Leaders Garden",
-                "Mysore Impact Club",
-                "SDMIMD Toastmasters",
-                "Myra Toastmasters Club"));
+        itemsToClubSpinner.addAll(Arrays.asList("Infosys-Toastmasters-Mysore",
+                "Mysore-Toastmasters",
+                "Leaders-Garden",
+                "Mysore-Impact-Club",
+                "SDMIMD-Toastmasters",
+                "Myra-Toastmasters-Club"));
         return itemsToClubSpinner;
     }
 }
