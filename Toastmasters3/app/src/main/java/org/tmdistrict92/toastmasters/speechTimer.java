@@ -39,12 +39,12 @@ public class speechTimer extends ActionBarActivity {
         isExceeded = false;
         intent = getIntent();
         isAdvanced = intent.getBooleanExtra(AdvancedSpeechesTimerSetting.isAdvanced, false);
-        greenValue = intent.getIntExtra(MainActivity.greenTimer, 0);
+        greenValue = intent.getIntExtra(TimerSelection.greenTimer, 0);
         if(isAdvanced) {
             setTitle(intent.getStringExtra(AdvancedSpeechesTimerSetting.timerTitle));
         }
         else {
-            setTitle(intent.getStringExtra(MainActivity.TimerTitle));
+            setTitle(intent.getStringExtra(TimerSelection.TimerTitle));
         }
         greenValue = TimeUnit.MINUTES.toSeconds(greenValue);
         setContentView(R.layout.activity_speech_timer);
@@ -242,7 +242,6 @@ public class speechTimer extends ActionBarActivity {
             editor.putStringSet("timerSet", timerSet);
             editor.commit();
         }
-        Intent forDataSaveActivity = new Intent(this, TimerReport.class);
-        startActivity(forDataSaveActivity);
+        MainActivity.getInstance().recreate();
     }
 }

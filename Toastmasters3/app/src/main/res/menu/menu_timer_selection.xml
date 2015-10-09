@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="org.tmdistrict92.toastmasters.timerSelectionActivity">
+    tools:context="org.tmdistrict92.toastmasters.TimerSelection">
 
 </menu>

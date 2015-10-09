@@ -43,25 +43,9 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".DataSaveActivity"
-            android:label="@string/title_activity_data_save"
-
-            android:screenOrientation="portrait" >
-
-        </activity>
-        <activity
-            android:name=".TimerReport"
-            android:label="@string/title_activity_timer_report"
-
-            android:screenOrientation="portrait" >
-
-        </activity>
-        <activity
             android:name=".AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-
             android:screenOrientation="portrait" >
-
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -86,9 +70,11 @@
                 <category android:name="org.tmdistrict92.toastmasters" />
             </intent-filter>
         </receiver>
+
         <meta-data
             android:name="com.parse.push.notification_icon"
             android:resource="@mipmap/ic_launcher" />
+
         <activity
             android:name=".DistrictSelectionActivity"
             android:label="@string/title_activity_district_selection"
@@ -112,7 +98,15 @@
         <activity
             android:name=".WebViewForNotification"
             android:label="@string/title_activity_web_view_for_notification"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".TimerSelection"
+            android:label="@string/title_activity_timer_selection" >
+        </activity>
+        <activity
+            android:name=".AhCounter"
+            android:label="@string/title_activity_ah_counter" >
         </activity>
     </application>
 

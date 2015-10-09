@@ -38,14 +38,9 @@ import org.json.JSONObject;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
-    public final static String greenTimer = "com.district92.toastmasters.greenTime";
-    public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
+
     public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
     public final static String titleForNotification = "com.district92.toastmasters.titleForNotification";
-    Button crutchButton;
-    Button fillerButton;
-    Button pauseButton;
-    int crutch = 0, filler = 0, pause = 0;
     static MainActivity mainActivity;
 
     /**
@@ -268,69 +263,34 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     public static class timerFragment extends Fragment {
 
-        Intent intentFromSelectProjectActivity;
-        Intent intentForAdvancedProjects;
-        Intent intentForReport;
-
         private static final String ARG_SECTION_NUMBER = "section_number";
         public timerFragment() {
         }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_timer_selection, container, false);
-            super.onCreate(savedInstanceState);
-            intentFromSelectProjectActivity = new Intent(getActivity(), speechTimer.class);
-            intentForAdvancedProjects = new Intent(getActivity(), AdvancedSpeechesTimerSetting.class);
-            intentForReport = new Intent(getActivity(), TimerReport.class);
-            final String[] listOfProjects = {"Project 1", "Project 2 - 9", "Project 10", "Topics", "Evaluation", "Advanced Speeches", "View Report"};
-            ListView projectSelectListView = (ListView) rootView.findViewById(R.id.timerSelectionListView);
-            ArrayAdapter<String> clubStringArrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfProjects);
-            projectSelectListView.setAdapter(clubStringArrayAdapter);
-            projectSelectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positionOfProject, long id) {
-                    int greenTime = 4;
-                    switch (positionOfProject) {
-                        case 0:
-                            greenTime = 4;
-                            callTheTimer(greenTime, listOfProjects[0]);
-                            break;
-                        case 1:
-                            greenTime = 5;
-                            callTheTimer(greenTime, listOfProjects[1]);
-                            break;
-                        case 2:
-                            greenTime = 8;
-                            callTheTimer(greenTime, listOfProjects[2]);
-                            break;
-                        case 3:
-                            greenTime = 1;
-                            callTheTimer(greenTime, listOfProjects[3]);
-                            break;
-                        case 4:
-                            greenTime = 2;
-                            callTheTimer(greenTime, listOfProjects[4]);
-                            break;
-                        case 5:
-                            startActivity(intentForAdvancedProjects);
-                            break;
-                        case 6:
-                            startActivity(intentForReport);
-                            break;
-                    }
+            View rootView = inflater.inflate(R.layout.activity_timer_report, container, false);
+            ListView listView = (ListView) rootView.findViewById(R.id.timerReportListView);
+            SharedPreferences timer = this.getActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
+            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+            ArrayList<String> listOfData = new ArrayList<String>(timerSet);
+            ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
+            listView.setAdapter(dataToBeDisplayed);
+//TODO: set Reset Button
+//            SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = timer.edit();
+//            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+//            timerSet.clear();
+//            editor.putStringSet("timerSet", timerSet);
+//            editor.commit();
 
-                }
-
-
-            });
             return rootView;
         }
-        public void callTheTimer (int green, String title) {
-            intentFromSelectProjectActivity.putExtra(greenTimer, green);
-            intentFromSelectProjectActivity.putExtra(TimerTitle, title);
-            startActivity(intentFromSelectProjectActivity);
-        }
+    }
+
+    public void floatingActionButtonforTimer (View view) {
+        Intent intentFromTimer = new Intent(this, TimerSelection.class);
+        startActivity(intentFromTimer);
     }
 
     public static class ahCounterFragment extends Fragment {
@@ -345,63 +305,29 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_ah_counter, container, false);
-            // ArrayList<String> dataForDisplay = new ArrayList<String>();
-            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-           // RelativeLayout parent = (RelativeLayout) rootView.findViewById(R.id.parentRelativeLayoutofAhCounter);
-            //Snackbar.make(rootView, "Tap on the numbers to count", Snackbar.LENGTH_LONG).show();
+            View rootView = inflater.inflate(R.layout.activity_data_save, container, false);
+                ListView listView = (ListView) rootView.findViewById(R.id.dataSaveListView);
+                SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
+                Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+                ArrayList<String> listOfData = new ArrayList<String>(counterSet);
+                ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
+                listView.setAdapter(dataToBeDisplayed);
+//TODO: reset button to be configured
+//            SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = counter.edit();
+//            Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+//            counterSet.clear();
+//            editor.putStringSet("counterSet", counterSet);
+//            editor.commit();
             return rootView;
-        }
-
-
+            }
     }
 
-    public void crutchIncrement(View view) {
-        ++crutch;
-        crutchButton = (Button) findViewById(R.id.crutchWordId);
-        crutchButton.setText(" " + crutch);
+    public void floatingActionButton (View view) {
+        Intent intentFromAhReport = new Intent(this, AhCounter.class);
+        startActivity(intentFromAhReport);
     }
 
-    public void fillerIncrement(View view) {
-        ++filler;
-        fillerButton = (Button) findViewById(R.id.fillerIncrementId);
-        fillerButton.setText(" " + filler);
-    }
-
-    public void pauseIncrement(View view) {
-        ++pause;
-        pauseButton = (Button) findViewById(R.id.pauseIncrementId);
-        pauseButton.setText(" " + pause);
-    }
-
-    public void ahCounterResetButton(View view) {
-        crutch = filler = pause = 0;
-        ((EditText) findViewById(R.id.enterName)).setText("");
-        crutchButton = (Button) findViewById(R.id.crutchWordId);
-        fillerButton = (Button) findViewById(R.id.fillerIncrementId);
-        pauseButton = (Button) findViewById(R.id.pauseIncrementId);
-        crutchButton.setText("0");
-        fillerButton.setText("0");
-        pauseButton.setText("0");
-    }
-
-    public void ahCounterSaveButton(View view) {
-        EditText nameFromActivity = (EditText) findViewById(R.id.enterName);
-        String name = nameFromActivity.getText().toString();
-        SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = counter.edit();
-        Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-        counterSet.add(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
-        editor.putStringSet("counterSet", counterSet);
-        editor.commit();
-        Intent forDataSaveActivity = new Intent(this, DataSaveActivity.class);
-        startActivity(forDataSaveActivity);
-    }
-
-    public void goToReport (View view) {
-        Intent goToReport = new Intent(this, DataSaveActivity.class);
-        startActivity(goToReport);
-    }
 
     public static class notificationFragment extends Fragment {
 
