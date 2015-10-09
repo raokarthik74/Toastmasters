@@ -69,7 +69,7 @@
          />
 
     <Button
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Send"
@@ -77,5 +77,16 @@
         android:textColor="@color/icons"
         android:onClick="pushNotification"
         android:layout_below="@id/notificationLinkUrlEditText" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBarOfLoadingPush"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        android:layout_below="@id/sendPushButton"
+        android:layout_marginTop="10dp"
+        />
 
 </RelativeLayout>

@@ -1,9 +1,15 @@
 package org.tmdistrict92.toastmasters;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -24,11 +30,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import models.AllNotifications;
-import models.ahCounterReport;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -41,6 +46,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     Button fillerButton;
     Button pauseButton;
     int crutch = 0, filler = 0, pause = 0;
+    static MainActivity mainActivity;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -61,16 +67,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivity = this;
         boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
         if (isFirstRun) {
             getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
             Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
             startActivity(intentToSelectDistrict);
         }
-
-
-
-
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -108,6 +111,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         mViewPager.setOffscreenPageLimit(3);
     }
 
+    public static MainActivity getInstance () {
+        return mainActivity;
+    }
+
+    @Override
+    public void onBackPressed () {
+        finish();
+        System.exit(0);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -136,8 +149,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 startActivity(settingsIntent);
                 return true;
             case R.id.deleteNotifications:
-                AllNotifications.resetNotificationList();
-                AllNotifications.resetUrlsForNotifications();
+//                AllNotifications.resetNotificationList();
+//                AllNotifications.resetUrlsForNotifications();
                 finish();
                 startActivity(getIntent());
                 return true;
@@ -371,10 +384,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public void ahCounterSaveButton(View view) {
         EditText nameFromActivity = (EditText) findViewById(R.id.enterName);
         String name = nameFromActivity.getText().toString();
-        ahCounterReport.setDataToArray(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
-        // dataForDisplay.add(name);
+        SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = counter.edit();
+        Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+        counterSet.add(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
+        editor.putStringSet("counterSet", counterSet);
+        editor.commit();
         Intent forDataSaveActivity = new Intent(this, DataSaveActivity.class);
-        // forDataSaveActivity.putStringArrayListExtra(dataToDisplay, dataForDisplay);
         startActivity(forDataSaveActivity);
     }
 
@@ -398,9 +414,27 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             View rootView = inflater.inflate(R.layout.activity_notification_list, container, false);
             intentForWebViewFromNotifications = new Intent(getActivity(), WebViewForNotification.class);
             ListView listView = (ListView) rootView.findViewById(R.id.listViewOfNotifications);
-            ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, AllNotifications.getDataFromNotificationMessage());
+            SharedPreferences message = this.getActivity().getSharedPreferences("message", Context.MODE_PRIVATE);
+            Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
+            List<String> messageArray = new ArrayList<String>(messageSet);
+            List<String> messageToDisplay = new ArrayList<String>();
+            final List<String> titleToDisplay = new ArrayList<String>();
+            final List<String> urlToConnect = new ArrayList<String>();
+            for (int i = 0; i < messageArray.size(); i++) {
+                String jsonData = messageArray.get(i);
+                JSONObject json;
+                try {
+                    json = new JSONObject(jsonData);
+                    titleToDisplay.add(json.getString("title"));
+                    messageToDisplay.add(json.getString("title") + "\n Message: \n" + json.getString("alert"));
+                    urlToConnect.add(json.getString("url"));
+                } catch (JSONException e) {
+
+                }
+            }
+            ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, messageToDisplay);
             listView.setAdapter(adaptorForNotifications);
-            if (AllNotifications.getDataFromNotificationMessage().isEmpty()) {
+            if (messageToDisplay.isEmpty()) {
                 TextView textView = new TextView(getActivity());
                 textView.setTextSize(25);
                 textView.setText("No Notifications");
@@ -410,14 +444,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        intentForWebViewFromNotifications.putExtra(urlForNotification, AllNotifications.getUrlsForNotifications(position));
-                      //  intentForWebViewFromNotifications.putExtra(titleForNotification, AllNotifications.getDataFromNotificaitons(position));
+                        intentForWebViewFromNotifications.putExtra(urlForNotification, urlToConnect.get(position));
+                        intentForWebViewFromNotifications.putExtra(titleForNotification, titleToDisplay.get(position));
                         startActivity(intentForWebViewFromNotifications);
                     }
                 });
                 return rootView;
+
             }
         }
-        }
+    }
 }
 

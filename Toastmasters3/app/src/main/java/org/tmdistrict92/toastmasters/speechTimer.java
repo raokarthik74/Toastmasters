@@ -2,6 +2,7 @@ package org.tmdistrict92.toastmasters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBarActivity;
@@ -14,9 +15,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
-import models.TimerReportModel;
 
 
 public class speechTimer extends ActionBarActivity {
@@ -225,12 +226,21 @@ public class speechTimer extends ActionBarActivity {
         seconds = elapsedTimeInSeconds%60;
         if (isExceeded) {
             long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
-
-                TimerReportModel.setDataToTimerArray("Name: " + name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds)+
-                        "\n Time Exceeded By \n"+TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+            SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = timer.edit();
+            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+            timerSet.add("Name: " + name + "\n" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
+                    "\n Time Exceeded By \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+            editor.putStringSet("timerSet", timerSet);
+            editor.commit();
         }
         else {
-            TimerReportModel.setDataToTimerArray(name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+            SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = timer.edit();
+            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+            timerSet.add("Name:" +name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+            editor.putStringSet("timerSet", timerSet);
+            editor.commit();
         }
         Intent forDataSaveActivity = new Intent(this, TimerReport.class);
         startActivity(forDataSaveActivity);

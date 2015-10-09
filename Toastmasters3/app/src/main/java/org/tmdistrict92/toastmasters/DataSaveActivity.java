@@ -1,6 +1,8 @@
 package org.tmdistrict92.toastmasters;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,11 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.NumberPicker;
 
 import java.util.ArrayList;
-
-import models.ahCounterReport;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DataSaveActivity extends AppCompatActivity {
 
@@ -25,21 +26,33 @@ public class DataSaveActivity extends AppCompatActivity {
         setTitle("Ah Counter Report");
         Intent intent = getIntent();
         ListView listView = (ListView) findViewById(R.id.dataSaveListView);
-        ArrayList<String> listOfData = new ArrayList<String>();
-        listOfData = ahCounterReport.getDataFromArray();
+        SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+        Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+        ArrayList<String> listOfData = new ArrayList<String>(counterSet);
         ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfData);
         listView.setAdapter(dataToBeDisplayed);
     }
 
     public void floatingActionButton (View view) {
+        MainActivity.getInstance().recreate();
         finish();
+    }
+    @Override
+    public void onBackPressed () {
+        MainActivity.getInstance().recreate();
+        super.onBackPressed();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.reportReset:
-                ahCounterReport.resetArrayList();
+                SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = counter.edit();
+                Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+                counterSet.clear();
+                editor.putStringSet("counterSet", counterSet);
+                editor.commit();
                 finish();
                 startActivity(getIntent());
                 return true;

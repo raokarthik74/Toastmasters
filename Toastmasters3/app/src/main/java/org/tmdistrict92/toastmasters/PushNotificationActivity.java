@@ -1,7 +1,9 @@
 package org.tmdistrict92.toastmasters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.tmdistrict92.toastmasters.entities.PushDataInfo;
@@ -56,11 +59,14 @@ public class PushNotificationActivity extends AppCompatActivity {
     }
 
     public void pushNotification (View view) {
+        final ProgressBar loading = (ProgressBar) findViewById(R.id.progressBarOfLoadingPush);
+        loading.setVisibility(View.VISIBLE);
+        if (isNetworkAvailable()) {
             try {
                 Intent intentFromLogin = getIntent();
                 String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
-                pushDataInfo.setTitle(userID + ":\n" +  ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setTitle(userID + ":\n" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
                 Gson gson = new Gson();
@@ -72,10 +78,23 @@ public class PushNotificationActivity extends AppCompatActivity {
             } catch (JSONException e) {
 
             }
-        Intent intentToReturn = new Intent(this, MainActivity.class);
-        startActivity(intentToReturn);
-        finish();
-
+            Intent intentToReturn = new Intent(this, MainActivity.class);
+            startActivity(intentToReturn);
+            finish();
+        }
+        else {
+            AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+            alertDialog.setTitle("No Internet");
+            alertDialog.setMessage("Check Network Connection and Try Again");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
     }
 
     @Override

@@ -21,8 +21,6 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import models.AllNotifications;
-
 public class WebactivityForParse extends AppCompatActivity {
 
     WebView mWebView;
@@ -65,11 +63,6 @@ public class WebactivityForParse extends AppCompatActivity {
                     textView.setGravity(Gravity.CENTER);
                     setContentView(textView);
                 }
-                String title = json.getString("title");
-                String alert = json.getString("alert");
-               // AllNotifications.setDataToNotificaitons(title);
-                AllNotifications.setDataToNotificationMessage(title + "\n" + "Message: \n" + alert+ "\n" );
-                AllNotifications.setUrlsForNotifications(url);
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -107,6 +100,7 @@ private class MyWebViewClient extends WebViewClient {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -116,6 +110,7 @@ private class MyWebViewClient extends WebViewClient {
                 return true;
             case R.id.home:
                 Intent homeIntent = new Intent(this, MainActivity.class);
+                finish();
                 startActivity(homeIntent);
                 return true;
         }

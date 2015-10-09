@@ -1,6 +1,8 @@
 package org.tmdistrict92.toastmasters;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,8 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-
-import models.TimerReportModel;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class TimerReport extends AppCompatActivity {
 
@@ -22,8 +25,9 @@ public class TimerReport extends AppCompatActivity {
         setTitle("Timer Report");
         Intent intent = getIntent();
         ListView listView = (ListView) findViewById(R.id.timerReportListView);
-        ArrayList<String> listOfData = new ArrayList<String>();
-        listOfData = TimerReportModel.getDataFromTimerArray();
+        SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+        Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+        ArrayList<String> listOfData = new ArrayList<String>(timerSet);
         ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfData);
         listView.setAdapter(dataToBeDisplayed);
     }
@@ -36,7 +40,12 @@ public class TimerReport extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.timerReset:
-                TimerReportModel.resetArrayListOFTimer();
+                SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = timer.edit();
+                Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+                timerSet.clear();
+                editor.putStringSet("timerSet", timerSet);
+                editor.commit();
                 finish();
                 startActivity(getIntent());
                 return true;
