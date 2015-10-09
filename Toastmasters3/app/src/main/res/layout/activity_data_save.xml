@@ -14,7 +14,6 @@
         android:clickable="true"
         android:src="@drawable/ic_add_white_24dp"
         android:onClick="floatingActionButton"
-        app:backgroundTint="@color/primary"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
