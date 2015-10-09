@@ -149,8 +149,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 startActivity(settingsIntent);
                 return true;
             case R.id.deleteNotifications:
-//                AllNotifications.resetNotificationList();
-//                AllNotifications.resetUrlsForNotifications();
+                SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
+                Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
+                SharedPreferences.Editor editor = message.edit();
+                messageSet.clear();
+                editor.putStringSet("messageSet", messageSet);
+                editor.commit();
                 finish();
                 startActivity(getIntent());
                 return true;
@@ -200,10 +204,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 return new ahCounterFragment();
             }
             if (position == 1) {
-                return new timerFragment();
+                return new notificationFragment();
             }
             if (position == 2) {
-                return new notificationFragment();
+                return new timerFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }

@@ -2,8 +2,8 @@
     <string name="app_name">Toast Director</string>
 
     <string name="title_section1">Tapper</string>
-    <string name="title_section2">Timer</string>
-    <string name="title_section3">Notifications</string>
+    <string name="title_section2">Notifications</string>
+    <string name="title_section3">Timer</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="snack_bar">AC - Advanced Communication</string>
@@ -48,16 +48,6 @@
 
     <string name="district_prompt">Choose Your District</string>
 
-    <string-array name="district_arrays">
-        <item>Malaysia</item>
-        <item>United States</item>
-        <item>Indonesia</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
-    </string-array>
     <string name="title_activity_webactivity_for_parse">WebactivityForParse</string>
     <string name="title_activity_push_notification">PushNotificationActivity</string>
     <string name="title_activity_login">LoginActivity</string>
