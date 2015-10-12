@@ -238,6 +238,7 @@ public class speechTimer extends ActionBarActivity {
             editor.commit();
         }
         MainActivity.getInstance().recreate();
+        TimerSelection.getInstance().finish();
         finish();
     }
 }

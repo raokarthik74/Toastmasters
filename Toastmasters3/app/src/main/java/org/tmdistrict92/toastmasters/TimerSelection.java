@@ -14,7 +14,7 @@ public class TimerSelection extends AppCompatActivity {
 
     public final static String greenTimer = "com.district92.toastmasters.greenTime";
     public final static String TimerTitle = "com.district92.toastmasters.timerTitle";
-
+    static TimerSelection timerSelection;
     Intent intentFromSelectProjectActivity;
     Intent intentForAdvancedProjects;
     Intent intentForReport;
@@ -22,6 +22,7 @@ public class TimerSelection extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        timerSelection = this;
         setContentView(R.layout.activity_timer_selection);
         setTitle("Select Timer");
         intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
@@ -67,6 +68,10 @@ public class TimerSelection extends AppCompatActivity {
 
 
         });
+    }
+
+    public static TimerSelection getInstance () {
+        return timerSelection;
     }
     
     public void callTheTimer (int green, String title) {
