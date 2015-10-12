@@ -50,8 +50,10 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 notificationPreparer.setTitle(title);
                 notificationPreparer.setUrl(url);
                 messageSet.add(gson.toJson(notificationPreparer));
+                editor.remove("messageSet");
+                editor.apply();
                 editor.putStringSet("messageSet", messageSet);
-                editor.commit();
+                editor.apply();
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block

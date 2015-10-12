@@ -56,6 +56,8 @@ public class AhCounter extends AppCompatActivity {
         SharedPreferences.Editor editor = counter.edit();
         Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
         counterSet.add(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
+        editor.remove("counterSet");
+        editor.apply();
         editor.putStringSet("counterSet", counterSet);
         editor.apply();
         MainActivity.getInstance().recreate();

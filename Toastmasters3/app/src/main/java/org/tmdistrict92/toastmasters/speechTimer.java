@@ -226,16 +226,20 @@ public class speechTimer extends ActionBarActivity {
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             timerSet.add("Name: " + name + "\n" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
                     "\n Time Exceeded By \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+            editor.remove("timerSet");
+            editor.apply();
             editor.putStringSet("timerSet", timerSet);
-            editor.commit();
+            editor.apply();
         }
         else {
             SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = timer.edit();
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             timerSet.add("Name:" +name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+            editor.remove("timerSet");
+            editor.apply();
             editor.putStringSet("timerSet", timerSet);
-            editor.commit();
+            editor.apply();
         }
         MainActivity.getInstance().recreate();
         TimerSelection.getInstance().finish();
