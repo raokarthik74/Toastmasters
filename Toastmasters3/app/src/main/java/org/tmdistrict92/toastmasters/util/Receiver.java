@@ -36,6 +36,7 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 String url =  json.getString("url");
                 String title = json.getString("title");
                 String alert = json.getString("alert");
+                String dateAndTime = json.getString("dateAndTime");
                 int pushIdFromNotification = json.getInt("pushId");
                 int pushId = context.getSharedPreferences("PUSHID", Context.MODE_PRIVATE).getInt("pushid", 0);
                 if (pushId == pushIdFromNotification) {
@@ -49,6 +50,7 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 notificationPreparer.setAlert(alert);
                 notificationPreparer.setTitle(title);
                 notificationPreparer.setUrl(url);
+                notificationPreparer.setDateAndTime(dateAndTime);
                 messageSet.add(gson.toJson(notificationPreparer));
                 editor.remove("messageSet");
                 editor.apply();

@@ -8,6 +8,15 @@ public class PushDataInfo {
     private String title;
     private String url;
     private int pushId;
+    private String dateAndTime;
+
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
 
     public int getPushId() {
         return pushId;

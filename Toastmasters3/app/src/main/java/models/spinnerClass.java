@@ -97,7 +97,7 @@ public class spinnerClass {
 //        itemsToDistrictSpinner.add("DISTRICT-72");
 //        itemsToDistrictSpinner.add("DISTRICT-73");
 //        itemsToDistrictSpinner.add("DISTRICT-90");
-        itemsToDistrictSpinner.add("DISTRICT-92");
+        itemsToDistrictSpinner.add("D92");
 //        itemsToDistrictSpinner.add("DISTRICT-41");
 //        itemsToDistrictSpinner.add("DISTRICT-67");
 //        itemsToDistrictSpinner.add("DISTRICT-76");

@@ -27,6 +27,8 @@ import com.parse.ParsePush;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 public class PushNotificationActivity extends AppCompatActivity {
@@ -77,12 +79,14 @@ public class PushNotificationActivity extends AppCompatActivity {
                 Intent intentFromLogin = getIntent();
                 String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
-                pushDataInfo.setTitle(userID + ":\n" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setTitle(userID + ":\t" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
                 ramdom = rand.nextInt((10000 - 1000) + 1) + 1000;
                 pushDataInfo.setPushId(ramdom);
                 getSharedPreferences("PUSHID", MODE_PRIVATE).edit().putInt("pushid", ramdom).apply();
+                SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm");
+                pushDataInfo.setDateAndTime(currentDateAndTime.format(new Date()));
                 Gson gson = new Gson();
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
                 ParsePush push = new ParsePush();

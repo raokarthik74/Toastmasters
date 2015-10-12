@@ -7,6 +7,15 @@ public class NotificationPreparer {
     private String title;
     private String alert;
     private String url;
+    private String dateAndTime;
+
+    public String getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public void setDateAndTime(String dateAndTime) {
+        this.dateAndTime = dateAndTime;
+    }
 
     public String getTitle() {
         return title;

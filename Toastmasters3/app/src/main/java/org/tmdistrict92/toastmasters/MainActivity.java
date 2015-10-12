@@ -448,7 +448,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 try {
                     json = new JSONObject(jsonData);
                     titleToDisplay.add(json.getString("title"));
-                    messageToDisplay.add(json.getString("title") + "\n Message: \n" + json.getString("alert"));
+                    messageToDisplay.add(json.getString("title") + "\n Message: \t" + json.getString("alert") + "\n Received: \t" + json.getString("dateAndTime"));
                     urlToConnect.add(json.getString("url"));
                 } catch (JSONException e) {
 

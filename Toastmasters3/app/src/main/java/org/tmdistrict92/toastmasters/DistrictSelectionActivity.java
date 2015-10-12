@@ -60,9 +60,9 @@ public class DistrictSelectionActivity extends AppCompatActivity {
         ParseInstallation installation = ParseInstallation.getCurrentInstallation();
         installation.remove("channels");
         ParsePush.subscribeInBackground(districtValue);
-            ParsePush.subscribeInBackground(divisionValue);
-            ParsePush.subscribeInBackground(areaValue);
-            ParsePush.subscribeInBackground(clubValue);
+            ParsePush.subscribeInBackground(districtValue+"-"+divisionValue);
+            ParsePush.subscribeInBackground(districtValue+"-"+divisionValue+"-"+areaValue);
+            ParsePush.subscribeInBackground(districtValue+"-"+divisionValue+"-"+areaValue+"-"+clubValue);
         Intent intentBackToMainActivity = new Intent(this, MainActivity.class);
         startActivity(intentBackToMainActivity);
     }
