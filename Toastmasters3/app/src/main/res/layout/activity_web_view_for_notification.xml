@@ -4,7 +4,7 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
-    tools:context="org.tmdistrict92.toastmasters.WebViewForNotification">
+    tools:context="com.karthikravindrarao.ToastDirector.WebViewForNotification">
 
     <WebView
         android:layout_width="fill_parent"

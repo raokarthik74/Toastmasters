@@ -1,4 +1,4 @@
-package org.tmdistrict92.toastmasters.util;
+package com.karthikravindrarao.ToastDirector.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +7,10 @@ import android.os.Bundle;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.tmdistrict92.toastmasters.MainActivity;
-import org.tmdistrict92.toastmasters.PushNotificationActivity;
-import org.tmdistrict92.toastmasters.WebactivityForParse;
-import org.tmdistrict92.toastmasters.entities.NotificationPreparer;
+import com.karthikravindrarao.ToastDirector.MainActivity;
+import com.karthikravindrarao.ToastDirector.PushNotificationActivity;
+import com.karthikravindrarao.ToastDirector.WebactivityForParse;
+import com.karthikravindrarao.ToastDirector.entities.NotificationPreparer;
 
 import com.google.gson.Gson;
 import com.parse.ParsePushBroadcastReceiver;

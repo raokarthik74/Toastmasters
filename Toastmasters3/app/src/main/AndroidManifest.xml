@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.tmdistrict92.toastmasters" >
+    package="com.karthikravindrarao.ToastDirector" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,13 +14,13 @@
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
     <permission
-        android:name="org.tmdistrict92.toastmasters.permission.C2D_MESSAGE"
+        android:name="com.karthikravindrarao.ToastDirector.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="org.tmdistrict92.toastmasters.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.karthikravindrarao.ToastDirector.permission.C2D_MESSAGE" />
 
     <application
-        android:name=".util.ParseNotification"
+        android:name="com.karthikravindrarao.ToastDirector.util.ParseNotification"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:screenOrientation="portrait"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.karthikravindrarao.ToastDirector.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -38,22 +38,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".speechTimer"
+            android:name="com.karthikravindrarao.ToastDirector.speechTimer"
             android:label="@string/title_activity_speech_timer"
-            android:parentActivityName=".TimerSelection"
+            android:parentActivityName="com.karthikravindrarao.ToastDirector.TimerSelection"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AdvancedSpeechesTimerSetting"
+            android:name="com.karthikravindrarao.ToastDirector.AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-            android:parentActivityName=".TimerSelection"
+            android:parentActivityName="com.karthikravindrarao.ToastDirector.TimerSelection"
             android:screenOrientation="portrait" >
         </activity>
 
         <service android:name="com.parse.PushService" />
 
         <receiver
-            android:name=".util.Receiver"
+            android:name="com.karthikravindrarao.ToastDirector.util.Receiver"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
@@ -69,7 +69,7 @@
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
-                <category android:name="org.tmdistrict92.toastmasters" />
+                <category android:name="com.karthikravindrarao.ToastDirector" />
             </intent-filter>
         </receiver>
 
@@ -78,47 +78,47 @@
             android:resource="@mipmap/ic_launcher" />
 
         <activity
-            android:name=".DistrictSelectionActivity"
+            android:name="com.karthikravindrarao.ToastDirector.DistrictSelectionActivity"
             android:label="@string/title_activity_district_selection"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".WebactivityForParse"
+            android:name="com.karthikravindrarao.ToastDirector.WebactivityForParse"
             android:label="@string/title_activity_webactivity_for_parse"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".PushNotificationActivity"
+            android:name="com.karthikravindrarao.ToastDirector.PushNotificationActivity"
             android:label="@string/title_activity_push_notification"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.karthikravindrarao.ToastDirector.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".WebViewForNotification"
+            android:name="com.karthikravindrarao.ToastDirector.WebViewForNotification"
             android:label="@string/title_activity_web_view_for_notification"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".TimerSelection"
+            android:name="com.karthikravindrarao.ToastDirector.TimerSelection"
             android:label="@string/title_activity_timer_selection"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.karthikravindrarao.ToastDirector.MainActivity" >
         </activity>
         <activity
-            android:name=".AhCounter"
+            android:name="com.karthikravindrarao.ToastDirector.AhCounter"
             android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.karthikravindrarao.ToastDirector.MainActivity" >
         </activity>
         <activity
-            android:name=".passwordReset"
+            android:name="com.karthikravindrarao.ToastDirector.passwordReset"
             android:label="@string/title_activity_password_reset"
-            android:parentActivityName=".LoginActivity" >
+            android:parentActivityName="com.karthikravindrarao.ToastDirector.LoginActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.tmdistrict92.toastmasters.LoginActivity" />
+                android:value="com.karthikravindrarao.ToastDirector.LoginActivity" />
         </activity>
     </application>
 

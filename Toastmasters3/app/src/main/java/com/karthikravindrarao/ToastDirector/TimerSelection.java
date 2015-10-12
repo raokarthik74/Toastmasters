@@ -1,4 +1,4 @@
-package org.tmdistrict92.toastmasters;
+package com.karthikravindrarao.ToastDirector;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

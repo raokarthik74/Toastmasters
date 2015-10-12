@@ -4,7 +4,7 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:paddingBottom="0dp"
-    tools:context="org.tmdistrict92.toastmasters.WebactivityForParse">
+    tools:context="com.karthikravindrarao.ToastDirector.WebactivityForParse">
 
     <WebView
         android:layout_width="match_parent"

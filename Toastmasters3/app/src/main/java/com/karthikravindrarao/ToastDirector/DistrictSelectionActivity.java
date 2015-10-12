@@ -1,7 +1,5 @@
-package org.tmdistrict92.toastmasters;
+package com.karthikravindrarao.ToastDirector;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,15 +9,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.parse.GetCallback;
 import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.parse.ParsePush;
-import com.parse.ParseQuery;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 import models.spinnerClass;
 
