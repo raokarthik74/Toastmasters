@@ -57,7 +57,7 @@ public class AhCounter extends AppCompatActivity {
         Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
         counterSet.add(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
         editor.putStringSet("counterSet", counterSet);
-        editor.commit();
+        editor.apply();
         MainActivity.getInstance().recreate();
         finish();
     }

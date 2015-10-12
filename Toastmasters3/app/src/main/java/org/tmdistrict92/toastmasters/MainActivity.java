@@ -7,7 +7,9 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
@@ -146,42 +148,97 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 return true;
             case R.id.deleteIcon:
                 if (fragmentPosition == 0) {
-                    SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
-                    Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-                    SharedPreferences.Editor editor = counter.edit();
-                    counterSet.clear();
-                    editor.putStringSet("counterSet", counterSet);
-                    editor.commit();
-                    finish();
-                    startActivity(getIntent());
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                    alertDialog.setTitle("Warning !");
+                    alertDialog.setMessage("Are you sure you want to delete all the Ah Counter Reports ?");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+                                   // Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+                                    SharedPreferences.Editor counterEditor = counter.edit();
+                                   // counterSet.clear();
+                                   // counterEditor.putStringSet("counterSet", counterSet);
+                                    counterEditor.remove("counterSet");
+                                    counterEditor.apply();
+                                    getInstance().recreate();
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    );
+                    alertDialog.show();
                     return true;
                 }
                 if (fragmentPosition == 1) {
-                    SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
-                    Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
-                    SharedPreferences.Editor editor = message.edit();
-                    messageSet.clear();
-                    editor.putStringSet("messageSet", messageSet);
-                    editor.commit();
-                    finish();
-                    startActivity(getIntent());
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                    alertDialog.setTitle("Warning !");
+                    alertDialog.setMessage("Are you sure you want to delete all the Notifications ?");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
+                                   // Set<String>messageSet = message.getStringSet("messageSet", new HashSet<String>());
+                                    SharedPreferences.Editor messageEditor = message.edit();
+                                    //messageSet.clear();
+                                   // messageEditor.putStringSet("messageSet", messageSet);
+                                    messageEditor.remove("messageSet");
+                                    messageEditor.apply();
+                                    getInstance().recreate();
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    );
+                    alertDialog.show();
                     return true;
                 }
                 if (fragmentPosition == 2) {
-                    SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
-                    Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
-                    SharedPreferences.Editor editor = timer.edit();
-                    timerSet.clear();
-                    editor.putStringSet("timerSet", timerSet);
-                    editor.commit();
-                    finish();
-                    startActivity(getIntent());
+                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                    alertDialog.setTitle("Warning !");
+                    alertDialog.setMessage("Are you sure you want to delete all the Timer Reports ?");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+                                    //Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+                                    SharedPreferences.Editor editor = timer.edit();
+                                    //timerSet.clear();
+                                    //editor.putStringSet("timerSet", timerSet);
+                                    editor.remove("timerSet");
+                                    editor.apply();
+                                    getInstance().recreate();
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            }
+                    );
+                    alertDialog.show();
                     return true;
                 }
             default: return super.onOptionsItemSelected(item);
         }
-
-
     }
 
     @Override
@@ -310,19 +367,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             SharedPreferences timer = this.getActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             ArrayList<String> listOfData = new ArrayList<String>(timerSet);
+            TextView noTimer = (TextView) rootView.findViewById(R.id.noTimer);
             if (listOfData.isEmpty()) {
-                TextView textView = new TextView(getActivity());
-                textView.setTextSize(25);
-                textView.setText("No Timer Reports");
-                textView.setGravity(Gravity.CENTER);
-                return textView;
+                noTimer.setVisibility(View.VISIBLE);
             }
             else {
+                noTimer.setVisibility(View.INVISIBLE);
+            }
                 ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
                 listView.setAdapter(dataToBeDisplayed);
                 return rootView;
-            }
-
         }
     }
 
@@ -348,17 +402,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
             Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
             ArrayList<String> listOfData = new ArrayList<String>(counterSet);
+            TextView noAhcounter = (TextView) rootView.findViewById(R.id.noAhCounter);
             if (listOfData.isEmpty()) {
-                TextView textView = new TextView(getActivity());
-                textView.setTextSize(25);
-                textView.setText("No Ah Counter Reports");
-                textView.setGravity(Gravity.CENTER);
-                return textView;
-            } else {
+                noAhcounter.setVisibility(View.VISIBLE);
+            }
+            else {
+                noAhcounter.setVisibility(View.INVISIBLE);
+            }
                 ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
                 listView.setAdapter(dataToBeDisplayed);
                 return rootView;
-            }
         }
     }
 

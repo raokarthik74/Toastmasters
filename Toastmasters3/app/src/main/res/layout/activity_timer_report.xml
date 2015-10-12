@@ -30,4 +30,17 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="No Timer Reports \n  Click on '+' to go \n to Timer "
+        android:id="@+id/noTimer"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
