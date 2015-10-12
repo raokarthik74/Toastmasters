@@ -85,7 +85,7 @@ public class PushNotificationActivity extends AppCompatActivity {
                 ramdom = rand.nextInt((10000 - 1000) + 1) + 1000;
                 pushDataInfo.setPushId(ramdom);
                 getSharedPreferences("PUSHID", MODE_PRIVATE).edit().putInt("pushid", ramdom).apply();
-                SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm");
+                SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm aa");
                 pushDataInfo.setDateAndTime(currentDateAndTime.format(new Date()));
                 Gson gson = new Gson();
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
