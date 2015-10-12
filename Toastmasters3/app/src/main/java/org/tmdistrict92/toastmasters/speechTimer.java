@@ -227,8 +227,8 @@ public class speechTimer extends ActionBarActivity {
             SharedPreferences.Editor editor = timer.edit();
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
-            timerSet.add(currentDateAndTime.format(new Date()) + " \n Name: " + name + "\n" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
-                    "\n Time Exceeded By \n" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+            timerSet.add(currentDateAndTime.format(new Date()) + "\n" + name + ":\t" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
+                    "\nTime Exceeded By:\t" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
             editor.remove("timerSet");
             editor.apply();
             editor.putStringSet("timerSet", timerSet);
@@ -239,7 +239,7 @@ public class speechTimer extends ActionBarActivity {
             SharedPreferences.Editor editor = timer.edit();
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
-            timerSet.add(currentDateAndTime.format(new Date()) + " \n Name:" +name+"\n"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+            timerSet.add(currentDateAndTime.format(new Date()) + "\n" +name+":\t"+String.valueOf(minutes)+":"+String.valueOf(seconds));
             editor.remove("timerSet");
             editor.apply();
             editor.putStringSet("timerSet", timerSet);
