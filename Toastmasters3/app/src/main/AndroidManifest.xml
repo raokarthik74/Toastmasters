@@ -40,14 +40,14 @@
         <activity
             android:name=".speechTimer"
             android:label="@string/title_activity_speech_timer"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".TimerSelection">
+            android:parentActivityName=".TimerSelection"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".TimerSelection">
+            android:parentActivityName=".TimerSelection"
+            android:screenOrientation="portrait" >
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -105,13 +105,20 @@
         <activity
             android:name=".TimerSelection"
             android:label="@string/title_activity_timer_selection"
-            android:parentActivityName=".MainActivity"
-            >
+            android:parentActivityName=".MainActivity" >
         </activity>
         <activity
             android:name=".AhCounter"
             android:label="@string/title_activity_ah_counter"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity
+            android:name=".passwordReset"
+            android:label="@string/title_activity_password_reset"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.tmdistrict92.toastmasters.LoginActivity" />
         </activity>
     </application>
 

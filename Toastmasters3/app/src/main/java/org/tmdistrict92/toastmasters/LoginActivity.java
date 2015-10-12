@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intentToPush);
                         finish();
                     } else {
+                        loading.setVisibility(View.INVISIBLE);
                         wrongAuth.setTitle("Error");
                         wrongAuth.setMessage("Check User ID and Password");
                         wrongAuth.setButton(AlertDialog.BUTTON_NEUTRAL, "Try Again", new DialogInterface.OnClickListener() {
@@ -73,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                                 ((EditText) findViewById(R.id.userIdForLogin)).setText("");
                                 ((EditText) findViewById(R.id.passwordForLogin)).setText("");
                                 dialog.dismiss();
-                                loading.setVisibility(View.INVISIBLE);
                             }
                         });
                         wrongAuth.show();
@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
         else {
+
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
                 alertDialog.setTitle("No Internet");
                 alertDialog.setMessage("Check Network Connection and Try Again");
@@ -116,6 +117,10 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.netRefreshForLogin:
                 finish();
                 startActivity(getIntent());
+                return true;
+            case R.id.passwordReset:
+                Intent intentToResetPassword = new Intent(this, passwordReset.class);
+                startActivity(intentToResetPassword);
                 return true;
         }
         return super.onOptionsItemSelected(item);

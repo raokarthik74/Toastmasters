@@ -4,4 +4,6 @@
     tools:context="org.tmdistrict92.toastmasters.LoginActivity">
     <item android:id="@+id/netRefreshForLogin" android:title="REFRESH"
         android:orderInCategory="100" app:showAsAction="always" />
+    <item android:id="@+id/passwordReset" android:title="Reset Password"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

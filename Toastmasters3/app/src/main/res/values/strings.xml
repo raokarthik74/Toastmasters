@@ -53,4 +53,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_notification_list">NotificationList</string>
     <string name="title_activity_web_view_for_notification">WebViewForNotification</string>
+    <string name="title_activity_password_reset">passwordReset</string>
 </resources>
