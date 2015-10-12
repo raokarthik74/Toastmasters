@@ -1,9 +1,12 @@
 package org.tmdistrict92.toastmasters;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -367,6 +370,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             SharedPreferences timer = this.getActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             ArrayList<String> listOfData = new ArrayList<String>(timerSet);
+            Collections.sort(listOfData);
             TextView noTimer = (TextView) rootView.findViewById(R.id.noTimer);
             if (listOfData.isEmpty()) {
                 noTimer.setVisibility(View.VISIBLE);
@@ -402,6 +406,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
             Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
             ArrayList<String> listOfData = new ArrayList<String>(counterSet);
+            Collections.sort(listOfData);
             TextView noAhcounter = (TextView) rootView.findViewById(R.id.noAhCounter);
             if (listOfData.isEmpty()) {
                 noAhcounter.setVisibility(View.VISIBLE);
@@ -440,6 +445,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
             List<String> messageArray = new ArrayList<String>(messageSet);
             List<String> messageToDisplay = new ArrayList<String>();
+            Map<String, Integer> indexOfArrayList = new HashMap<String, Integer>();;
             final List<String> titleToDisplay = new ArrayList<String>();
             final List<String> urlToConnect = new ArrayList<String>();
             for (int i = 0; i < messageArray.size(); i++) {
@@ -448,11 +454,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 try {
                     json = new JSONObject(jsonData);
                     titleToDisplay.add(json.getString("title"));
-                    messageToDisplay.add(json.getString("title") + "\n Message: \t" + json.getString("alert") + "\n Received: \t" + json.getString("dateAndTime"));
+                    messageToDisplay.add(json.getString("dateAndTime") + "\n" +json.getString("title") + "\n Message: \t" + json.getString("alert"));
                     urlToConnect.add(json.getString("url"));
                 } catch (JSONException e) {
 
                 }
+            }
+            for (int i = 0; i< messageToDisplay.size(); i++) {
+                indexOfArrayList.put(messageToDisplay.get(i), i);
+            }
+            Collections.sort(messageToDisplay, Collections.reverseOrder());
+            final List<String> sortedTitleToDisplay = new ArrayList<String>();
+            final List<String> sortedUrlToConnect = new ArrayList<String>();
+            for (int i = 0; i< messageToDisplay.size(); i++) {
+                sortedTitleToDisplay.add(titleToDisplay.get(indexOfArrayList.get(messageToDisplay.get(i))));
+                sortedUrlToConnect.add(urlToConnect.get(indexOfArrayList.get(messageToDisplay.get(i))));
             }
             ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, messageToDisplay);
             listView.setAdapter(adaptorForNotifications);
@@ -466,8 +482,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        intentForWebViewFromNotifications.putExtra(urlForNotification, urlToConnect.get(position));
-                        intentForWebViewFromNotifications.putExtra(titleForNotification, titleToDisplay.get(position));
+                        intentForWebViewFromNotifications.putExtra(urlForNotification, sortedUrlToConnect.get(position));
+                        intentForWebViewFromNotifications.putExtra(titleForNotification, sortedTitleToDisplay.get(position));
                         startActivity(intentForWebViewFromNotifications);
                     }
                 });

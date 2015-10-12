@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,7 +57,8 @@ public class AhCounter extends AppCompatActivity {
         SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = counter.edit();
         Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-        counterSet.add(name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
+        SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
+        counterSet.add(currentDateAndTime.format(new Date()) +"\n"+ name + " \n Crutch Words:" + crutch + " \n Filler Words:" + filler + "\n Unwanted Pauses:" + pause);
         editor.remove("counterSet");
         editor.apply();
         editor.putStringSet("counterSet", counterSet);
