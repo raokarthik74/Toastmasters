@@ -23,7 +23,7 @@ public class TimerSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_selection);
-        super.onCreate(savedInstanceState);
+        setTitle("Select Timer");
         intentFromSelectProjectActivity = new Intent(this, speechTimer.class);
         intentForAdvancedProjects = new Intent(this, AdvancedSpeechesTimerSetting.class);
         final String[] listOfProjects = {"Project 1", "Project 2 - 9", "Project 10", "Topics", "Evaluation", "Advanced Speeches", "View Report"};
@@ -90,9 +90,9 @@ public class TimerSelection extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }

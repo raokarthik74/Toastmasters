@@ -42,6 +42,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
     public final static String titleForNotification = "com.district92.toastmasters.titleForNotification";
     static MainActivity mainActivity;
+    int fragmentPosition;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -143,16 +144,40 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 Intent settingsIntent = new Intent(this, DistrictSelectionActivity.class);
                 startActivity(settingsIntent);
                 return true;
-            case R.id.deleteNotifications:
-                SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
-                Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
-                SharedPreferences.Editor editor = message.edit();
-                messageSet.clear();
-                editor.putStringSet("messageSet", messageSet);
-                editor.commit();
-                finish();
-                startActivity(getIntent());
-                return true;
+            case R.id.deleteIcon:
+                if (fragmentPosition == 0) {
+                    SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
+                    Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+                    SharedPreferences.Editor editor = counter.edit();
+                    counterSet.clear();
+                    editor.putStringSet("counterSet", counterSet);
+                    editor.commit();
+                    finish();
+                    startActivity(getIntent());
+                    return true;
+                }
+                if (fragmentPosition == 1) {
+                    SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
+                    Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());
+                    SharedPreferences.Editor editor = message.edit();
+                    messageSet.clear();
+                    editor.putStringSet("messageSet", messageSet);
+                    editor.commit();
+                    finish();
+                    startActivity(getIntent());
+                    return true;
+                }
+                if (fragmentPosition == 2) {
+                    SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
+                    Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
+                    SharedPreferences.Editor editor = timer.edit();
+                    timerSet.clear();
+                    editor.putStringSet("timerSet", timerSet);
+                    editor.commit();
+                    finish();
+                    startActivity(getIntent());
+                    return true;
+                }
             default: return super.onOptionsItemSelected(item);
         }
 
@@ -170,7 +195,18 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 //        }
 //        else
 //        {
+        int currentTab = tab.getPosition();
+            if (currentTab == 0) {
+                fragmentPosition = 0;
+            }
+        if (currentTab == 1) {
+            fragmentPosition = 1;
+        }
+        if (currentTab == 2 ) {
+            fragmentPosition = 2;
+        }
             mViewPager.setCurrentItem(tab.getPosition());
+
     }
 
     @Override
@@ -274,17 +310,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             SharedPreferences timer = this.getActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             ArrayList<String> listOfData = new ArrayList<String>(timerSet);
-            ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
-            listView.setAdapter(dataToBeDisplayed);
-//TODO: set Reset Button
-//            SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
-//            SharedPreferences.Editor editor = timer.edit();
-//            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
-//            timerSet.clear();
-//            editor.putStringSet("timerSet", timerSet);
-//            editor.commit();
+            if (listOfData.isEmpty()) {
+                TextView textView = new TextView(getActivity());
+                textView.setTextSize(25);
+                textView.setText("No Timer Reports");
+                textView.setGravity(Gravity.CENTER);
+                return textView;
+            }
+            else {
+                ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
+                listView.setAdapter(dataToBeDisplayed);
+                return rootView;
+            }
 
-            return rootView;
         }
     }
 
@@ -306,21 +344,22 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.activity_data_save, container, false);
-                ListView listView = (ListView) rootView.findViewById(R.id.dataSaveListView);
-                SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
-                Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-                ArrayList<String> listOfData = new ArrayList<String>(counterSet);
+            ListView listView = (ListView) rootView.findViewById(R.id.dataSaveListView);
+            SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
+            Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
+            ArrayList<String> listOfData = new ArrayList<String>(counterSet);
+            if (listOfData.isEmpty()) {
+                TextView textView = new TextView(getActivity());
+                textView.setTextSize(25);
+                textView.setText("No Ah Counter Reports");
+                textView.setGravity(Gravity.CENTER);
+                return textView;
+            } else {
                 ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
                 listView.setAdapter(dataToBeDisplayed);
-//TODO: reset button to be configured
-//            SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
-//            SharedPreferences.Editor editor = counter.edit();
-//            Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-//            counterSet.clear();
-//            editor.putStringSet("counterSet", counterSet);
-//            editor.commit();
-            return rootView;
+                return rootView;
             }
+        }
     }
 
     public void floatingActionButton (View view) {

@@ -160,19 +160,6 @@ public class speechTimer extends ActionBarActivity {
         ((Chronometer) findViewById(R.id.chronometer)).stop();
     }
 
-    public void resetChronometer(View view) {
-        ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-        ((EditText) findViewById(R.id.enterNameForTimer)).setText("");
-        RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
-        View rootView = timerRelativeLayout.getRootView();
-        rootView.setBackgroundColor(getResources().getColor(R.color.icons));
-        ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
-        TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
-        timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
-        timeUpText.setText("Dont forget to flash the cards !");
-    }
-
     public void turnGreen () {
         ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.primary_text));
         RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
@@ -209,14 +196,22 @@ public class speechTimer extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
+        if (id == R.id.resetTimer) {
+                ((Chronometer) findViewById(R.id.chronometer)).setBase(SystemClock.elapsedRealtime());
+                timeWhenStopped = 0;
+                ((EditText) findViewById(R.id.enterNameForTimer)).setText("");
+                RelativeLayout timerRelativeLayout = (RelativeLayout) findViewById(R.id.TimerRelativeLayout);
+                View rootView = timerRelativeLayout.getRootView();
+                rootView.setBackgroundColor(getResources().getColor(R.color.icons));
+                ((Chronometer) findViewById(R.id.chronometer)).setTextColor(getResources().getColor(R.color.secondary_text));
+                TextView timeUpText = (TextView) findViewById(R.id.getcurrent);
+                timeUpText.setTextColor(getResources().getColor(R.color.secondary_text));
+                timeUpText.setText("Dont forget to flash the cards !");
+            return true;
+            }
+        else
         return super.onOptionsItemSelected(item);
-    }
+        }
 
     public void timerReportCallingMethod (View view) {
         EditText nameFromActivity = (EditText) findViewById(R.id.enterNameForTimer);
@@ -243,5 +238,6 @@ public class speechTimer extends ActionBarActivity {
             editor.commit();
         }
         MainActivity.getInstance().recreate();
+        finish();
     }
 }

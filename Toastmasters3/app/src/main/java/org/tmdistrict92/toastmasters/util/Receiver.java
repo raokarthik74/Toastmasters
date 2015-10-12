@@ -8,6 +8,7 @@ import android.os.Bundle;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.tmdistrict92.toastmasters.MainActivity;
+import org.tmdistrict92.toastmasters.PushNotificationActivity;
 import org.tmdistrict92.toastmasters.WebactivityForParse;
 import org.tmdistrict92.toastmasters.entities.NotificationPreparer;
 
@@ -35,6 +36,11 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 String url =  json.getString("url");
                 String title = json.getString("title");
                 String alert = json.getString("alert");
+                int pushIdFromNotification = json.getInt("pushId");
+                int pushId = context.getSharedPreferences("PUSHID", Context.MODE_PRIVATE).getInt("pushid", 0);
+                if (pushId == pushIdFromNotification) {
+                    PushNotificationActivity.getInstance().finish();
+                }
                 SharedPreferences message = context.getSharedPreferences("message", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = message.edit();
                 Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());

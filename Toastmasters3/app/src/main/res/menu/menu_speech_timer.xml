@@ -3,4 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.tmdistrict92.toastmasters.speechTimer">
 
+    <item android:id="@+id/resetTimer" android:title="RESET"
+        android:orderInCategory="100" app:showAsAction="always" />
+
 </menu>

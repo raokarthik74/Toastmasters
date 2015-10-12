@@ -9,13 +9,14 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/enterName"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
         android:hint="Enter Name" />
 
     <LinearLayout
@@ -23,16 +24,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/firstLinear"
         tools:context="org.tmdistrict92.toastmasters.AhCounterActivity"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/enterName"
         >
         <Button
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/crutchWordId"
             android:onClick="crutchIncrement"
             android:text="0"
-            android:textSize="25sp"
+            android:textSize="40sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             />
@@ -42,7 +43,7 @@
         android:text="Crutch Words"
         android:id="@+id/textView1"
         android:layout_gravity="center"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:layout_weight="0.75"
         android:gravity="center"/>
     </LinearLayout>
@@ -56,12 +57,12 @@
         android:layout_alignParentStart="true"
         >
         <Button
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/fillerIncrementId"
             android:onClick="fillerIncrement"
             android:text="0"
-            android:textSize="25sp"
+            android:textSize="40sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             android:layout_marginTop="10dp"/>
@@ -71,7 +72,7 @@
             android:text="Filler Words"
             android:id="@+id/textView2"
             android:layout_gravity="center"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_weight="0.75"
             android:gravity="center"/>
     </LinearLayout>
@@ -84,12 +85,12 @@
         android:layout_alignParentStart="true"
         >
         <Button
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/pauseIncrementId"
             android:onClick="pauseIncrement"
             android:text="0"
-            android:textSize="25sp"
+            android:textSize="40sp"
             android:textColor="@color/icons"
             android:background="@color/accent"
             android:layout_marginTop="10dp"
@@ -100,14 +101,14 @@
             android:text="Unwanted \n Pauses"
             android:id="@+id/textView3"
             android:layout_gravity="center"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:layout_weight="0.75"
             android:gravity="center"/>
     </LinearLayout>
 
     <Button
         android:layout_width="fill_parent"
-        android:layout_height="65dp"
+        android:layout_height="75dp"
         android:text="SAVE TO REPORT"
         android:textColor="@color/icons"
         android:id="@+id/ahCounterSaveButtonId"
@@ -115,30 +116,8 @@
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:text="Reset"
-        android:textColor="@color/icons"
-        android:id="@+id/ahCounterResetButtonId"
-        android:onClick="ahCounterResetButton"
-        android:layout_below="@+id/ahCounterSaveButtonId"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:text="REPORT"
-        android:textColor="@color/icons"
-        android:id="@+id/goToReport"
-        android:onClick="goToReport"
-        android:layout_below="@+id/ahCounterResetButtonId"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 
 

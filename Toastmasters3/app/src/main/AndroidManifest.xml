@@ -40,12 +40,14 @@
         <activity
             android:name=".speechTimer"
             android:label="@string/title_activity_speech_timer"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".TimerSelection">
         </activity>
         <activity
             android:name=".AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:parentActivityName=".TimerSelection">
         </activity>
 
         <service android:name="com.parse.PushService" />
@@ -102,11 +104,14 @@
         </activity>
         <activity
             android:name=".TimerSelection"
-            android:label="@string/title_activity_timer_selection" >
+            android:label="@string/title_activity_timer_selection"
+            android:parentActivityName=".MainActivity"
+            >
         </activity>
         <activity
             android:name=".AhCounter"
-            android:label="@string/title_activity_ah_counter" >
+            android:label="@string/title_activity_ah_counter"
+            android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

@@ -7,6 +7,15 @@ public class PushDataInfo {
     private String alert;
     private String title;
     private String url;
+    private int pushId;
+
+    public int getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(int pushId) {
+        this.pushId = pushId;
+    }
 
     public String getAlert() {
         return alert;

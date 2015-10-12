@@ -27,12 +27,17 @@ import com.parse.ParsePush;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Random;
+
 public class PushNotificationActivity extends AppCompatActivity {
+
+    static PushNotificationActivity pushNotificationActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Send Notifications");
+        pushNotificationActivity = this;
         if(!isNetworkAvailable()) {
             TextView textView = new TextView(this);
             textView.setTextSize(25);
@@ -44,6 +49,9 @@ public class PushNotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push_notification);
     }
 
+    public static PushNotificationActivity getInstance () {
+        return pushNotificationActivity;
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -59,28 +67,32 @@ public class PushNotificationActivity extends AppCompatActivity {
     }
 
     public void pushNotification (View view) {
+
         final ProgressBar loading = (ProgressBar) findViewById(R.id.progressBarOfLoadingPush);
         loading.setVisibility(View.VISIBLE);
         if (isNetworkAvailable()) {
             try {
+                Random rand = new Random();
+                int ramdom;
                 Intent intentFromLogin = getIntent();
                 String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
                 pushDataInfo.setTitle(userID + ":\n" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
+                ramdom = rand.nextInt((10000 - 1000) + 1) + 1000;
+                pushDataInfo.setPushId(ramdom);
+                getSharedPreferences("PUSHID", MODE_PRIVATE).edit().putInt("pushid", ramdom).apply();
                 Gson gson = new Gson();
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));
                 ParsePush push = new ParsePush();
+                ParsePush.subscribeInBackground(userID);
                 push.setChannel(userID);
                 push.setData(jsonObject);
                 push.sendInBackground();
             } catch (JSONException e) {
 
             }
-            Intent intentToReturn = new Intent(this, MainActivity.class);
-            startActivity(intentToReturn);
-            finish();
         }
         else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();

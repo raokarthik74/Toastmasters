@@ -26,6 +26,7 @@ public class AhCounter extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Ah Counter");
         setContentView(R.layout.activity_ah_counter);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -58,6 +59,7 @@ public class AhCounter extends AppCompatActivity {
         editor.putStringSet("counterSet", counterSet);
         editor.commit();
         MainActivity.getInstance().recreate();
+        finish();
     }
 
     public void goToReport (View view) {
@@ -89,7 +91,10 @@ public class AhCounter extends AppCompatActivity {
             pauseButton.setText("0");
             return true;
         }
-
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }
