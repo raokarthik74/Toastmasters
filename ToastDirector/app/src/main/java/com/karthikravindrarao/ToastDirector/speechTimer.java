@@ -220,7 +220,14 @@ public class speechTimer extends ActionBarActivity {
         String name = nameFromActivity.getText().toString();
         long minutes=0, seconds=0;
         minutes = TimeUnit.SECONDS.toMinutes(elapsedTimeInSeconds);
+        String type;
         seconds = elapsedTimeInSeconds%60;
+        if(isAdvanced) {
+            type = intent.getStringExtra(AdvancedSpeechesTimerSetting.timerTitle);
+        }
+        else {
+            type = intent.getStringExtra(TimerSelection.TimerTitle);
+        }
         if (isExceeded) {
             long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
             SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
@@ -228,7 +235,7 @@ public class speechTimer extends ActionBarActivity {
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
             timerSet.add(currentDateAndTime.format(new Date()) + "\n" + name + ":\t" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
-                    "\nTime Exceeded By:\t" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+                    "\nType:\t"+type+"\nTime Exceeded By:\t" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
             editor.remove("timerSet");
             editor.apply();
             editor.putStringSet("timerSet", timerSet);
@@ -239,7 +246,7 @@ public class speechTimer extends ActionBarActivity {
             SharedPreferences.Editor editor = timer.edit();
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
-            timerSet.add(currentDateAndTime.format(new Date()) + "\n" +name+":\t"+String.valueOf(minutes)+":"+String.valueOf(seconds));
+            timerSet.add(currentDateAndTime.format(new Date()) + "\n" +name+":\t"+String.valueOf(minutes)+":"+String.valueOf(seconds)+"\nType:\t"+type);
             editor.remove("timerSet");
             editor.apply();
             editor.putStringSet("timerSet", timerSet);
