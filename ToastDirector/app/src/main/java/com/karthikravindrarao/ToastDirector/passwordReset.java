@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
@@ -39,8 +40,9 @@ public class passwordReset extends AppCompatActivity {
         final String password;
         final String newPassword;
         String reNewPassword;
-
+        final Button resetButton = (Button) findViewById(R.id.resetPasswordButton);
         if (isNetworkAvailable()) {
+            resetButton.setEnabled(false);
             userId = ((EditText) findViewById(R.id.resetUserIdEditText)).getText().toString();
             password = ((EditText) findViewById(R.id.resetCurrentPasswordEditText)).getText().toString();
             newPassword = ((EditText) findViewById(R.id.resetNewPasswordEditText)).getText().toString();
@@ -49,12 +51,15 @@ public class passwordReset extends AppCompatActivity {
             final ProgressBar loading = (ProgressBar) findViewById(R.id.progressBarOfResetPassword);
             loading.setVisibility(View.VISIBLE);
             if (newPassword.equals(reNewPassword)) {
+                resetButton.setEnabled(false);
                 ParseUser.logInInBackground(userId, password, new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
                         if (parseUser != null) {
+                            resetButton.setEnabled(false);
                             try {
                                 if (password.equals(newPassword)) {
+                                    resetButton.setEnabled(true);
                                     loading.setVisibility(View.INVISIBLE);
                                     wrongAuth.setTitle("Error");
                                     wrongAuth.setMessage("New Password cannot be same as old password");
@@ -69,6 +74,7 @@ public class passwordReset extends AppCompatActivity {
                                     wrongAuth.show();
                                 }
                                 else {
+                                    resetButton.setEnabled(false);
                                     ParseUser user = ParseUser.logIn(userId, password);
                                     user.setPassword(newPassword);
                                     user.saveInBackground();
@@ -88,6 +94,7 @@ public class passwordReset extends AppCompatActivity {
 
                             }
                         } else {
+                            resetButton.setEnabled(true);
                             wrongAuth.setTitle("Error");
                             wrongAuth.setMessage("Check User ID and Current Password");
                             loading.setVisibility(View.INVISIBLE);
@@ -96,6 +103,8 @@ public class passwordReset extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     ((EditText) findViewById(R.id.resetUserIdEditText)).setText("");
                                     ((EditText) findViewById(R.id.resetCurrentPasswordEditText)).setText("");
+                                    ((EditText) findViewById(R.id.resetNewPasswordEditText)).setText("");
+                                    ((EditText) findViewById(R.id.resetReEnterNewPasswordEditText)).setText("");
                                     dialog.dismiss();
                                 }
                             });
@@ -105,6 +114,7 @@ public class passwordReset extends AppCompatActivity {
                 });
             }
             else {
+                resetButton.setEnabled(true);
                 loading.setVisibility(View.INVISIBLE);
                 wrongAuth.setTitle("Error");
                 wrongAuth.setMessage("New password and re-enter new password does not match");
@@ -120,6 +130,7 @@ public class passwordReset extends AppCompatActivity {
             }
         }
         else {
+            resetButton.setEnabled(true);
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("No Internet");
             alertDialog.setMessage("Check Network Connection and Try Again");

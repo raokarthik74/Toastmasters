@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -67,10 +68,13 @@ public class PushNotificationActivity extends AppCompatActivity {
 
     public void pushNotification (View view) {
 
+        Button pushButton = (Button) findViewById(R.id.sendPushButton);
+
         final ProgressBar loading = (ProgressBar) findViewById(R.id.progressBarOfLoadingPush);
         loading.setVisibility(View.VISIBLE);
         if (isNetworkAvailable()) {
             try {
+                pushButton.setEnabled(false);
                 Random rand = new Random();
                 int ramdom;
                 Intent intentFromLogin = getIntent();
@@ -91,11 +95,27 @@ public class PushNotificationActivity extends AppCompatActivity {
                 push.setChannel(userID);
                 push.setData(jsonObject);
                 push.sendInBackground();
+                final Intent intentToMainActivity = new Intent(this, MainActivity.class);
+                loading.setVisibility(View.INVISIBLE);
+                AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+                alertDialog.setTitle("Success");
+                alertDialog.setMessage("Your notification will be sent shortly !");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                startActivity(intentToMainActivity);
+                            }
+                        });
+                alertDialog.show();
             } catch (JSONException e) {
 
             }
         }
         else {
+            pushButton.setEnabled(true);
+            loading.setVisibility(View.INVISIBLE);
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("No Internet");
             alertDialog.setMessage("Check Network Connection and Try Again");

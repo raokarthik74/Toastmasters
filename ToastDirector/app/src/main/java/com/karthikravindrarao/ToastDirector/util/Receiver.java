@@ -37,11 +37,11 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 String title = json.getString("title");
                 String alert = json.getString("alert");
                 String dateAndTime = json.getString("dateAndTime");
-                int pushIdFromNotification = json.getInt("pushId");
-                int pushId = context.getSharedPreferences("PUSHID", Context.MODE_PRIVATE).getInt("pushid", 0);
-                if (pushId == pushIdFromNotification) {
-                    PushNotificationActivity.getInstance().finish();
-                }
+//                int pushIdFromNotification = json.getInt("pushId");
+//                int pushId = context.getSharedPreferences("PUSHID", Context.MODE_PRIVATE).getInt("pushid", 0);
+//                if (pushId == pushIdFromNotification) {
+//                    PushNotificationActivity.getInstance().finish();
+//                }
                 SharedPreferences message = context.getSharedPreferences("message", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = message.edit();
                 Set<String> messageSet = message.getStringSet("messageSet", new HashSet<String>());

@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -44,7 +45,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void checkAuth (View view) {
+        final Button loginButton = (Button) findViewById(R.id.loginButton);
         if (isNetworkAvailable()) {
+            loginButton.setEnabled(false);
             intentToPush = new Intent(this, PushNotificationActivity.class);
             userId = ((EditText) findViewById(R.id.userIdForLogin)).getText().toString();
             password = ((EditText) findViewById(R.id.passwordForLogin)).getText().toString();
@@ -59,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intentToPush);
                         finish();
                     } else {
+                        loginButton.setEnabled(true);
                         loading.setVisibility(View.INVISIBLE);
                         wrongAuth.setTitle("Error");
                         wrongAuth.setMessage("Check User ID and Password");
@@ -76,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
         else {
-
+            loginButton.setEnabled(true);
                 AlertDialog alertDialog = new AlertDialog.Builder(this).create();
                 alertDialog.setTitle("No Internet");
                 alertDialog.setMessage("Check Network Connection and Try Again");
