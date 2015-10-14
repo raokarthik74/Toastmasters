@@ -55,6 +55,7 @@ public class DistrictSelectionActivity extends AppCompatActivity {
             ParsePush.subscribeInBackground(districtValue+"-"+divisionValue+"-"+areaValue);
             ParsePush.subscribeInBackground(districtValue+"-"+divisionValue+"-"+areaValue+"-"+clubValue);
         Intent intentBackToMainActivity = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intentBackToMainActivity);
     }
 
