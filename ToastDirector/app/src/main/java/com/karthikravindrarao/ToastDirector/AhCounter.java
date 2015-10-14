@@ -56,7 +56,7 @@ public class AhCounter extends AppCompatActivity {
         SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = counter.edit();
         Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-        SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
+        SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t kk:mm:ss");
         counterSet.add(currentDateAndTime.format(new Date()) +"\n"+ name + " \nCrutch Words:\t" + crutch + " \nFiller Words:\t" + filler + "\nUnwanted Pauses:\t" + pause);
         editor.remove("counterSet");
         editor.apply();

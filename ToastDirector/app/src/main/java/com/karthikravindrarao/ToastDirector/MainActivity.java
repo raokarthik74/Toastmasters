@@ -43,7 +43,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
     public final static String titleForNotification = "com.district92.toastmasters.titleForNotification";
     static MainActivity mainActivity;
+    static Context mainActivityContext;
     int fragmentPosition;
+    boolean onStopped = false;
+    static boolean onResumed;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -65,6 +68,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainActivity = this;
+        mainActivityContext = getApplicationContext();
         boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
         if (isFirstRun) {
             getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
@@ -112,10 +116,44 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         return mainActivity;
     }
 
+    public static Context getMainActivityContext () {
+        return mainActivityContext;
+    }
+
     @Override
     public void onBackPressed () {
         finish();
         System.exit(0);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (onStopped){
+            onStopped = false;
+            getInstance().recreate();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        onStopped = true;
+    }
+
+    @Override
+    public void onResume (){
+        super.onResume();
+        onResumed = true;
+    }
+    @Override
+    public void onPause (){
+        super.onPause();
+        onResumed = false;
+    }
+
+    public static boolean ifOnResumed () {
+        return onResumed;
     }
 
     @Override

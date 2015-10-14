@@ -56,12 +56,17 @@ public class Receiver extends ParsePushBroadcastReceiver {
                 editor.apply();
                 editor.putStringSet("messageSet", messageSet);
                 editor.apply();
+                if (MainActivity.ifOnResumed()) {
+                    Context requiredContext = MainActivity.getMainActivityContext();
+                    Intent intentToStartMainActivity = new Intent(requiredContext, MainActivity.class);
+                    intentToStartMainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    requiredContext.startActivity(intentToStartMainActivity);
+                }
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        MainActivity.getInstance().recreate();
     }
 
     @Override
