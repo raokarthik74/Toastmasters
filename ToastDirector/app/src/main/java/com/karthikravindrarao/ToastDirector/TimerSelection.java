@@ -17,7 +17,6 @@ public class TimerSelection extends AppCompatActivity {
     static TimerSelection timerSelection;
     Intent intentFromSelectProjectActivity;
     Intent intentForAdvancedProjects;
-    Intent intentForReport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +59,7 @@ public class TimerSelection extends AppCompatActivity {
                         startActivity(intentForAdvancedProjects);
                         break;
                     case 6:
-                        startActivity(intentForReport);
+                        finish();
                         break;
                 }
 
