@@ -83,7 +83,7 @@ public class PushNotificationActivity extends AppCompatActivity {
                 Intent intentFromLogin = getIntent();
                 String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
-                pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setTitle(userID+":" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
                 ramdom = rand.nextInt((10000 - 1000) + 1) + 1000;
