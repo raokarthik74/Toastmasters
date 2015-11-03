@@ -37,6 +37,8 @@ public class speechTimer extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         timeWhenStopped = 0;
         super.onCreate(savedInstanceState);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         isPaused = false;
         isExceeded = false;
         intent = getIntent();
@@ -252,7 +254,7 @@ public class speechTimer extends ActionBarActivity {
             editor.putStringSet("timerSet", timerSet);
             editor.apply();
         }
-        MainActivity.getInstance().recreate();
+        timerReportActivity.getInstance().recreate();
         TimerSelection.getInstance().finish();
         finish();
     }

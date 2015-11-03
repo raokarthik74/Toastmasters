@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -30,6 +31,8 @@ public class WebactivityForParse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         setTitle("Notification");
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_webactivity_for_parse);
         mWebView = (WebView)findViewById(R.id.webView2);
         mWebView.getSettings().setJavaScriptEnabled(true);

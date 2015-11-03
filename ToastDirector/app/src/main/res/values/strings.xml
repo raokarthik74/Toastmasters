@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Toast Director</string>
+    <string name="app_name">TM District 92</string>
 
-    <string name="title_section1">Tapper</string>
-    <string name="title_section2">Notifications</string>
-    <string name="title_section3">Timer</string>
+    <string name="title_section1">Coronation</string>
+    <string name="title_section2">District 92</string>
+    <string name="title_section3">Notifications</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="snack_bar">AC - Advanced Communication</string>
@@ -54,4 +54,8 @@
     <string name="title_activity_notification_list">NotificationList</string>
     <string name="title_activity_web_view_for_notification">WebViewForNotification</string>
     <string name="title_activity_password_reset">passwordReset</string>
+    <string name="title_activity_ah_counter_report">ahCounterReportActivity</string>
+    <string name="title_activity_awards_list_view">AwardsListView</string>
+    <string name="title_activity_events_list_view">EventsListView</string>
+    <string name="title_activity_choose_notifications">ChooseNotifications</string>
 </resources>

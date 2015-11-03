@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.NumberPicker;
 
 import java.util.concurrent.TimeUnit;
@@ -126,6 +127,8 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         int minimumForAmber = 0, minimumForRed = 0;
         super.onCreate(savedInstanceState);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_advanced_speeches_timer_setting);
         setTitle("Select Time");
         final NumberPicker greenNumberPicker = (NumberPicker) findViewById(R.id.numberPicker);
@@ -206,6 +209,7 @@ public class AdvancedSpeechesTimerSetting extends AppCompatActivity {
             intentFromAdvanced.putExtra(amberValue,amber);
             intentFromAdvanced.putExtra(isAdvanced, true);
             intentFromAdvanced.putExtra(timerTitle, "Advanced Projects");
+            finish();
             startActivity(intentFromAdvanced);
         }
     }

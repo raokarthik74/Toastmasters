@@ -28,6 +28,8 @@ public class AhCounter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Ah Counter");
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ah_counter);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
@@ -62,13 +64,10 @@ public class AhCounter extends AppCompatActivity {
         editor.apply();
         editor.putStringSet("counterSet", counterSet);
         editor.apply();
-        MainActivity.getInstance().recreate();
+        ahCounterReportActivity.getInstance().recreate();
         finish();
     }
 
-    public void goToReport (View view) {
-        MainActivity.getInstance().recreate();
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

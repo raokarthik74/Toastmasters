@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -37,6 +38,8 @@ public class PushNotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Send Notifications");
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         pushNotificationActivity = this;
         if(!isNetworkAvailable()) {
             TextView textView = new TextView(this);
@@ -80,13 +83,13 @@ public class PushNotificationActivity extends AppCompatActivity {
                 Intent intentFromLogin = getIntent();
                 String userID = intentFromLogin.getStringExtra(LoginActivity.userID);
                 PushDataInfo pushDataInfo = new PushDataInfo();
-                pushDataInfo.setTitle(userID + ":\t" + ((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
+                pushDataInfo.setTitle(((EditText) findViewById(R.id.notificationTitleEditText)).getText().toString());
                 pushDataInfo.setUrl(((EditText) findViewById(R.id.notificationLinkUrlEditText)).getText().toString());
                 pushDataInfo.setAlert(((EditText) findViewById(R.id.notificationMessageEditText)).getText().toString());
                 ramdom = rand.nextInt((10000 - 1000) + 1) + 1000;
                 pushDataInfo.setPushId(ramdom);
                 getSharedPreferences("PUSHID", MODE_PRIVATE).edit().putInt("pushid", ramdom).apply();
-                SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t hh:mm:ss aa");
+                SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t kk:mm:ss");
                 pushDataInfo.setDateAndTime(currentDateAndTime.format(new Date()));
                 Gson gson = new Gson();
                 JSONObject jsonObject = new JSONObject(gson.toJson(pushDataInfo));

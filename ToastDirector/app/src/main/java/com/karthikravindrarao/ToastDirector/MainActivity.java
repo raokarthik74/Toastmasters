@@ -1,7 +1,11 @@
 package com.karthikravindrarao.ToastDirector;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +18,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.CountDownTimer;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -28,10 +35,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.parse.ParseInstallation;
+import com.parse.ParsePush;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +56,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     public final static String urlForNotification = "com.district92.toastmasters.urlnotification";
     public final static String titleForNotification = "com.district92.toastmasters.titleForNotification";
+    public final static String urlForWebView = "com.district92.toastmasters.urlForWebView";
     static MainActivity mainActivity;
     static Context mainActivityContext;
     int fragmentPosition;
@@ -68,13 +83,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mainActivity = this;
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mainActivityContext = getApplicationContext();
-        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-        if (isFirstRun) {
-            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
-            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
-            startActivity(intentToSelectDistrict);
-        }
+//        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+//        if (isFirstRun) {
+//            getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).apply();
+//            Intent intentToSelectDistrict = new Intent(this, DistrictSelectionActivity.class);
+//            startActivity(intentToSelectDistrict);
+//        }
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -179,101 +196,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 Intent adminLoginIntent = new Intent(this, LoginActivity.class);
                 startActivity(adminLoginIntent);
                 return true;
-            case R.id.settings:
-                Intent settingsIntent = new Intent(this, DistrictSelectionActivity.class);
-                startActivity(settingsIntent);
-                return true;
-            case R.id.deleteIcon:
-                if (fragmentPosition == 0) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                    alertDialog.setTitle("Warning !");
-                    alertDialog.setMessage("Are you sure you want to delete all the Ah Counter Reports ?");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
-                                   // Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-                                    SharedPreferences.Editor counterEditor = counter.edit();
-                                   // counterSet.clear();
-                                   // counterEditor.putStringSet("counterSet", counterSet);
-                                    counterEditor.remove("counterSet");
-                                    counterEditor.apply();
-                                    getInstance().recreate();
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }
-                    );
-                    alertDialog.show();
-                    return true;
-                }
-                if (fragmentPosition == 1) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                    alertDialog.setTitle("Warning !");
-                    alertDialog.setMessage("Are you sure you want to delete all the Notifications ?");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
-                                   // Set<String>messageSet = message.getStringSet("messageSet", new HashSet<String>());
-                                    SharedPreferences.Editor messageEditor = message.edit();
-                                    //messageSet.clear();
-                                   // messageEditor.putStringSet("messageSet", messageSet);
-                                    messageEditor.remove("messageSet");
-                                    messageEditor.apply();
-                                    getInstance().recreate();
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }
-                    );
-                    alertDialog.show();
-                    return true;
-                }
-                if (fragmentPosition == 2) {
-                    AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-                    alertDialog.setTitle("Warning !");
-                    alertDialog.setMessage("Are you sure you want to delete all the Timer Reports ?");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
-                                    //Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
-                                    SharedPreferences.Editor editor = timer.edit();
-                                    //timerSet.clear();
-                                    //editor.putStringSet("timerSet", timerSet);
-                                    editor.remove("timerSet");
-                                    editor.apply();
-                                    getInstance().recreate();
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            }
-                    );
-                    alertDialog.show();
-                    return true;
-                }
             default: return super.onOptionsItemSelected(item);
         }
     }
@@ -326,13 +248,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
-                return new ahCounterFragment();
+                return new conferenceFragment();
             }
             if (position == 1) {
-                return new notificationFragment();
+                return new districtFragment();
             }
             if (position == 2) {
-                return new timerFragment();
+                return new notificationFragment();
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
@@ -391,73 +313,119 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
     }
 
-    public static class timerFragment extends Fragment {
+    public static class districtFragment extends Fragment {
 
         private static final String ARG_SECTION_NUMBER = "section_number";
-        public timerFragment() {
+        public districtFragment() {
         }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_timer_report, container, false);
-            ListView listView = (ListView) rootView.findViewById(R.id.timerReportListView);
-            SharedPreferences timer = this.getActivity().getSharedPreferences("timer", Context.MODE_PRIVATE);
-            Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
-            ArrayList<String> listOfData = new ArrayList<String>(timerSet);
-            Collections.sort(listOfData);
-            TextView noTimer = (TextView) rootView.findViewById(R.id.noTimer);
-            if (listOfData.isEmpty()) {
-                noTimer.setVisibility(View.VISIBLE);
-            }
-            else {
-                noTimer.setVisibility(View.INVISIBLE);
-            }
-                ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
-                listView.setAdapter(dataToBeDisplayed);
+            View rootView = inflater.inflate(R.layout.fragment_district, container, false);
                 return rootView;
         }
     }
 
-    public void floatingActionButtonforTimer (View view) {
-        Intent intentFromTimer = new Intent(this, TimerSelection.class);
-        startActivity(intentFromTimer);
+    public void openAwardsPage (View view) {
+        Intent intentToOpenAwards = new Intent(this,AwardsListView.class);
+        startActivity(intentToOpenAwards);
     }
 
-    public static class ahCounterFragment extends Fragment {
+    public void openNewsLetterPage (View view) {
+        Intent intentToNewsLetter = new Intent(this,webView.class);
+        intentToNewsLetter.putExtra(urlForWebView, "http://www.tmdistrict92.org/tmdistrict92/index.php/toastmasters-media/newsletters/district-newsletters");
+        startActivity(intentToNewsLetter);
+    }
 
+    public void openAhCounter (View view) {
+        Intent intentToAhCounter = new Intent(this,ahCounterReportActivity.class);
+        startActivity(intentToAhCounter);
+    }
+
+    public void openTimer (View view) {
+        Intent intentToTimer = new Intent(this,timerReportActivity.class);
+        startActivity(intentToTimer );
+    }
+
+    public void openEvents (View view) {
+        Intent intentToEvents = new Intent(this,EventsListView.class);
+        startActivity(intentToEvents);
+    }
+
+    public void openBlog (View view) {
+        Intent intentToBlog = new Intent(this,webView.class);
+        intentToBlog.putExtra(urlForWebView, "http://www.tmdistrict92.org/tmdistrict92/index.php/toastmasters-media/newsletters/district-newsletters");
+        startActivity(intentToBlog);
+    }
+
+    public void openAboutDistrict (View view) {
+        Intent intentToAbout = new Intent(this,webView.class);
+        intentToAbout.putExtra(urlForWebView, "http://www.tmdistrict92.org/");
+        startActivity(intentToAbout);
+    }
+
+    public static class conferenceFragment extends Fragment {
 
 
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        public ahCounterFragment() {
+        public conferenceFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_data_save, container, false);
-            ListView listView = (ListView) rootView.findViewById(R.id.dataSaveListView);
-            SharedPreferences counter = this.getActivity().getSharedPreferences("counter", Context.MODE_PRIVATE);
-            Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
-            ArrayList<String> listOfData = new ArrayList<String>(counterSet);
-            Collections.sort(listOfData);
-            TextView noAhcounter = (TextView) rootView.findViewById(R.id.noAhCounter);
-            if (listOfData.isEmpty()) {
-                noAhcounter.setVisibility(View.VISIBLE);
+            final View rootView = inflater.inflate(R.layout.fragment_conference, container, false);
+            SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = null;
+            try {
+                date = dformat.parse("28-06-2016");
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            else {
-                noAhcounter.setVisibility(View.INVISIBLE);
-            }
-                ArrayAdapter<String> dataToBeDisplayed = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listOfData);
-                listView.setAdapter(dataToBeDisplayed);
-                return rootView;
+            CountDownTimer cdt = new CountDownTimer(date.getTime(), 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    Calendar c = Calendar.getInstance();
+                    c.setTimeInMillis(millisUntilFinished);
+                    ((TextView) rootView.findViewById(R.id.countDown)).setText("COUNTDOWN\n Month : Day : Hour : Minute : Second\n" + getDate(millisUntilFinished, "MM : FF : hh : mm : ss"));
+//                    ((TextView) rootView.findViewById(R.id.conDays)).setText(c.get(Calendar.DAY_OF_MONTH));
+//                    ((TextView) rootView.findViewById(R.id.conHours)).setText(c.get(Calendar.HOUR));
+//                    ((TextView) rootView.findViewById(R.id.conMinutes)).setText(c.get(Calendar.MINUTE));
+//                    ((TextView) rootView.findViewById(R.id.conSeconds)).setText(c.get(Calendar.SECOND));
+                }
+
+                public void onFinish() {
+                    ((TextView) rootView.findViewById(R.id.countDown)).setText("WELCOME \n TO CORONATION");
+
+                }
+            }.start();
+            return rootView;
+        }
+
+        public static String getDate(long milliSeconds, String dateFormat)
+        {
+            // Create a DateFormatter object for displaying date in specified format.
+            SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
+            // Create a calendar object that will convert the date and time value in milliseconds to date.
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(milliSeconds);
+            return formatter.format(calendar.getTime());
         }
     }
 
-    public void floatingActionButton (View view) {
-        Intent intentFromAhReport = new Intent(this, AhCounter.class);
-        startActivity(intentFromAhReport);
+    public void openMapVenue (View view) {
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.co.in/maps/place/Bengaluru+Marriott+Hotel+Whitefield/@12.979522,77.7259913,17z/data=!3m1!4b1!4m2!3m1!1s0x3bae11f15591198b:0x6f7d6b166b01e4e3"));
+        startActivity(intent);
     }
+
+    public void chooseConferenceNotifications (View view) {
+        Intent intentToNotifications = new Intent(this, ChooseNotifications.class);
+        startActivity(intentToNotifications);
+    }
+
 
 
     public static class notificationFragment extends Fragment {
@@ -504,15 +472,21 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 sortedTitleToDisplay.add(titleToDisplay.get(indexOfArrayList.get(messageToDisplay.get(i))));
                 sortedUrlToConnect.add(urlToConnect.get(indexOfArrayList.get(messageToDisplay.get(i))));
             }
+            FloatingActionButton fabdelete = (FloatingActionButton) rootView.findViewById(R.id.fabnotificationdelete);
+            TextView noNotificaiton = (TextView) rootView.findViewById(R.id.nonotification);
             ArrayAdapter<String> adaptorForNotifications = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, messageToDisplay);
             listView.setAdapter(adaptorForNotifications);
             if (messageToDisplay.isEmpty()) {
-                TextView textView = new TextView(getActivity());
-                textView.setTextSize(25);
-                textView.setText("No Notifications");
-                textView.setGravity(Gravity.CENTER);
-                return textView;
+//                TextView textView = new TextView(getActivity());
+//                textView.setTextSize(25);
+//                textView.setText("No Notifications");
+//                textView.setGravity(Gravity.CENTER);
+                fabdelete.setVisibility(View.INVISIBLE);
+                noNotificaiton.setVisibility(View.VISIBLE);
+                return rootView;
             } else {
+                fabdelete.setVisibility(View.VISIBLE);
+                noNotificaiton.setVisibility(View.INVISIBLE);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -525,6 +499,36 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
             }
         }
+    }
+
+    public void floatingActionButtonforNotification (View view) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Warning !");
+        alertDialog.setMessage("Are you sure you want to delete all the Notifications ?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences message = getSharedPreferences("message", Context.MODE_PRIVATE);
+                        // Set<String>messageSet = message.getStringSet("messageSet", new HashSet<String>());
+                        SharedPreferences.Editor messageEditor = message.edit();
+                        //messageSet.clear();
+                        // messageEditor.putStringSet("messageSet", messageSet);
+                        messageEditor.remove("messageSet");
+                        messageEditor.apply();
+                        getInstance().recreate();
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }
+        );
+        alertDialog.show();
     }
 }
 

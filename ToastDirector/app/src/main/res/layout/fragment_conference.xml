@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backgroundForDistrict"
+        android:src="@drawable/ballroom"
+        android:alpha="0.55"
+        android:scaleType = "centerCrop"
+        />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="25dp">
+    <TextView
+        android:textColor="@color/primary_text"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/countDown"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Small Text"-->
+        <!--android:id="@+id/conDays"-->
+        <!--android:layout_weight="0.2"-->
+        <!--/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Small Text"-->
+        <!--android:id="@+id/conHours"-->
+        <!--android:layout_weight="0.2"-->
+        <!--/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Small Text"-->
+        <!--android:id="@+id/conMinutes"-->
+        <!--android:layout_weight="0.2"-->
+        <!--/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Small Text"-->
+        <!--android:id="@+id/conSeconds"-->
+        <!--android:layout_weight="0.2"-->
+        <!--/>-->
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact Us"
+        android:textColor="@color/primary_text"
+        android:id="@+id/contactConference"
+        android:layout_alignParentBottom="true"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:textSize="19sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notifications"
+        android:textColor="@color/primary_text"
+        android:id="@+id/conferenceNotifications"
+        android:layout_above="@id/contactConference"
+        android:onClick="chooseConferenceNotifications"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:textSize="19sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sponsors"
+        android:textColor="@color/primary_text"
+        android:id="@+id/viewSponsors"
+        android:layout_above="@id/conferenceNotifications"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:textSize="19sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/registrationLink"
+        android:textColor="@color/primary_text"
+        android:layout_above="@id/viewSponsors"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contestants"
+        android:textSize="19sp"
+        android:id="@+id/openListOfContestants"
+        android:layout_above="@id/registrationLink"
+        android:textColor="@color/primary_text"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speakers"
+        android:textSize="19sp"
+        android:textColor="@color/primary_text"
+        android:id="@+id/openSpeakers"
+        android:layout_above="@id/openListOfContestants"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:textSize="19sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agenda"
+        android:textColor="@color/primary_text"
+        android:id="@+id/openAgenda"
+        android:layout_above="@id/openSpeakers"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:text="Venue"
+        android:onClick="openMapVenue"
+        android:textColor="@color/primary_text"
+        android:id="@+id/linkToVenue"
+        android:layout_above="@id/openAgenda"
+        />
+
+    <Button  style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:textSize="19sp"
+        android:id="@+id/aboutConference"
+        android:textColor="@color/primary_text"
+        android:layout_above="@id/linkToVenue"
+         />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.karthikravindrarao.ToastDirector.ChooseNotifications">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Would you like to receive conference related notifications ?"
+        android:id="@+id/textView7"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_below="@id/textView7"
+        android:layout_marginTop="25dp"
+        android:layout_height="70dp"
+        android:text="YES"
+        android:onClick="yesNotification"
+        android:textColor="@color/icons"
+        android:id="@+id/button3"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:text="NO"
+        android:textColor="@color/icons"
+        android:onClick="noNotification"
+        android:id="@+id/button4"
+        android:layout_below="@+id/button3"
+         />
+</RelativeLayout>

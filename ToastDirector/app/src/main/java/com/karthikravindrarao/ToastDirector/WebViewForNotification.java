@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -25,6 +26,8 @@ public class WebViewForNotification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view_for_notification);
         Intent intent = getIntent();
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         String url = intent.getStringExtra(MainActivity.urlForNotification);
         setTitle("Notification");
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbarForNotificationList);
