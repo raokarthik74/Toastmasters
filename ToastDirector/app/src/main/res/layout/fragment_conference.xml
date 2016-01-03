@@ -6,28 +6,9 @@
         android:layout_height="match_parent"
         android:id="@+id/backgroundForDistrict"
         android:src="@drawable/ballroom"
-        android:alpha="0.55"
+        android:alpha="0.5"
         android:scaleType = "centerCrop"
         />
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="25dp">
-    <TextView
-        android:textColor="@color/primary_text"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/countDown"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -60,110 +41,120 @@
         <!--android:id="@+id/conSeconds"-->
         <!--android:layout_weight="0.2"-->
         <!--/>-->
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:textSize="18sp"
+
+    <TextView
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contact Us"
-        android:textColor="@color/primary_text"
-        android:id="@+id/contactConference"
-        android:layout_alignParentBottom="true"
-        />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/icons"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/countDown"
+        android:gravity="center"
+        android:background="#CC795548"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_centerHorizontal="true" />
 
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:textSize="19sp"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notifications"
-        android:textColor="@color/primary_text"
-        android:id="@+id/conferenceNotifications"
-        android:layout_above="@id/contactConference"
-        android:onClick="chooseConferenceNotifications"
-        />
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="center_horizontal|bottom">
 
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:textSize="19sp"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="About the Conference"
+            android:onClick="aboutConferenceLink"
+            android:backgroundTint="#CCF44336"
+            android:id="@+id/aboutConference"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayoutForProgram"
+            android:layout_below="@id/aboutConference"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:text="Program"
+                android:layout_weight="0.7"
+                android:backgroundTint="#CC7C4DFF"
+                android:onClick="programLink"
+                android:id="@+id/openAgenda"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:backgroundTint="#CC903041"
+                android:layout_weight="0.3"
+                android:text="Venue"
+                android:onClick="openMapVenue"
+                android:id="@+id/linkToVenue"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayoutForSponsors"
+            android:layout_below="@id/linearLayoutForProgram"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:text="Register"
+                android:layout_weight="0.4"
+                android:backgroundTint="#CC3F51B5"
+                android:onClick="registrationLink"
+                android:id="@+id/registrationLink"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:text="Notifications"
+                android:backgroundTint="#CC009688"
+                android:layout_weight="0.6"
+                android:id="@+id/conferenceNotifications"
+                android:onClick="chooseConferenceNotifications"
+                />
+
+        </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/linearLayoutForContact"
         android:layout_height="wrap_content"
-        android:text="Sponsors"
-        android:textColor="@color/primary_text"
-        android:id="@+id/viewSponsors"
-        android:layout_above="@id/conferenceNotifications"
-        />
+        android:layout_below="@id/linearLayoutForSponsors">
 
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:textSize="19sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/registrationLink"
-        android:textColor="@color/primary_text"
-        android:layout_above="@id/viewSponsors"
-        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Sponsors"
+            android:layout_weight="0.6"
+            android:backgroundTint="#CCFF9800"
+            android:onClick="sponsorsLink"
+            android:id="@+id/viewSponsors"
+            />
 
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Contestants"
-        android:textSize="19sp"
-        android:id="@+id/openListOfContestants"
-        android:layout_above="@id/registrationLink"
-        android:textColor="@color/primary_text"
-        />
-
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Speakers"
-        android:textSize="19sp"
-        android:textColor="@color/primary_text"
-        android:id="@+id/openSpeakers"
-        android:layout_above="@id/openListOfContestants"
-        />
-
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:textSize="19sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agenda"
-        android:textColor="@color/primary_text"
-        android:id="@+id/openAgenda"
-        android:layout_above="@id/openSpeakers"
-        />
-
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="19sp"
-        android:text="Venue"
-        android:onClick="openMapVenue"
-        android:textColor="@color/primary_text"
-        android:id="@+id/linkToVenue"
-        android:layout_above="@id/openAgenda"
-        />
-
-    <Button  style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="About"
-        android:textSize="19sp"
-        android:id="@+id/aboutConference"
-        android:textColor="@color/primary_text"
-        android:layout_above="@id/linkToVenue"
-         />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Contact Us"
+            android:layout_weight="0.4"
+            android:backgroundTint="#CCE040FB"
+            android:onClick="contactLink"
+            android:id="@+id/contactConference"
+            />
+    </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

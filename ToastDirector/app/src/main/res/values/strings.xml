@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">TM District 92</string>
 
-    <string name="title_section1">Coronation</string>
-    <string name="title_section2">District 92</string>
-    <string name="title_section3">Notifications</string>
+    <string name="title_section1">CON</string>
+    <string name="title_section2">D-92</string>
+    <string name="title_section3">PINGS</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="snack_bar">AC - Advanced Communication</string>

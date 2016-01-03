@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#903041</color>
-    <color name="primary_alpha">#CC903041</color>
-    <color name="primary_dark">#732634</color>
-    <color name="primary_light">#A65967</color>
-    <color name="accent">#004165</color>
-    <color name="accent_alpha">#CC004165</color>
-    <color name="primary_text">#212121</color>
+    <color name="primary">#03A9F4</color>
+    <color name="primary_alpha">#CC03A9F4</color>
+    <color name="primary_dark">#0288D1</color>
+    <color name="primary_light">#B3E5FC</color>
+    <color name="accent">#536DFE</color>
+    <color name="accent_alpha">#CC536DFE</color>
+    <color name="primary_text">#727272</color>
     <color name="secondary_text">#212121</color>
     <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+    <!--<color name="primary">#903041</color>-->
+    <!--<color name="primary_alpha">#CC903041</color>-->
+    <!--<color name="primary_dark">#732634</color>-->
+    <!--<color name="primary_light">#A65967</color>-->
+    <!--<color name="accent">#004165</color>-->
+    <!--<color name="accent_alpha">#CC004165</color>-->
+    <!--<color name="primary_text">#212121</color>-->
+    <!--<color name="secondary_text">#212121</color>-->
+    <!--<color name="icons">#FFFFFF</color>-->
     <color name="spinner">#A0FFFFFF</color>
     <color name="spinnerdone">#EC903041</color>
-    <color name="divider">#B6B6B6</color>
+    <!--<color name="divider">#B6B6B6</color>-->
     <color name="red">#FF0000</color>
     <color name="amber">#FFC200</color>
     <color name="green">#00FF00</color>

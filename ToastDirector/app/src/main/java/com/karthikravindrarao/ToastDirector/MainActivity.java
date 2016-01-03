@@ -358,6 +358,12 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         startActivity(intentToBlog);
     }
 
+    public void openResources (View view) {
+        Intent intentToBlog = new Intent(this,webView.class);
+        intentToBlog.putExtra(urlForWebView, "http://www.tmdistrict92.org/tmdistrict92/index.php/resources/education");
+        startActivity(intentToBlog);
+    }
+
     public void openAboutDistrict (View view) {
         Intent intentToAbout = new Intent(this,webView.class);
         intentToAbout.putExtra(urlForWebView, "http://www.tmdistrict92.org/");
@@ -376,10 +382,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             final View rootView = inflater.inflate(R.layout.fragment_conference, container, false);
-            SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             Date date = null;
             try {
-                date = dformat.parse("28-06-2016");
+                date = dformat.parse("20-05-2016 8:00");
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -388,7 +394,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 public void onTick(long millisUntilFinished) {
                     Calendar c = Calendar.getInstance();
                     c.setTimeInMillis(millisUntilFinished);
-                    ((TextView) rootView.findViewById(R.id.countDown)).setText("COUNTDOWN\n Month : Day : Hour : Minute : Second\n" + getDate(millisUntilFinished, "MM : FF : hh : mm : ss"));
+                    ((TextView) rootView.findViewById(R.id.countDown)).setText("Month : Day : Hour : Minute : Second\n" + getDate(millisUntilFinished, "MM : FF : hh : mm : ss"));
 //                    ((TextView) rootView.findViewById(R.id.conDays)).setText(c.get(Calendar.DAY_OF_MONTH));
 //                    ((TextView) rootView.findViewById(R.id.conHours)).setText(c.get(Calendar.HOUR));
 //                    ((TextView) rootView.findViewById(R.id.conMinutes)).setText(c.get(Calendar.MINUTE));
@@ -419,6 +425,41 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 Uri.parse("https://www.google.co.in/maps/place/Bengaluru+Marriott+Hotel+Whitefield/@12.979522,77.7259913,17z/data=!3m1!4b1!4m2!3m1!1s0x3bae11f15591198b:0x6f7d6b166b01e4e3"));
         startActivity(intent);
+    }
+
+    public void aboutConferenceLink (View view) {
+        Intent intentToAbout = new Intent(this,webView.class);
+        intentToAbout.putExtra(urlForWebView, "http://www.coronation2016.org/");
+        startActivity(intentToAbout);
+    }
+
+    public void registrationLink (View view) {
+        Intent intentToAbout = new Intent(this,webView.class);
+        intentToAbout.putExtra(urlForWebView, "http://www.meraevents.com/pricingtab.php?EventId=89000&ucode=organizer");
+        startActivity(intentToAbout);
+    }
+
+    public void programLink (View view) {
+        Intent intentToAbout = new Intent(this,webView.class);
+        intentToAbout.putExtra(urlForWebView, "http://www.coronation2016.org/#program");
+        startActivity(intentToAbout);
+    }
+
+    public void sponsorsLink (View view) {
+        Intent intentToAbout = new Intent(this,webView.class);
+        intentToAbout.putExtra(urlForWebView, "http://www.coronation2016.org/#sponsors");
+        startActivity(intentToAbout);
+    }
+
+    public void contactLink (View view) {
+        Intent send = new Intent(Intent.ACTION_SENDTO);
+        String uriText = "mailto:" + Uri.encode("teamcoronation2016@gmail.com") +
+                "?subject=" + Uri.encode("") +
+                "&body=" + Uri.encode("");
+        Uri uri = Uri.parse(uriText);
+
+        send.setData(uri);
+        startActivity(Intent.createChooser(send, ""));
     }
 
     public void chooseConferenceNotifications (View view) {

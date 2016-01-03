@@ -6,93 +6,117 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/gavel1"
+        android:alpha="0.7"
         android:scaleType = "centerCrop"
         />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:id="@+id/LinearLayoutAbout"
+        android:layout_gravity="center_horizontal|bottom"
         >
-
-        <Button
-            android:textSize="19sp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Events"
-            android:id="@+id/openEvents"
-            android:textColor="@color/icons"
-            android:onClick="openEvents"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_alignParentBottom="true"/>
-
+            android:id="@+id/linearLayoutOfAbout">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_weight="0.7"
+                android:text="About"
+                android:backgroundTint="@color/primary_alpha"
+                android:id="@+id/openAbout"
+                android:textColor="@color/icons"
+                android:onClick="openAboutDistrict"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:layout_weight="0.3"
+                android:backgroundTint="@color/accent_alpha"
+                android:text="Events"
+                android:id="@+id/openEvents"
+                android:textColor="@color/icons"
+                android:onClick="openEvents"
+                />
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:id="@+id/linearLayoutOfNewsLetter"
+    android:layout_below="@id/linearLayoutOfAbout"
+    android:layout_height="wrap_content">
+    <Button
+        android:backgroundTint="@color/accent_alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:text="Newsletter"
+        android:layout_weight="0.4"
+        android:id="@+id/openNewsLetterLink"
+        android:textColor="@color/icons"
+        android:onClick="openNewsLetterPage"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_weight="0.6"
+        android:backgroundTint="@color/primary_alpha"
+        android:text="Blog"
+        android:id="@+id/openBlog"
+        android:textColor="@color/icons"
+        android:onClick="openBlog" />
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:layout_below="@+id/linearLayoutOfNewsLetter"
+    android:id="@+id/linearLayoutOfAwards">
         <Button
-            android:textSize="19sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Blog"
-            android:id="@+id/openBlog"
-            android:textColor="@color/icons"
-            android:onClick="openBlog"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_above="@id/openEvents"/>
-
-        <Button
-            android:textSize="19sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="Newsletter"
-            android:id="@+id/openNewsLetterLink"
-            android:textColor="@color/icons"
-            android:onClick="openNewsLetterPage"
-            android:layout_above="@id/openBlog"/>
-
-        <Button
-            android:textSize="19sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+           android:layout_weight="0.6"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
             android:text="Awards"
+            android:backgroundTint="@color/primary_alpha"
             android:id="@+id/openAwardsLink"
             android:textColor="@color/icons"
             android:onClick="openAwardsPage"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_above="@id/openNewsLetterLink"
             />
-
         <Button
-            android:textSize="19sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Timer"
-            android:id="@+id/openTimer"
+            android:layout_weight="0.4"
+            android:backgroundTint="@color/accent_alpha"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:text="Resources"
+            android:id="@+id/openResources"
             android:textColor="@color/icons"
-            android:onClick="openTimer"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_above="@id/openAwardsLink"
+            android:onClick="openResources"
             />
-
-        <Button
+</LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:textSize="19sp"
             android:layout_height="wrap_content"
-            android:text="Crutch Counter"
-            android:id="@+id/openAhCounter"
-            android:textColor="@color/icons"
-            android:onClick="openAhCounter"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_above="@id/openTimer" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:textSize="19sp"
-            android:layout_height="wrap_content"
-            android:text="About"
-            android:id="@+id/openAbout"
-            android:textColor="@color/icons"
-            android:onClick="openAboutDistrict"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_above="@id/openAhCounter" />
+            android:layout_below="@id/linearLayoutOfAwards">
+            <Button
+                android:layout_weight="0.6"
+                android:backgroundTint="@color/accent_alpha"
+                android:layout_width="wrap_content"
+                android:layout_height="65dp"
+                android:text="Timer"
+                android:id="@+id/openTimer"
+                android:textColor="@color/icons"
+                android:onClick="openTimer"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_weight="0.4"
+                android:layout_height="65dp"
+                android:text="Crutch Counter"
+                android:backgroundTint="@color/primary_alpha"
+                android:id="@+id/openAhCounter"
+                android:textColor="@color/icons"
+                android:onClick="openAhCounter" />
+        </LinearLayout>
 
   </RelativeLayout>
 
