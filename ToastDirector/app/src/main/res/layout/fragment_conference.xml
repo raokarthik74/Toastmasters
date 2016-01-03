@@ -5,10 +5,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/backgroundForDistrict"
-        android:src="@drawable/ballroom"
-        android:alpha="0.5"
+        android:src="@drawable/vidhana"
         android:scaleType = "centerCrop"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#64FFFFFF"
+        />
+
+
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -41,33 +47,40 @@
         <!--android:id="@+id/conSeconds"-->
         <!--android:layout_weight="0.2"-->
         <!--/>-->
-
-    <TextView
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/icons"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/countDown"
-        android:gravity="center"
-        android:background="#CC795548"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_centerHorizontal="true" />
-
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_gravity="center_horizontal|bottom">
+        >
+
+        <TextView
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/icons"
+            android:id="@+id/countDown"
+            android:gravity="center"
+            android:background="#CC795548"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:id="@+id/logo"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/countDown" />
 
         <Button
+            android:layout_below="@+id/logo"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="65dp"
             android:text="About the Conference"
             android:onClick="aboutConferenceLink"
             android:backgroundTint="#CCF44336"
@@ -75,15 +88,15 @@
             />
 
         <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_width="match_parent"
             android:id="@+id/linearLayoutForProgram"
             android:layout_below="@id/aboutConference"
             >
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="65dp"
+                android:layout_height="wrap_content"
                 android:text="Program"
                 android:layout_weight="0.7"
                 android:backgroundTint="#CC7C4DFF"
@@ -93,7 +106,7 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="65dp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="#CC903041"
                 android:layout_weight="0.3"
                 android:text="Venue"
@@ -110,8 +123,8 @@
             >
 
             <Button
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="65dp"
                 android:text="Register"
                 android:layout_weight="0.4"
                 android:backgroundTint="#CC3F51B5"
@@ -119,8 +132,8 @@
                 android:id="@+id/registrationLink"
                 />
             <Button
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="65dp"
                 android:text="Notifications"
                 android:backgroundTint="#CC009688"
                 android:layout_weight="0.6"
@@ -137,8 +150,8 @@
         android:layout_below="@id/linearLayoutForSponsors">
 
         <Button
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="65dp"
             android:text="Sponsors"
             android:layout_weight="0.6"
             android:backgroundTint="#CCFF9800"
@@ -147,8 +160,8 @@
             />
 
         <Button
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="65dp"
             android:text="Contact Us"
             android:layout_weight="0.4"
             android:backgroundTint="#CCE040FB"
@@ -157,4 +170,6 @@
             />
     </LinearLayout>
     </RelativeLayout>
+
+
 </FrameLayout>

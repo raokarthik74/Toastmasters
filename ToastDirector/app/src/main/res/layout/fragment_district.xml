@@ -5,9 +5,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/gavel1"
-        android:alpha="0.7"
+        android:src="@drawable/hampi"
         android:scaleType = "centerCrop"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#64FFFFFF"
         />
 
     <RelativeLayout
@@ -119,5 +123,4 @@
         </LinearLayout>
 
   </RelativeLayout>
-
 </FrameLayout>

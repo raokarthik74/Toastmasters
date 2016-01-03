@@ -120,10 +120,27 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             // the adapter. Also specify this Activity object, which implements
             // the TabListener interface, as the callback (listener) for when
             // this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
+            if (i == 0) {
+                actionBar.addTab(
+                        actionBar.newTab()
+                                //.setText(mSectionsPagerAdapter.getPageTitle(i))
+                                .setIcon(R.drawable.ic_group_white_24dp)
+                                .setTabListener(this));
+            }
+            if (i== 1) {
+                actionBar.addTab(
+                        actionBar.newTab()
+                                //.setText(mSectionsPagerAdapter.getPageTitle(i))
+                                .setIcon(R.drawable.ic_gavel_white_24dp)
+                                .setTabListener(this));
+            }
+            if (i==2) {
+                actionBar.addTab(
+                        actionBar.newTab()
+                                //.setText(mSectionsPagerAdapter.getPageTitle(i))
+                                .setIcon(R.drawable.ic_notifications_white_24dp)
+                                .setTabListener(this));
+            }
         }
         mViewPager.setCurrentItem(1);
         mViewPager.setOffscreenPageLimit(3);
