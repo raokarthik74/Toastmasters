@@ -68,22 +68,26 @@
             android:layout_centerHorizontal="true" />
 
         <ImageView
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/logo"
             android:id="@+id/logo"
-            android:layout_marginBottom="20dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/countDown" />
+    </RelativeLayout>
 
-        <Button
-            android:layout_below="@+id/logo"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+        <Button style="?android:attr/borderlessButtonStyle"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:text="About the Conference"
             android:onClick="aboutConferenceLink"
-            android:backgroundTint="#CCF44336"
+            android:background="#AFF44336"
             android:id="@+id/aboutConference"
             />
 
@@ -95,19 +99,21 @@
             >
 
             <Button
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Program"
                 android:layout_weight="0.7"
-                android:backgroundTint="#CC7C4DFF"
+                android:background="#AF7C4DFF"
                 android:onClick="programLink"
                 android:id="@+id/openAgenda"
                 />
 
             <Button
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#CC903041"
+                android:background="#AF903041"
                 android:layout_weight="0.3"
                 android:text="Venue"
                 android:onClick="openMapVenue"
@@ -123,19 +129,21 @@
             >
 
             <Button
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Register"
                 android:layout_weight="0.4"
-                android:backgroundTint="#CC3F51B5"
+                android:background="#AF3F51B5"
                 android:onClick="registrationLink"
                 android:id="@+id/registrationLink"
                 />
             <Button
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Notifications"
-                android:backgroundTint="#CC009688"
+                android:background="#AF009688"
                 android:layout_weight="0.6"
                 android:id="@+id/conferenceNotifications"
                 android:onClick="chooseConferenceNotifications"
@@ -150,21 +158,23 @@
         android:layout_below="@id/linearLayoutForSponsors">
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Sponsors"
             android:layout_weight="0.6"
-            android:backgroundTint="#CCFF9800"
+            android:background="#AFFF9800"
             android:onClick="sponsorsLink"
             android:id="@+id/viewSponsors"
             />
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="Contact Us"
             android:layout_weight="0.4"
-            android:backgroundTint="#CCE040FB"
+            android:background="#AFE040FB"
             android:onClick="contactLink"
             android:id="@+id/contactConference"
             />

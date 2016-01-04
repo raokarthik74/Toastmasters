@@ -73,15 +73,6 @@
             </intent-filter>
         </receiver>
 
-        <meta-data
-            android:name="com.parse.push.notification_icon"
-            android:resource="@mipmap/ic_launcher" />
-
-        <activity
-            android:name=".DistrictSelectionActivity"
-            android:label="@string/title_activity_district_selection"
-            android:screenOrientation="portrait" >
-        </activity>
         <activity
             android:name=".WebactivityForParse"
             android:label="@string/title_activity_webactivity_for_parse"
