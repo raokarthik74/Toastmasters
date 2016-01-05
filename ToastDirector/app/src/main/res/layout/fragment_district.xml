@@ -51,7 +51,7 @@
                 android:text="NEWS"
                 android:id="@+id/openWebsite"
                 android:textColor="@color/icons"
-                android:onClick="openEvents"
+                android:onClick="openWebsite"
                 />
         </LinearLayout>
 <LinearLayout
