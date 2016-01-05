@@ -82,20 +82,34 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
 
-        <Button style="?android:attr/borderlessButtonStyle"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:text="About the Conference"
-            android:onClick="aboutConferenceLink"
-            android:background="#AFF44336"
-            android:id="@+id/aboutConference"
-            />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearForAbout">
+                <Button style="?android:attr/borderlessButtonStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="About the Conference"
+                    android:layout_weight="0.8"
+                    android:onClick="aboutConferenceText"
+                    android:background="#AFF44336"
+                    android:id="@+id/aboutConference"
+                    />
+                <Button style="?android:attr/borderlessButtonStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="VIDEO"
+                    android:layout_weight="0.2"
+                    android:onClick="aboutConferenceLink"
+                    android:background="#AF137726"
+                    />
+            </LinearLayout>
 
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/linearLayoutForProgram"
-            android:layout_below="@id/aboutConference"
+            android:layout_below="@id/linearForAbout"
             >
 
             <Button

@@ -58,4 +58,5 @@
     <string name="title_activity_awards_list_view">AwardsListView</string>
     <string name="title_activity_events_list_view">EventsListView</string>
     <string name="title_activity_choose_notifications">ChooseNotifications</string>
+    <string name="title_activity_text_display">textDisplayActivity</string>
 </resources>

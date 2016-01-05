@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.karthikravindrarao.ToastDirector" >
+    package="com.karthikravindrarao.TM_District_92">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -14,10 +14,14 @@
       to match your app's package name + ".permission.C2D_MESSAGE".
     -->
     <permission
-        android:name="com.karthikravindrarao.ToastDirector.permission.C2D_MESSAGE"
+        android:name="com.karthikravindrarao.TM_District_92.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.karthikravindrarao.ToastDirector.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.karthikravindrarao.TM_District_92.permission.C2D_MESSAGE" />
+
+    <meta-data
+        android:name="com.parse.push.notification_icon"
+        android:resource="@drawable/push_icon" />
 
     <application
         android:name=".util.ParseNotification"
@@ -26,11 +30,11 @@
         android:label="@string/app_name"
         android:launchMode="singleTop"
         android:screenOrientation="portrait"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,20 +45,18 @@
             android:name=".speechTimer"
             android:label="@string/title_activity_speech_timer"
             android:parentActivityName=".TimerSelection"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AdvancedSpeechesTimerSetting"
             android:label="@string/title_activity_advanced_speeches_timer_setting"
             android:parentActivityName=".TimerSelection"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
 
         <service android:name="com.parse.PushService" />
 
         <receiver
             android:name=".util.Receiver"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.parse.push.intent.RECEIVE" />
                 <action android:name="com.parse.push.intent.DELETE" />
@@ -63,13 +65,13 @@
         </receiver>
         <receiver
             android:name="com.parse.GcmBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <!-- IMPORTANT: Change "com.parse.starter" to match your app's package name. -->
-                <category android:name="com.karthikravindrarao.ToastDirector" />
+                <category android:name="com.karthikravindrarao.TM_District_92" />
             </intent-filter>
         </receiver>
 
@@ -77,80 +79,77 @@
             android:name=".WebactivityForParse"
             android:label="@string/title_activity_webactivity_for_parse"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".PushNotificationActivity"
             android:label="@string/title_activity_push_notification"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".WebViewForNotification"
             android:label="@string/title_activity_web_view_for_notification"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".TimerSelection"
             android:label="@string/title_activity_timer_selection"
             android:parentActivityName=".timerReportActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".AhCounter"
             android:label="@string/title_activity_ah_counter"
             android:parentActivityName=".ahCounterReportActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".passwordReset"
             android:label="@string/title_activity_password_reset"
             android:parentActivityName=".LoginActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.karthikravindrarao.ToastDirector.LoginActivity" />
+                android:value="com.karthikravindrarao.TM_District_92.LoginActivity" />
         </activity>
         <activity
             android:name=".ahCounterReportActivity"
             android:label="@string/title_activity_ah_counter_report"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".timerReportActivity"
             android:label="@string/title_activity_timer_report"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".webView"
             android:label="@string/title_activity_web_view"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".AwardsListView"
-            android:label="@string/title_activity_awards_list_view"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.karthikravindrarao.ToastDirector.MainActivity" />
-        </activity>
-        <activity
-            android:name=".EventsListView"
-            android:label="@string/title_activity_events_list_view"
-            android:parentActivityName=".MainActivity" >
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ChooseNotifications"
             android:label="@string/title_activity_choose_notifications"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.karthikravindrarao.ToastDirector.MainActivity" />
+                android:value="com.karthikravindrarao.TM_District_92.MainActivity" />
+        </activity>
+        <activity
+            android:name=".textDisplayActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karthikravindrarao.TM_District_92.MainActivity" />
+        </activity>
+        <activity
+            android:name=".storeActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karthikravindrarao.TM_District_92.MainActivity" />
         </activity>
     </application>
 

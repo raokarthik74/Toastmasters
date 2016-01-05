@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.karthikravindrarao.ToastDirector.speechTimer">
+    tools:context="com.karthikravindrarao.TM_District_92.speechTimer">
 
     <item android:id="@+id/resetTimer" android:title="RESET"
         android:orderInCategory="100" app:showAsAction="always" />

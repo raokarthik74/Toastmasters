@@ -48,8 +48,8 @@
                 android:layout_height="65dp"
                 android:layout_weight="0.3"
                 android:backgroundTint="@color/accent_alpha"
-                android:text="Events"
-                android:id="@+id/openEvents"
+                android:text="NEWS"
+                android:id="@+id/openWebsite"
                 android:textColor="@color/icons"
                 android:onClick="openEvents"
                 />
@@ -88,11 +88,11 @@
            android:layout_weight="0.6"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
-            android:text="Awards"
+            android:text="STORE"
             android:backgroundTint="@color/primary_alpha"
-            android:id="@+id/openAwardsLink"
+            android:id="@+id/openStoreLink"
             android:textColor="@color/icons"
-            android:onClick="openAwardsPage"
+            android:onClick="openStore"
             />
         <Button
             android:layout_weight="0.4"
