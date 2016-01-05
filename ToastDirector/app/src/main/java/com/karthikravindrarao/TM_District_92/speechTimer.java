@@ -97,7 +97,8 @@ public class speechTimer extends ActionBarActivity {
         long greenValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.greenValue, 0);
         long amberValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.amberValue, 0);
         long redValue = intent.getLongExtra(AdvancedSpeechesTimerSetting.redValue, 0);
-        if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue || elapsedTimeInSeconds == redValue+30) {
+        endTimeInSeconds = redValue +30;
+        if (elapsedTimeInSeconds == greenValue || elapsedTimeInSeconds == amberValue || elapsedTimeInSeconds == redValue || elapsedTimeInSeconds == endTimeInSeconds) {
             Vibrator timerVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             timerVibrator.vibrate(500);
         }
@@ -110,8 +111,8 @@ public class speechTimer extends ActionBarActivity {
         if (elapsedTimeInSeconds > redValue) {
             turnRed();
         }
-        if (elapsedTimeInSeconds > redValue+30) {
-            timeEnded(redValue+30, elapsedTimeInSeconds);
+        if (elapsedTimeInSeconds > endTimeInSeconds) {
+            timeEnded(endTimeInSeconds, elapsedTimeInSeconds);
         }
     }
 
@@ -231,13 +232,12 @@ public class speechTimer extends ActionBarActivity {
             type = intent.getStringExtra(TimerSelection.TimerTitle);
         }
         if (isExceeded) {
-            long exceededTime = (elapsedTimeInSeconds - endTimeInSeconds);
             SharedPreferences timer = getSharedPreferences("timer", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = timer.edit();
             Set<String> timerSet = timer.getStringSet("timerSet", new HashSet<String>());
             SimpleDateFormat currentDateAndTime = new SimpleDateFormat("dd/MM/yyyy \t kk:mm:ss");
             timerSet.add(currentDateAndTime.format(new Date()) + "\n" + name + "-\t" + String.valueOf(minutes) + ":" + String.valueOf(seconds) +
-                    "\nType:\t"+type+"\nTime Exceeded By:\t" + TimeUnit.SECONDS.toMinutes(exceededTime) + ":" + exceededTime % 60);
+                    "\nType:\t"+type+"\nTime Exceeded By:\t" + TimeUnit.SECONDS.toMinutes(elapsedTimeInSeconds-endTimeInSeconds) + ":" + (elapsedTimeInSeconds-endTimeInSeconds) % 60);
             editor.remove("timerSet");
             editor.apply();
             editor.putStringSet("timerSet", timerSet);
