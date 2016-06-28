@@ -30,7 +30,7 @@ public class ahCounterReportActivity extends AppCompatActivity {
         ahcounterreportactivity = this;
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setTitle("Ah Counter Report");
+        setTitle("Crutch Counter Report");
         ListView listView = (ListView) findViewById(R.id.dataSaveListView);
         SharedPreferences counter = getSharedPreferences("counter", Context.MODE_PRIVATE);
         Set<String> counterSet = counter.getStringSet("counterSet", new HashSet<String>());
@@ -74,7 +74,7 @@ public class ahCounterReportActivity extends AppCompatActivity {
         if (id == R.id.deleteAhCounterReport) {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Warning !");
-            alertDialog.setMessage("Are you sure you want to delete all the Ah Counter Reports ?");
+            alertDialog.setMessage("Are you sure you want to delete all the Crutch Counter Reports ?");
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
                     new DialogInterface.OnClickListener() {
                         @Override
